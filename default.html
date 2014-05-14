@@ -9,12 +9,21 @@
     <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
 
-    <!-- ListView_Test references -->
+    <!-- ListView-Test references -->
     <link href="/css/default.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
+    <script src="/js/configChanges.js"></script>
 </head>
 <body>
+   
+    <button id="toggleOrientation" onclick="Config.toggleOrientation()">Toggle Orientation</button>
 
+    <select id="selectLayout" onchange="Config.selectLayout()">
+        <option value="list">List</option>
+        <option value="grid">Grid</option>
+    </select>
+
+  
     <!-- Simple Template for ListView-->
     <div id="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
         <div class="smallLIstIconTextItem">
