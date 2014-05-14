@@ -1,2 +1,30 @@
-﻿body {
+﻿/* Template used for ListView Items*/
+.smallListIconTextItem
+{
+    width: 100%;
+    height: 70px;
+    padding: 5px;
+    overflow: hidden;
 }
+
+.smallListIconTextItem img.smallListIconTextItem-Image
+{
+    width: 60px;
+    height: 60px;
+    margin: 5px;                  
+    float: left;                  
+    margin-right:20px;            
+                                  
+}
+
+.smallListIconTextItem .smallListIcontTextItem-Detail
+{
+    margin: 5px;
+}               
+
+#listView
+{
+    height: 800px;
+}
+
+                      

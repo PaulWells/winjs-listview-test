@@ -14,6 +14,31 @@
     <script src="/js/default.js"></script>
 </head>
 <body>
-    <p>Content goes here</p>
+
+    <!-- Simple Template for ListView-->
+    <div id="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+        <div class="smallLIstIconTextItem">
+            <img src="#" class="smallListIcontTextItem-Image" data-win-bind="src: picture"/>
+            <div class="smallListIcontTextItem-Detail">
+                <h4 data-win-bind="textContent: title"></h4>
+                <h6 data-win-bind="textContent: text"></h6>
+            </div>
+        </div>
+    </div>
+
+    <!-- Declare ListView -->
+    <div id="listView"
+        class="win-selectionstylefilled"
+        data-win-control="WinJS.UI.ListView"
+        data-win-options="{
+            itemDataSource: Sample.ListView.data.dataSource,
+            itemTemplate: smallListIconTextTemplate,
+            selectionMode: 'none',
+            tapBehavior: 'none',
+            swipeBehavior: 'none',
+            layout: {type: WinJS.UI.ListLayout}
+        }">
+    </div>
+
 </body>
 </html>
