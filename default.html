@@ -13,6 +13,7 @@
     <link href="/css/default.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
     <script src="/js/configChanges.js"></script>
+    <script src="/js/data.js"></script>
 </head>
 <body>
    
@@ -24,6 +25,7 @@
     </select>
 
     <input type="checkbox" id="itemsReorderableCheckBox" onchange="Config.itemsReorderable()" />  Items Reorderable
+    <input type="checkbox" id="groupItemsCheckBox" onchange="Config.groupItems()" /> Group Items
     
   
     <!-- Simple Template for ListView-->
@@ -35,6 +37,13 @@
                 <h6 data-win-bind="textContent: text"></h6>
             </div>
         </div>
+    </div>
+
+    <div id="listLayoutTopHeaderTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="listLayoutTopHeaderTemplateRoot">
+            <div data-win-bind="innerHTML: title"></div>
+        </div>
+
     </div>
 
     <!-- Declare ListView -->
@@ -51,6 +60,8 @@
             layout: {type: WinJS.UI.ListLayout}
         }">
     </div>
+            <!--groupDataSource: Sample.ListView.data.groups.dataSource,
+            groupHeaderTemplate: listLayoutTopHeaderTemplate,-->
 
 </body>
 </html>

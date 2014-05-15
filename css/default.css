@@ -20,7 +20,12 @@
 .smallListIconTextItem .smallListIcontTextItem-Detail
 {
     margin: 5px;
-}               
+}     
+
+.listLayoutTopHeaderTemplateRoot, .gridLayoutLeftHeaderTemplateRoot {
+    font-size: larger;
+    margin-left: 16px;
+}          
 
 #listView
 {

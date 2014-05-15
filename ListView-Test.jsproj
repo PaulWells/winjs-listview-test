@@ -67,6 +67,7 @@
     <Content Include="images\splashscreen.scale-100.png" />
     <Content Include="images\storelogo.scale-100.png" />
     <Content Include="js\configChanges.js" />
+    <Content Include="js\data.js" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
     <None Include="ListView-Test_TemporaryKey.pfx" />

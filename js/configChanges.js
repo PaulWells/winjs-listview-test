@@ -16,6 +16,24 @@
             } else {
                 listViewControl.layout = new WinJS.UI.ListLayout;
             }
+        },
+
+        groupItems: function() {
+            var listViewControl = document.getElementById("listView").winControl;
+            var checkbox = document.getElementById("groupItemsCheckBox");
+
+            if (checkbox.checked) {
+                listViewControl.groupDataSource = Data.initGroupedData().groups.dataSource;
+                listViewControl.groupHeaderTemplate = document.getElementById("listLayoutTopHeaderTemplate");
+                listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["top"];
+            } else {
+                listViewControl.groupDataSource = null;
+                listViewControl.layout.groupHeaderPosition = null;
+                listViewControl.groupHeaderTemplate = null;
+            }
+
+            //TODO: disable reordering
+
         }
 
     };
@@ -38,6 +56,7 @@
 
         toggleOrientation: LayoutChanges.toggleOrientation,
         selectLayout: LayoutChanges.selectLayout,
-        itemsReorderable: DataChanges.toggleItemsReorderable
+        itemsReorderable: DataChanges.toggleItemsReorderable,
+        groupItems: LayoutChanges.groupItems
     });
 })();
