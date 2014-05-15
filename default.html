@@ -23,6 +23,8 @@
         <option value="grid">Grid</option>
     </select>
 
+    <input type="checkbox" id="itemsReorderableCheckBox" onchange="Config.itemsReorderable()" />  Items Reorderable
+    
   
     <!-- Simple Template for ListView-->
     <div id="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
@@ -37,14 +39,15 @@
 
     <!-- Declare ListView -->
     <div id="listView"
-        class="win-selectionstylefilled"
-        data-win-control="WinJS.UI.ListView"
-        data-win-options="{
+         class="win-selectionstylefilled"
+         data-win-control="WinJS.UI.ListView"
+         data-win-options="{
             itemDataSource: Sample.ListView.data.dataSource,
             itemTemplate: smallListIconTextTemplate,
             selectionMode: 'none',
             tapBehavior: 'none',
             swipeBehavior: 'none',
+            itemsReorderable: false,
             layout: {type: WinJS.UI.ListLayout}
         }">
     </div>

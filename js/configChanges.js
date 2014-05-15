@@ -20,11 +20,24 @@
 
     };
 
+    var DataChanges = {
+        toggleItemsReorderable: function () {
+            window.console.log("hey");
+            var listViewControl = document.getElementById("listView").winControl;
+            var checkbox = document.getElementById("itemsReorderableCheckBox");
+
+            listViewControl.itemsReorderable = checkbox.checked;
+        }
+    };
+
+
+
 
     // Public interface.
     WinJS.Namespace.define("Config", {
 
         toggleOrientation: LayoutChanges.toggleOrientation,
-        selectLayout: LayoutChanges.selectLayout
+        selectLayout: LayoutChanges.selectLayout,
+        itemsReorderable: DataChanges.toggleItemsReorderable
     });
 })();
