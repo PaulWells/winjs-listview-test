@@ -25,14 +25,32 @@
         <option value="grid">Grid</option>
     </select>
 
-    <input type="checkbox" class="itemsReorderableCheckBox"/>  Items Reorderable
+    <span class="itemsReorderable">
+        <input type="checkbox" class="itemsReorderableCheckBox" />  Items Reorderable
+    </span>
     <input type="checkbox" class="groupItemsCheckBox" /> Group Items
-    
-  
+    <select class="selectHeaderPosition" hidden="true">
+        <option value="top">Top</option>
+        <option value="left">Left</option>
+    </select>
+
+    <select class="selectTapBehavior">
+        <option value="directSelect">Direct</option>
+        <option value="toggleSelect">Toggle</option>
+        <option value="invokeOnly">Invoke Only</option>
+        <option value="none">None</option>
+    </select>
+
+    <select class="selectSelectionMode">
+        <option value="none">None</option>
+        <option value="single">Single</option>
+        <option value="multi">Multi</option>
+    </select>
+
     <!-- Simple Template for ListView-->
     <div class="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
         <div class="smallLIstIconTextItem">
-            <img src="#" class="smallListIcontTextItem-Image" data-win-bind="src: picture"/>
+            <img src="#" class="smallListIcontTextItem-Image" data-win-bind="src: picture" />
             <div class="smallListIcontTextItem-Detail">
                 <h4 data-win-bind="textContent: title"></h4>
                 <h6 data-win-bind="textContent: text"></h6>
@@ -49,16 +67,15 @@
 
     <!-- Declare ListView -->
     <div class="win-selectionstylefilled listView"
-         data-win-control="WinJS.UI.ListView"
-         data-win-options="{
-            itemDataSource: Sample.ListView.data.dataSource,
-            itemTemplate: select('.smallListIconTextTemplate'),
-            selectionMode: 'none',
-            tapBehavior: 'none',
-            swipeBehavior: 'none',
-            itemsReorderable: false,
-            layout: {type: WinJS.UI.ListLayout}
-        }">
+        data-win-control="WinJS.UI.ListView"
+        data-win-options="{
+        itemDataSource: Sample.ListView.data.dataSource,
+        itemTemplate: select('.smallListIconTextTemplate'),
+        selectionMode: WinJS.UI.SelectionMode.none,
+        tapBehavior: WinJS.UI.TapBehavior.directSelect,
+        itemsReorderable: false,
+        layout: {type: WinJS.UI.ListLayout}
+    }">
     </div>
 
 </body>

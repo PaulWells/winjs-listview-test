@@ -19,20 +19,36 @@
 
     function groupItems(){
         var listViewControl = document.querySelector(".listView").winControl;
-        var checkbox = document.querySelector(".groupItemsCheckBox");
+        var groupItemsCheckbox = document.querySelector(".groupItemsCheckBox");
+        var reorderableCheckbox = document.querySelector(".itemsReorderableCheckBox");
+        var reorderableGroup = document.querySelector(".itemsReorderable");
+        var selectHeaderPosition = document.querySelector(".selectHeaderPosition");
 
-        if (checkbox.checked) {
+        if (groupItemsCheckbox.checked) {
             listViewControl.groupDataSource = Data.createGroupedData().groups.dataSource;
             listViewControl.groupHeaderTemplate = document.querySelector(".listLayoutTopHeaderTemplate");
             listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["top"];
+            reorderableCheckbox.checked = false;
+            reorderableGroup.hidden = true;
+            selectHeaderPosition.hidden = false;
         } else {
             listViewControl.groupDataSource = null;
             listViewControl.layout.groupHeaderPosition = null;
             listViewControl.groupHeaderTemplate = null;
+            reorderableGroup.hidden = false;
+            selectHeaderPosition.hidden = true;
         }
+    }
 
-        //TODO: disable reordering
+    function selectHeaderPosition() {
+        var selectHeaderPosition = document.querySelector(".selectHeaderPosition");
+        var listViewControl = document.querySelector(".listView").winControl;
 
+        if(selectHeaderPosition.options[selectHeaderPosition.selectedIndex].value === "top"){
+            listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["top"];
+        } else {
+            listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["left"];
+        }
     }
 
 
@@ -41,14 +57,34 @@
         var checkbox = document.querySelector(".itemsReorderableCheckBox");
 
         listViewControl.itemsReorderable = checkbox.checked;
-    }
+   }
 
+   function selectTapBehaviour() {
+       var listViewControl = document.querySelector(".listView").winControl;
+       var tapBehaviorSelector = document.querySelector(".selectTapBehavior");
+
+       var tapBehavior = tapBehaviorSelector.options[tapBehaviorSelector.selectedIndex].value
+       listViewControl.tapBehavior = WinJS.UI.TapBehavior[tapBehavior];
+       
+   }
+
+   function selectSelectionMode() {
+       var listViewControl = document.querySelector(".listView").winControl;
+       var selectionModeSelector = document.querySelector(".selectSelectionMode");
+
+       var selectionMode = selectionModeSelector.options[selectionModeSelector.selectedIndex].value
+       listViewControl.selectionMode = WinJS.UI.SelectionMode[selectionMode];
+
+   }
     // Public interface.
     WinJS.Namespace.define("Config", {
 
         toggleOrientation: toggleOrientation,
         selectLayout: selectLayout,
         itemsReorderable: toggleItemsReorderable,
-        groupItems: groupItems
+        groupItems: groupItems,
+        selectHeaderPosition: selectHeaderPosition,
+        selectTapBehavior: selectTapBehaviour,
+        selectSelectionMode: selectSelectionMode
     });
 })();
