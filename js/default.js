@@ -8,10 +8,14 @@
         if (args.detail.kind === activation.ActivationKind.launch) {
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 //Initialize application
-                var grouped = Data.initGroupedData();
+                
+                
+                Init.addListeners();
+                
+                var grouped = Data.createGroupedData();
                 WinJS.Namespace.define("Sample.ListView", {
                     data: grouped
-                })
+                });
 
             } else {
                 // Restore application state

@@ -14,22 +14,23 @@
     <script src="/js/default.js"></script>
     <script src="/js/configChanges.js"></script>
     <script src="/js/data.js"></script>
+    <script src="/js/initialize.js"></script>
 </head>
 <body>
    
-    <button id="toggleOrientation" onclick="Config.toggleOrientation()">Toggle Orientation</button>
+    <button class="toggleOrientation">Toggle Orientation</button>
 
-    <select id="selectLayout" onchange="Config.selectLayout()">
+    <select class="selectLayout">
         <option value="list">List</option>
         <option value="grid">Grid</option>
     </select>
 
-    <input type="checkbox" id="itemsReorderableCheckBox" onchange="Config.itemsReorderable()" />  Items Reorderable
-    <input type="checkbox" id="groupItemsCheckBox" onchange="Config.groupItems()" /> Group Items
+    <input type="checkbox" class="itemsReorderableCheckBox"/>  Items Reorderable
+    <input type="checkbox" class="groupItemsCheckBox" /> Group Items
     
   
     <!-- Simple Template for ListView-->
-    <div id="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+    <div class="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
         <div class="smallLIstIconTextItem">
             <img src="#" class="smallListIcontTextItem-Image" data-win-bind="src: picture"/>
             <div class="smallListIcontTextItem-Detail">
@@ -39,7 +40,7 @@
         </div>
     </div>
 
-    <div id="listLayoutTopHeaderTemplate" data-win-control="WinJS.Binding.Template">
+    <div class="listLayoutTopHeaderTemplate" data-win-control="WinJS.Binding.Template">
         <div class="listLayoutTopHeaderTemplateRoot">
             <div data-win-bind="innerHTML: title"></div>
         </div>
@@ -47,12 +48,11 @@
     </div>
 
     <!-- Declare ListView -->
-    <div id="listView"
-         class="win-selectionstylefilled"
+    <div class="win-selectionstylefilled listView"
          data-win-control="WinJS.UI.ListView"
          data-win-options="{
             itemDataSource: Sample.ListView.data.dataSource,
-            itemTemplate: smallListIconTextTemplate,
+            itemTemplate: select('.smallListIconTextTemplate'),
             selectionMode: 'none',
             tapBehavior: 'none',
             swipeBehavior: 'none',
@@ -60,8 +60,6 @@
             layout: {type: WinJS.UI.ListLayout}
         }">
     </div>
-            <!--groupDataSource: Sample.ListView.data.groups.dataSource,
-            groupHeaderTemplate: listLayoutTopHeaderTemplate,-->
 
 </body>
 </html>
