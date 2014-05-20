@@ -22,7 +22,7 @@
     margin: 5px;
 }     
 
-.listLayoutTopHeaderTemplateRoot, .gridLayoutLeftHeaderTemplateRoot {
+.listLayoutHeaderTemplate, .listLayoutHeaderTemplate {
     font-size: larger;
     margin-left: 16px;
 }          

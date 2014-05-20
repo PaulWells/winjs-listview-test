@@ -38,6 +38,17 @@
         return template;
     }
 
+    function buildTextHeaderTemplate(item) {
+        template = document.createElement("div");
+        template.className = "listLayoutHeaderTemplate";
+        template.style.overflow = "hidden";
+
+        var title = document.createElement("div");
+        title.innerHTML = item.data.title;
+        template.appendChild(title);
+        return template;
+    }
+
     function textWithImageTemplatingFunction(itemPromise) {
         return itemPromise.then(function (item) {
             return buildTextWithImageTemplate(item);
@@ -50,10 +61,17 @@
         });
     }
 
+    function textHeaderTemplatingFunction(itemPromise) {
+        return itemPromise.then(function (item) {
+            return buildTextHeaderTemplate(item);
+        });
+    }
+
 
     WinJS.Namespace.define("Templates", {
         textWithImageTemplatingFunction: textWithImageTemplatingFunction,
-        imageTemplatingFunction: imageTemplatingFunction
+        imageTemplatingFunction: imageTemplatingFunction,
+        textHeaderTemplatingFunction: textHeaderTemplatingFunction
     });
 
 

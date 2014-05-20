@@ -26,7 +26,7 @@
 
         if (groupItemsCheckbox.checked) {
             listViewControl.groupDataSource = Data.createGroupedData().groups.dataSource;
-            listViewControl.groupHeaderTemplate = document.querySelector(".listLayoutTopHeaderTemplate");
+            listViewControl.groupHeaderTemplate = Templates.textHeaderTemplatingFunction;
             listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["top"];
             reorderableCheckbox.checked = false;
             reorderableGroup.hidden = true;
