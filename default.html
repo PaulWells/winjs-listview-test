@@ -15,25 +15,35 @@
     <script src="/js/configChanges.js"></script>
     <script src="/js/data.js"></script>
     <script src="/js/initialize.js"></script>
+    <script src="/js/templates.js"></script>
 </head>
 <body>
-   
+    
+    <button class="changeTemplateButton">Templates</button>
     <button class="toggleOrientation">Toggle Orientation</button>
+    <div class="templateFlyout" data-win-control="WinJS.UI.Flyout">
+       
+        <input type="radio" class="templateRadioButton" name="template" value="textWithImage" />Text With Image<br />
+        <input type="radio" class="templateRadioButton" name="template" value="image" />Image<br />
+        <input type="radio" class="templateRadioButton" name="template" value="inline" />Inline
+    </div>
 
+    Layout 
     <select class="selectLayout">
         <option value="list">List</option>
         <option value="grid">Grid</option>
     </select>
 
     <span class="itemsReorderable">
-        <input type="checkbox" class="itemsReorderableCheckBox" />  Items Reorderable
+        Items Reorderable <input type="checkbox" class="itemsReorderableCheckBox" />  
     </span>
-    <input type="checkbox" class="groupItemsCheckBox" /> Group Items
+    Group Items<input type="checkbox" class="groupItemsCheckBox" />
     <select class="selectHeaderPosition" hidden="true">
         <option value="top">Top</option>
         <option value="left">Left</option>
     </select>
 
+    Tap Behavior
     <select class="selectTapBehavior">
         <option value="directSelect">Direct</option>
         <option value="toggleSelect">Toggle</option>
@@ -41,17 +51,18 @@
         <option value="none">None</option>
     </select>
 
+    Selection Mode 
     <select class="selectSelectionMode">
         <option value="none">None</option>
         <option value="single">Single</option>
         <option value="multi">Multi</option>
     </select>
 
-    <!-- Simple Template for ListView-->
-    <div class="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
-        <div class="smallLIstIconTextItem">
-            <img src="#" class="smallListIcontTextItem-Image" data-win-bind="src: picture" />
-            <div class="smallListIcontTextItem-Detail">
+    <!--Simple Template for ListView-->
+    <div class="listIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+        <div class="listIconTextItem">
+            <img src="#" class="listIconTextItem-Image" data-win-bind="src: picture" />
+            <div class="listIconTextItem-Detail">
                 <h4 data-win-bind="textContent: title"></h4>
                 <h6 data-win-bind="textContent: text"></h6>
             </div>
@@ -67,10 +78,9 @@
 
     <!-- Declare ListView -->
     <div class="win-selectionstylefilled listView"
-        data-win-control="WinJS.UI.ListView"
-        data-win-options="{
+         data-win-control="WinJS.UI.ListView"
+         data-win-options="{
         itemDataSource: Sample.ListView.data.dataSource,
-        itemTemplate: select('.smallListIconTextTemplate'),
         selectionMode: WinJS.UI.SelectionMode.none,
         tapBehavior: WinJS.UI.TapBehavior.directSelect,
         itemsReorderable: false,

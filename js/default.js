@@ -9,18 +9,21 @@
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 //Initialize application
                 
-                
                 Init.addListeners();
-                
+
                 var grouped = Data.createGroupedData();
                 WinJS.Namespace.define("Sample.ListView", {
                     data: grouped
                 });
 
+
             } else {
                 // Restore application state
             }
-            args.setPromise(WinJS.UI.processAll());
+            args.setPromise(WinJS.UI.processAll().then(function(){
+                var listView = document.querySelector(".listView").winControl;
+                listView.itemTemplate = Templates.textWithImageTemplatingFunction;
+            }));
         }
     };
 

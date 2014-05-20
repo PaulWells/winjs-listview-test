@@ -76,6 +76,42 @@
        listViewControl.selectionMode = WinJS.UI.SelectionMode[selectionMode];
 
    }
+
+   function openTemplateOptions() {
+       var templateButton = document.querySelector(".changeTemplateButton");
+       document.querySelector(".templateFlyout").winControl.show(templateButton);
+   }
+
+   function changeTemplate() {
+       
+       var listViewControl = document.querySelector(".listView").winControl;
+
+       var radioButtons =  document.getElementsByClassName("templateRadioButton");
+
+       for (var i = 0; i < radioButtons.length; i++) {
+           var element = radioButtons.item(i);
+           if (!element.checked) {
+               continue;
+           }
+
+           switch (element.value) {
+               case "textWithImage":
+                   listViewControl.itemTemplate = Templates.textWithImageTemplatingFunction;
+                   break;
+               case "image":
+                   listViewControl.itemTemplate = Templates.imageTemplatingFunction;
+                   break;
+               case "inline":
+                   listViewControl.itemTemplate = document.querySelector(".listIconTextTemplate");
+                   break;
+           }
+
+           var flyout = document.querySelector(".templateFlyout").winControl;
+           flyout.hide();
+           break;
+       }
+   }
+
     // Public interface.
     WinJS.Namespace.define("Config", {
 
@@ -85,6 +121,8 @@
         groupItems: groupItems,
         selectHeaderPosition: selectHeaderPosition,
         selectTapBehavior: selectTapBehaviour,
-        selectSelectionMode: selectSelectionMode
+        selectSelectionMode: selectSelectionMode,
+        openTemplateOptions: openTemplateOptions,
+        changeTemplate: changeTemplate
     });
 })();
