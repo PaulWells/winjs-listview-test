@@ -7,7 +7,7 @@
     overflow: hidden;
 }
 
-.listIconTextTemplate listIconTextItem-Image
+.listIconTextTemplate .listIconTextItem-Image
 {
     width: 60px;
     height: 60px;
@@ -20,6 +20,7 @@
 .listIconTextItem .listIconTextItem-Detail
 {
     margin: 5px;
+    float: left;
 }     
 
 .listLayoutHeaderTemplate, .listLayoutHeaderTemplate {

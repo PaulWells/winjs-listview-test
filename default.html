@@ -17,6 +17,7 @@
     <script src="/js/initialize.js"></script>
     <script src="/js/templates.js"></script>
     <script src="/js/layoutConfigChanges.js"></script>
+    <script src="/js/methods.js"></script>
 </head>
 <body>
     
@@ -61,12 +62,13 @@
         <option value="none">None</option>
     </select>
 
-    Header Tap Behaviour
-    <select class="selectHeaderTapBehavior" hidden="hidden">
-        <option value="invoke">Invoke</option>
-        <option value="none">None</option>
-    </select>
-
+    <span class="headerTapBehavior" hidden="hidden">
+        Header Tap Behaviour
+        <select class="selectHeaderTapBehavior">
+            <option value="invoke">Invoke</option>
+            <option value="none">None</option>
+        </select>
+    </span>
     Selection Mode 
     <select class="selectSelectionMode">
         <option value="none">None</option>
@@ -74,6 +76,11 @@
         <option value="multi">Multi</option>
     </select>
 
+    <div>
+        <input type="number" class="textInput" />
+        <button class="ensureVisibleButton">Ensure Visible</button>
+        <button class="scrollToButton">Scroll To</button>
+    </div>
     <!--simple inline template for ListView-->
     <div class="listIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
         <div class="listIconTextItem">

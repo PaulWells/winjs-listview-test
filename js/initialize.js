@@ -11,6 +11,8 @@
         document.querySelector(".changeTemplateButton").addEventListener("click", Config.openTemplateOptions, false);
         document.querySelector(".changeHeaderTemplateButton").addEventListener("click", Config.openHeaderTemplateOptions, false);
         document.querySelector(".selectHeaderTapBehavior").addEventListener("change", Config.selectHeaderTapBehavior, false);
+        document.querySelector(".ensureVisibleButton").addEventListener("click", Methods.ensureVisible, false);
+        document.querySelector(".scrollToButton").addEventListener("click", Methods.scrollTo, false);
 
         var radioButtons = document.getElementsByClassName("templateRadioButton");
 

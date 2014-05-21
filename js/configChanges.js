@@ -21,13 +21,6 @@
        var listViewControl = document.querySelector(".listView").winControl;
        var tapBehavior = this.options[this.selectedIndex].value;
        listViewControl.groupHeaderTapBehavior = WinJS.UI.GroupHeaderTapBehavior[tapBehavior];
-
-       switch (tapBehavior) {
-           case WinJS.UI.GroupHeaderTapBehavior.invoke:
-               break;
-           case WinJS.UI.GroupHeaderTapBehavior.none:
-               break;
-       }
    }
 
    function selectSelectionMode() {
