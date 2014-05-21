@@ -73,6 +73,25 @@
         return template;
     }
 
+    function buildInteractiveHeaderTemplate(item) {
+
+        var template = document.createElement("div");
+
+        var button = document.createElement("button");
+        button.innerText = "Group " + item.data.title;
+
+        template.appendChild(button);
+
+        var ratingElement = document.createElement("div");
+        new WinJS.UI.Rating(ratingElement, {
+            averageRating: 1.2
+        });
+
+        template.appendChild(ratingElement);
+
+        return template;
+    }
+
     function textWithImageTemplate(itemPromise) {
         return itemPromise.then(function (item) {
             return buildTextWithImageTemplate(item);
@@ -109,13 +128,20 @@
         })
     }
 
+    function interactiveHeaderTemplate(itemPromise) {
+        return itemPromise.then(function (item) {
+            return buildInteractiveHeaderTemplate(item);
+        });
+    }
+
     WinJS.Namespace.define("Templates", {
         textWithImageTemplate: textWithImageTemplate,
         imageTemplate: imageTemplate,
         textHeaderTemplate: textHeaderTemplate,
         interactiveTemplate: interactiveTemplate,
         textWithImageHeaderTemplate: textWithImageHeaderTemplate,
-        buttonHeaderTemplate: buttonHeaderTemplate
+        buttonHeaderTemplate: buttonHeaderTemplate,
+        interactiveHeaderTemplate: interactiveHeaderTemplate
     });
 
 

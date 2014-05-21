@@ -88,6 +88,8 @@
                case "button":
                    listViewControl.groupHeaderTemplate = Templates.buttonHeaderTemplate;
                    break;
+               case "interactive":
+                   listViewControl.groupHeaderTemplate = Templates.interactiveHeaderTemplate;
            }
 
            var flyout = document.querySelector(".headerTemplateFlyout").winControl;
