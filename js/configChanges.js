@@ -1,8 +1,6 @@
 ﻿(function () {
     "use strict";
    
-
-
    function toggleItemsReorderable() {
         var listViewControl = document.querySelector(".listView").winControl;
         var checkbox = document.querySelector(".itemsReorderableCheckBox");
@@ -33,10 +31,14 @@
        document.querySelector(".templateFlyout").winControl.show(templateButton);
    }
 
-   function changeTemplate() {
+   function openHeaderTemplateOption() {
+       var headerTemplateButton = document.querySelector(".changeHeaderTemplateButton");
+       document.querySelector(".headerTemplateFlyout").winControl.show(headerTemplateButton);
+   }
+
+   function changeItemTemplate() {
        
        var listViewControl = document.querySelector(".listView").winControl;
-
        var radioButtons =  document.getElementsByClassName("templateRadioButton");
 
        for (var i = 0; i < radioButtons.length; i++) {
@@ -47,17 +49,48 @@
 
            switch (element.value) {
                case "textWithImage":
-                   listViewControl.itemTemplate = Templates.textWithImageTemplatingFunction;
+                   listViewControl.itemTemplate = Templates.textWithImageTemplate;
                    break;
                case "image":
-                   listViewControl.itemTemplate = Templates.imageTemplatingFunction;
+                   listViewControl.itemTemplate = Templates.imageTemplate;
                    break;
                case "inline":
                    listViewControl.itemTemplate = document.querySelector(".listIconTextTemplate");
                    break;
+               case "interactive":
+                   listViewControl.itemTemplate = Templates.interactiveTemplate;
+                   break;
            }
 
            var flyout = document.querySelector(".templateFlyout").winControl;
+           flyout.hide();
+           break;
+       }
+   }
+
+   function changeHeaderTemplate() {
+       var listViewControl = document.querySelector(".listView").winControl;
+       var radioButtons = document.getElementsByClassName("headerTemplateRadioButton");
+
+       for (var i = 0; i < radioButtons.length; i++) {
+           var element = radioButtons.item(i);
+           if (!element.checked) {
+               continue;
+           }
+
+           switch (element.value) {
+               case "text":
+                   listViewControl.groupHeaderTemplate = Templates.textHeaderTemplate;
+                   break;
+               case "textWithImage":
+                   listViewControl.groupHeaderTemplate = Templates.textWithImageHeaderTemplate;
+                   break;
+               case "button":
+                   listViewControl.groupHeaderTemplate = Templates.buttonHeaderTemplate;
+                   break;
+           }
+
+           var flyout = document.querySelector(".headerTemplateFlyout").winControl;
            flyout.hide();
            break;
        }
@@ -70,6 +103,8 @@
         selectTapBehavior: selectTapBehaviour,
         selectSelectionMode: selectSelectionMode,
         openTemplateOptions: openTemplateOptions,
-        changeTemplate: changeTemplate
+        openHeaderTemplateOptions: openHeaderTemplateOption,
+        changeItemTemplate: changeItemTemplate,
+        changeHeaderTemplate: changeHeaderTemplate
     });
 })();

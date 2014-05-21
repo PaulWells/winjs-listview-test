@@ -24,20 +24,23 @@
         var reorderableCheckbox = document.querySelector(".itemsReorderableCheckBox");
         var reorderableGroup = document.querySelector(".itemsReorderable");
         var selectHeaderPosition = document.querySelector(".selectHeaderPosition");
+        var headerTemplateButton = document.querySelector(".changeHeaderTemplateButton");
 
         if (groupItemsCheckbox.checked) {
             listViewControl.groupDataSource = Data.createGroupedData().groups.dataSource;
-            listViewControl.groupHeaderTemplate = Templates.textHeaderTemplatingFunction;
+            listViewControl.groupHeaderTemplate = Templates.textHeaderTemplate;
             listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["top"];
             reorderableCheckbox.checked = false;
             reorderableGroup.hidden = true;
             selectHeaderPosition.hidden = false;
+            headerTemplateButton.hidden = false;
         } else {
             listViewControl.groupDataSource = null;
             listViewControl.layout.groupHeaderPosition = null;
             listViewControl.groupHeaderTemplate = null;
             reorderableGroup.hidden = false;
             selectHeaderPosition.hidden = true;
+            headerTemplateButton.hidden = true;
         }
     }
 

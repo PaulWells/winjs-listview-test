@@ -9,11 +9,18 @@
         document.querySelector(".selectTapBehavior").addEventListener("change", Config.selectTapBehavior, false);
         document.querySelector(".selectSelectionMode").addEventListener("change", Config.selectSelectionMode, false);
         document.querySelector(".changeTemplateButton").addEventListener("click", Config.openTemplateOptions, false);
+        document.querySelector(".changeHeaderTemplateButton").addEventListener("click", Config.openHeaderTemplateOptions, false);
 
         var radioButtons = document.getElementsByClassName("templateRadioButton");
 
         for (var i = 0; i < radioButtons.length; i++) {
-            radioButtons.item(i).addEventListener("click", Config.changeTemplate, false);
+            radioButtons.item(i).addEventListener("click", Config.changeItemTemplate, false);
+        }
+
+        radioButtons = document.getElementsByClassName("headerTemplateRadioButton");
+
+        for (var i = 0; i < radioButtons.length; i++) {
+            radioButtons.item(i).addEventListener("click", Config.changeHeaderTemplate, false);
         }
     }
 

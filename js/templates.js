@@ -38,6 +38,16 @@
         return template;
     }
 
+    function buildInteractiveTemplate(item) {
+        template = buildTextWithImageTemplate(item);
+        var ratingElement = document.createElement("div");
+        template.appendChild(ratingElement);
+        new WinJS.UI.Rating(ratingElement, {
+            averageRating: 3.4
+        });
+        return template;
+    }
+
     function buildTextHeaderTemplate(item) {
         template = document.createElement("div");
         template.className = "listLayoutHeaderTemplate";
@@ -49,29 +59,63 @@
         return template;
     }
 
-    function textWithImageTemplatingFunction(itemPromise) {
+    function buildTextWithImageHeaderTemplate(item) {
+        var template = buildTextHeaderTemplate(item);
+        var image = document.createElement("img");
+        image.src = item.data.picture;
+        template.appendChild(image);
+        return template;
+    }
+
+    function buildButtonHeaderTemplate(item) {
+        var template = document.createElement("button");
+        template.innerText = "Group " + item.data.title;
+        return template;
+    }
+
+    function textWithImageTemplate(itemPromise) {
         return itemPromise.then(function (item) {
             return buildTextWithImageTemplate(item);
         });
     }
 
-    function imageTemplatingFunction(itemPromise) {
+    function imageTemplate(itemPromise) {
         return itemPromise.then(function (item) {
             return buildImageTemplate(item);
         });
     }
 
-    function textHeaderTemplatingFunction(itemPromise) {
+    function textHeaderTemplate(itemPromise) {
         return itemPromise.then(function (item) {
             return buildTextHeaderTemplate(item);
         });
     }
 
+    function textWithImageHeaderTemplate(itemPromise) {
+        return itemPromise.then(function (item) {
+            return buildTextWithImageHeaderTemplate(item);
+        });
+    }
+
+    function interactiveTemplate(itemPromise) {
+        return itemPromise.then(function (item) {
+            return buildInteractiveTemplate(item);
+        });
+    }
+
+    function buttonHeaderTemplate(itemPromise){
+        return itemPromise.then(function (item){
+            return buildButtonHeaderTemplate(item);
+        })
+    }
 
     WinJS.Namespace.define("Templates", {
-        textWithImageTemplatingFunction: textWithImageTemplatingFunction,
-        imageTemplatingFunction: imageTemplatingFunction,
-        textHeaderTemplatingFunction: textHeaderTemplatingFunction
+        textWithImageTemplate: textWithImageTemplate,
+        imageTemplate: imageTemplate,
+        textHeaderTemplate: textHeaderTemplate,
+        interactiveTemplate: interactiveTemplate,
+        textWithImageHeaderTemplate: textWithImageHeaderTemplate,
+        buttonHeaderTemplate: buttonHeaderTemplate
     });
 
 

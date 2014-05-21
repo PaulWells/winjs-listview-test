@@ -22,7 +22,7 @@
             }
             args.setPromise(WinJS.UI.processAll().then(function(){
                 var listView = document.querySelector(".listView").winControl;
-                listView.itemTemplate = Templates.textWithImageTemplatingFunction;
+                listView.itemTemplate = Templates.textWithImageTemplate;
             }));
         }
     };

@@ -20,14 +20,22 @@
 </head>
 <body>
     
-    <button class="changeTemplateButton">Templates</button>
-    <button class="toggleOrientation">Toggle Orientation</button>
+    <button class="changeTemplateButton">Template</button>
     <div class="templateFlyout" data-win-control="WinJS.UI.Flyout">
        
         <input type="radio" class="templateRadioButton" name="template" value="textWithImage" />Text With Image<br />
         <input type="radio" class="templateRadioButton" name="template" value="image" />Image<br />
-        <input type="radio" class="templateRadioButton" name="template" value="inline" />Inline
+        <input type="radio" class="templateRadioButton" name="template" value="inline" />Inline<br />
+        <input type="radio" class="templateRadioButton" name="template" value="interactive" />Interactive
     </div>
+
+    <button class ="changeHeaderTemplateButton" hidden="true">Header Template</button>
+    <div class="headerTemplateFlyout" data-win-control="WinJS.UI.Flyout">
+        <input type="radio" class="headerTemplateRadioButton" name="headerTemplate" value="text" />Text<br />
+        <input type="radio" class="headerTemplateRadioButton" name="headerTemplate" value="textWithImage" />Text With Image<br />
+        <input type="radio" class="headerTemplateRadioButton" name="headerTemplate" value="button" />Button<br />
+    </div>
+    <button class="toggleOrientation">Toggle Orientation</button>
 
     Layout 
     <select class="selectLayout">

@@ -29,9 +29,10 @@
             //items will be sorted into groups based on this value
             return item.title.toUpperCase().charAt(0);
         }, function (item) {
-            //name of each group (runs on only one element from each group)
+            //data of each group (runs on only one element from each group)
             return {
-                title: item.title.toUpperCase().charAt(0)
+                title: item.title.toUpperCase().charAt(0),
+                picture: item.picture
             };
         }, function (left, right) {
             //sort items in each group with this comparison
