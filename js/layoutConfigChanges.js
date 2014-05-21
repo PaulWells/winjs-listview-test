@@ -18,30 +18,37 @@
         }
     }
 
-    function groupItems() {
+    function ungroupItems() {
+        var groupItemsCheckbox = document.querySelector(".groupItemsCheckBox");
+        groupItemsCheckbox.checked = false;
+        toggleGroupItems();
+    }
+
+    function toggleGroupItems() {
         var listViewControl = document.querySelector(".listView").winControl;
         var groupItemsCheckbox = document.querySelector(".groupItemsCheckBox");
         var reorderableCheckbox = document.querySelector(".itemsReorderableCheckBox");
-        var reorderableGroup = document.querySelector(".itemsReorderable");
-        var selectHeaderPosition = document.querySelector(".selectHeaderPosition");
-        var headerTemplateButton = document.querySelector(".changeHeaderTemplateButton");
-
+       
         if (groupItemsCheckbox.checked) {
             listViewControl.groupDataSource = Data.createGroupedData().groups.dataSource;
             listViewControl.groupHeaderTemplate = Templates.textHeaderTemplate;
             listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["top"];
             reorderableCheckbox.checked = false;
-            reorderableGroup.hidden = true;
-            selectHeaderPosition.hidden = false;
-            headerTemplateButton.hidden = false;
         } else {
             listViewControl.groupDataSource = null;
             listViewControl.layout.groupHeaderPosition = null;
             listViewControl.groupHeaderTemplate = null;
-            reorderableGroup.hidden = false;
-            selectHeaderPosition.hidden = true;
-            headerTemplateButton.hidden = true;
         }
+
+        toggleVisibleOptionsOnGroup(groupItemsCheckbox.checked);
+    }
+
+    function toggleVisibleOptionsOnGroup(grouped) {
+
+        document.querySelector(".itemsReorderable").hidden = grouped;
+        document.querySelector(".selectHeaderPosition").hidden = !grouped;
+        document.querySelector(".changeHeaderTemplateButton").hidden = !grouped;
+        document.querySelector(".selectHeaderTapBehavior").hidden = !grouped;
     }
 
     function selectHeaderPosition() {
@@ -60,7 +67,8 @@
 
         toggleOrientation: toggleOrientation,
         selectLayout: selectLayout,
-        groupItems: groupItems,
+        toggleGroupItems: toggleGroupItems,
+        ungroupItems: ungroupItems,
         selectHeaderPosition: selectHeaderPosition,
     });
 })();

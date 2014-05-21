@@ -12,9 +12,22 @@
        var listViewControl = document.querySelector(".listView").winControl;
        var tapBehaviorSelector = document.querySelector(".selectTapBehavior");
 
-       var tapBehavior = tapBehaviorSelector.options[tapBehaviorSelector.selectedIndex].value
+       var tapBehavior = tapBehaviorSelector.options[tapBehaviorSelector.selectedIndex].value;
        listViewControl.tapBehavior = WinJS.UI.TapBehavior[tapBehavior];
        
+   }
+
+   function selectHeaderTapBehavior() {
+       var listViewControl = document.querySelector(".listView").winControl;
+       var tapBehavior = this.options[this.selectedIndex].value;
+       listViewControl.groupHeaderTapBehavior = WinJS.UI.GroupHeaderTapBehavior[tapBehavior];
+
+       switch (tapBehavior) {
+           case WinJS.UI.GroupHeaderTapBehavior.invoke:
+               break;
+           case WinJS.UI.GroupHeaderTapBehavior.none:
+               break;
+       }
    }
 
    function selectSelectionMode() {
@@ -107,6 +120,7 @@
         openTemplateOptions: openTemplateOptions,
         openHeaderTemplateOptions: openHeaderTemplateOption,
         changeItemTemplate: changeItemTemplate,
-        changeHeaderTemplate: changeHeaderTemplate
+        changeHeaderTemplate: changeHeaderTemplate,
+        selectHeaderTapBehavior: selectHeaderTapBehavior
     });
 })();

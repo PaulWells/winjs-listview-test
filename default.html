@@ -29,7 +29,7 @@
         <input type="radio" class="templateRadioButton" name="template" value="interactive" />Interactive
     </div>
 
-    <button class ="changeHeaderTemplateButton" hidden="true">Header Template</button>
+    <button class ="changeHeaderTemplateButton" hidden="hidden">Header Template</button>
     <div class="headerTemplateFlyout" data-win-control="WinJS.UI.Flyout">
         <input type="radio" class="headerTemplateRadioButton" name="headerTemplate" value="text" />Text<br />
         <input type="radio" class="headerTemplateRadioButton" name="headerTemplate" value="textWithImage" />Text With Image<br />
@@ -48,7 +48,7 @@
         Items Reorderable <input type="checkbox" class="itemsReorderableCheckBox" />  
     </span>
     Group Items<input type="checkbox" class="groupItemsCheckBox" />
-    <select class="selectHeaderPosition" hidden="true">
+    <select class="selectHeaderPosition" hidden="hidden">
         <option value="top">Top</option>
         <option value="left">Left</option>
     </select>
@@ -58,6 +58,12 @@
         <option value="directSelect">Direct</option>
         <option value="toggleSelect">Toggle</option>
         <option value="invokeOnly">Invoke Only</option>
+        <option value="none">None</option>
+    </select>
+
+    Header Tap Behaviour
+    <select class="selectHeaderTapBehavior" hidden="hidden">
+        <option value="invoke">Invoke</option>
         <option value="none">None</option>
     </select>
 

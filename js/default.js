@@ -21,8 +21,7 @@
                 // Restore application state
             }
             args.setPromise(WinJS.UI.processAll().then(function(){
-                var listView = document.querySelector(".listView").winControl;
-                listView.itemTemplate = Templates.textWithImageTemplate;
+                Init.initializeListView();
             }));
         }
     };
