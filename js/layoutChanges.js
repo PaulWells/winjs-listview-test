@@ -29,19 +29,12 @@
         var reorderableCheckbox = document.querySelector(".itemsReorderableCheckBox");
        
         if (this.checked) {
-            var groupedData = Data.groupData(Sample.ListView.data);
-            Sample.StoreData.data = Sample.ListView.data;
-            Sample.ListView.data = groupedData;
-            //var groupedData = Data.groupData(new WinJS.Binding.List(listViewControl.itemDataSource));  //TODO: why can't I do this?
-            listViewControl.itemDataSource = groupedData.dataSource;  //TODO: why is this line necessary if I'm not changing the data?  Does grouping the data change it?
-            listViewControl.groupDataSource = groupedData.groups.dataSource;
+            listViewControl.itemDataSource = Sample.ListView.groupedData.dataSource;
+            listViewControl.groupDataSource = Sample.ListView.groupedData.groups.dataSource;
             listViewControl.groupHeaderTemplate = Templates.textHeaderTemplate;
             listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["top"];
             reorderableCheckbox.checked = false;
         } else {
-            var data = Sample.ListView.data;
-            Sample.ListView.data = Sample.StoreData.data;
-            Sample.StoreData.data = data;
             listViewControl.groupDataSource = null;
             listViewControl.itemDataSource = Sample.ListView.data.dataSource;
             listViewControl.layout.groupHeaderPosition = null;

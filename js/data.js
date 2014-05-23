@@ -81,20 +81,37 @@
 
     function addElementAt(index) {
         listView = document.querySelector(".listView").winControl;
-        var data = Sample.ListView.data;
-        var item = data.getItem(index);
-        var newItem = {
+        var data = getListViewData();
+        var newItem;
+        if (listView.groupDataSource) {
+            var item = data.getItem(index);
+            newItem = cloneItem(item);
+        } else {
+            newItem = generateItem(generateItemList());
+        }
+        data.splice(index, 0, newItem);
+    }
+
+    function cloneItem(item) {
+        return {
             title: item.data.title,
             text: item.data.text,
             picture: item.data.picture
         };
-        data.splice(index, 0, newItem);
     }
 
     function deleteElementAt(index) {
-        var data = Sample.ListView.data;
-        console.log("delete " + index);
+        var data = getListViewData();
         data.splice(index, 1);
+    }
+
+    function getListViewData() {
+        listView = document.querySelector(".listView").winControl;
+        if (listView.groupDataSource) {
+            return Sample.ListView.groupedData;
+        } else {
+            return Sample.ListView.data;
+        }
     }
 
     WinJS.Namespace.define("Data", {
