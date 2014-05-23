@@ -15,6 +15,7 @@
         document.querySelector(".scrollToButton").addEventListener("click", Methods.scrollTo, false);
         document.querySelector(".addItemButton").addEventListener("click", Data.addElement, false);
         document.querySelector(".deleteItemButton").addEventListener("click", Data.deleteElement, false);
+        document.querySelector(".changeItemButton").addEventListener("click", Data.changeElement, false);
 
         var radioButtons = document.getElementsByClassName("templateRadioButton");
 

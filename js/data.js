@@ -14,7 +14,8 @@
 
     function generateItem(itemOptions) {
         var num = Math.random()*itemOptions.length;
-        return itemOptions[Math.floor(num)];
+        var item = itemOptions[Math.floor(num)];
+        return cloneItem(item);
     }
 
     function createData() {
@@ -57,28 +58,6 @@
         }
     }
 
-    function deleteElement() {
-        var indices = getActionItemIndices()
-        //iterate through list so removing items has no effect on remaining indexes
-        for (var i = indices.length - 1; i >=0; i--) {
-            deleteElementAt(indices[i]);
-        }
-    }
-
-    function getActionItemIndices() {
-        var listView = document.querySelector(".listView").winControl;
-        var inputValue = document.querySelector(".textInput").value;
-        var indices = [];
-        if (inputValue) {
-            indices.push(parseInt(inputValue));
-        } else if (listView.selection.count() > 0) {
-            indices = listView.selection.getIndices();
-        } else {
-            indices.push(0);
-        }
-        return indices;
-    }
-
     function addElementAt(index) {
         listView = document.querySelector(".listView").winControl;
         var data = getListViewData();
@@ -92,17 +71,64 @@
         data.splice(index, 0, newItem);
     }
 
-    function cloneItem(item) {
-        return {
-            title: item.data.title,
-            text: item.data.text,
-            picture: item.data.picture
-        };
+    function deleteElement() {
+        var indices = getActionItemIndices(true)
+        //iterate through list backwards so removing items has no effect on remaining indexes
+        for (var i = indices.length - 1; i >=0; i--) {
+            deleteElementAt(indices[i]);
+        }
     }
 
     function deleteElementAt(index) {
         var data = getListViewData();
         data.splice(index, 1);
+    }
+
+    function changeElement() {
+        var indices = getActionItemIndices();
+
+        for (var i = 0; i <indices.length; i++) {
+            changeElementAt(indices[i]);
+        }
+    }
+
+    function changeElementAt(index) {
+        var data = getListViewData();
+        var item = data.getAt(index);
+        item.title = "Updated " + item.title;
+        item.text = "This item was updated!";
+        data.setAt(index, item);
+    }
+
+    function getActionItemIndices(oneItem) {
+        var listView = document.querySelector(".listView").winControl;
+        var inputValue = document.querySelector(".textInput").value;
+        var indices = [];
+        if (inputValue) {
+            indices.push(parseInt(inputValue));
+        } else if (listView.selection.count() > 0) {
+            indices = listView.selection.getIndices();
+        } else {
+            indices.push(0);
+        }
+        return indices;
+    }
+
+    function cloneItem(item) {
+        if (item.data) {
+            return {
+                title: item.data.title,
+                text: item.data.text,
+                picture: item.data.picture
+            };
+
+        } else {
+            return {
+                title: item.title,
+                text: item.text,
+                picture: item.picture
+            };
+        }
     }
 
     function getListViewData() {
@@ -118,6 +144,7 @@
         createData: createData,
         groupData: groupData,
         addElement: addElement,
-        deleteElement: deleteElement
+        deleteElement: deleteElement,
+        changeElement: changeElement
     });
 })();
