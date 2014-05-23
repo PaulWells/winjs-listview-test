@@ -11,11 +11,13 @@
                 
                 Init.addListeners();
 
-                var grouped = Data.createGroupedData();
+                var data = new WinJS.Binding.List(Data.createData());
                 WinJS.Namespace.define("Sample.ListView", {
-                    data: grouped
+                    data: data
                 });
-
+                WinJS.Namespace.define("Sample.StoreData", {
+                    data: data
+                });
 
             } else {
                 // Restore application state

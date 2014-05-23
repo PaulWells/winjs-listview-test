@@ -13,6 +13,8 @@
         document.querySelector(".selectHeaderTapBehavior").addEventListener("change", Config.selectHeaderTapBehavior, false);
         document.querySelector(".ensureVisibleButton").addEventListener("click", Methods.ensureVisible, false);
         document.querySelector(".scrollToButton").addEventListener("click", Methods.scrollTo, false);
+        document.querySelector(".addItemButton").addEventListener("click", Data.addElement, false);
+        document.querySelector(".deleteItemButton").addEventListener("click", Data.deleteElement, false);
 
         var radioButtons = document.getElementsByClassName("templateRadioButton");
 

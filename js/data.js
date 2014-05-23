@@ -1,30 +1,34 @@
 ﻿(function () {
 
-    function createData() {
-        var itemArray = [
+    function generateItemList() {
+        return items = [
             { title: "Marvelous Mint", text: "Gelato", picture: "/images/fruits/60Mint.png" },
             { title: "Succulent Strawberry", text: "Sorbet", picture: "/images/fruits/60Strawberry.png" },
             { title: "Banana Blast", text: "Low-fat frozen yogurt", picture: "/images/fruits/60Banana.png" },
             { title: "Lavish Lemon Ice", text: "Sorbet", picture: "/images/fruits/60Lemon.png" },
             { title: "Creamy Orange", text: "Sorbet", picture: "/images/fruits/60Orange.png" },
             { title: "Very Vanilla", text: "Ice Cream", picture: "/images/fruits/60Vanilla.png" },
-            { title: "Banana Blast", text: "Low-fat frozen yogurt", picture: "/images/fruits/60Banana.png" },
             { title: "Lavish Lemon Ice", text: "Sorbet", picture: "/images/fruits/60Lemon.png" }
         ];
+    }
+
+    function generateItem(itemOptions) {
+        var num = Math.random()*itemOptions.length;
+        return itemOptions[Math.floor(num)];
+    }
+
+    function createData() {
 
         var items = [];
-
-        //Generate 160 items
-        for (var i = 0; i < 20 ; i++) {
-            itemArray.forEach(function (item) {
-                items.push(item);
-            });
+        itemList = generateItemList();
+        //Generate 100 items
+        for (var i = 0; i < 100 ; i++) {
+            items.push(generateItem(itemList));
         }
         return items;
     }
 
-    function createGroupedData(){
-        var data = new WinJS.Binding.List(this.createData());
+    function groupData(data) {
         var groupedData = data.createGrouped(function (item) {
             //items will be sorted into groups based on this value
             return item.title.toUpperCase().charAt(0);
@@ -42,8 +46,61 @@
         return groupedData;
     }
 
+
+    function addElement() {
+        var indices = getActionItemIndices();
+
+        if (indices.length === 1) {
+            addElementAt(indices);
+        } else {
+            addElementAt(indices[0]);
+        }
+    }
+
+    function deleteElement() {
+        var indices = getActionItemIndices()
+        //iterate through list so removing items has no effect on remaining indexes
+        for (var i = indices.length - 1; i >=0; i--) {
+            deleteElementAt(indices[i]);
+        }
+    }
+
+    function getActionItemIndices() {
+        var listView = document.querySelector(".listView").winControl;
+        var inputValue = document.querySelector(".textInput").value;
+        var indices = [];
+        if (inputValue) {
+            indices.push(parseInt(inputValue));
+        } else if (listView.selection.count() > 0) {
+            indices = listView.selection.getIndices();
+        } else {
+            indices.push(0);
+        }
+        return indices;
+    }
+
+    function addElementAt(index) {
+        listView = document.querySelector(".listView").winControl;
+        var data = Sample.ListView.data;
+        var item = data.getItem(index);
+        var newItem = {
+            title: item.data.title,
+            text: item.data.text,
+            picture: item.data.picture
+        };
+        data.splice(index, 0, newItem);
+    }
+
+    function deleteElementAt(index) {
+        var data = Sample.ListView.data;
+        console.log("delete " + index);
+        data.splice(index, 1);
+    }
+
     WinJS.Namespace.define("Data", {
         createData: createData,
-        createGroupedData: createGroupedData
+        groupData: groupData,
+        addElement: addElement,
+        deleteElement: deleteElement
     });
 })();

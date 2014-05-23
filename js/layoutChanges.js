@@ -26,21 +26,29 @@
 
     function toggleGroupItems() {
         var listViewControl = document.querySelector(".listView").winControl;
-        var groupItemsCheckbox = document.querySelector(".groupItemsCheckBox");
         var reorderableCheckbox = document.querySelector(".itemsReorderableCheckBox");
        
-        if (groupItemsCheckbox.checked) {
-            listViewControl.groupDataSource = Data.createGroupedData().groups.dataSource;
+        if (this.checked) {
+            var groupedData = Data.groupData(Sample.ListView.data);
+            Sample.StoreData.data = Sample.ListView.data;
+            Sample.ListView.data = groupedData;
+            //var groupedData = Data.groupData(new WinJS.Binding.List(listViewControl.itemDataSource));  //TODO: why can't I do this?
+            listViewControl.itemDataSource = groupedData.dataSource;  //TODO: why is this line necessary if I'm not changing the data?  Does grouping the data change it?
+            listViewControl.groupDataSource = groupedData.groups.dataSource;
             listViewControl.groupHeaderTemplate = Templates.textHeaderTemplate;
             listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["top"];
             reorderableCheckbox.checked = false;
         } else {
+            var data = Sample.ListView.data;
+            Sample.ListView.data = Sample.StoreData.data;
+            Sample.StoreData.data = data;
             listViewControl.groupDataSource = null;
+            listViewControl.itemDataSource = Sample.ListView.data.dataSource;
             listViewControl.layout.groupHeaderPosition = null;
             listViewControl.groupHeaderTemplate = null;
         }
 
-        toggleVisibleOptionsOnGroup(groupItemsCheckbox.checked);
+        toggleVisibleOptionsOnGroup(this.checked);
     }
 
     function toggleVisibleOptionsOnGroup(grouped) {
@@ -48,7 +56,7 @@
         document.querySelector(".itemsReorderable").hidden = grouped;
         document.querySelector(".selectHeaderPosition").hidden = !grouped;
         document.querySelector(".changeHeaderTemplateButton").hidden = !grouped;
-        document.querySelector(".selectHeaderTapBehavior").hidden = !grouped;
+        document.querySelector(".headerTapBehavior").hidden = !grouped;
     }
 
     function selectHeaderPosition() {
@@ -62,6 +70,15 @@
         }
     }
 
+    function toggleRTL() {
+        var baseUrl = location.href.split("?")[0];
+        if (this.checked) {
+            window.location.assign(baseUrl + "?rtl=rtl");
+        } else {
+            window.location.assign(baseUrl);
+        }
+    }
+
     // Public interface.
     WinJS.Namespace.define("Config", {
 
@@ -70,5 +87,6 @@
         toggleGroupItems: toggleGroupItems,
         ungroupItems: ungroupItems,
         selectHeaderPosition: selectHeaderPosition,
+        toggleRTL: toggleRTL
     });
 })();

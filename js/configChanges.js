@@ -2,17 +2,13 @@
     "use strict";
    
    function toggleItemsReorderable() {
-        var listViewControl = document.querySelector(".listView").winControl;
-        var checkbox = document.querySelector(".itemsReorderableCheckBox");
-
-        listViewControl.itemsReorderable = checkbox.checked;
+       var listViewControl = document.querySelector(".listView").winControl;
+       listViewControl.itemsReorderable = this.checked;
    }
 
    function selectTapBehaviour() {
        var listViewControl = document.querySelector(".listView").winControl;
-       var tapBehaviorSelector = document.querySelector(".selectTapBehavior");
-
-       var tapBehavior = tapBehaviorSelector.options[tapBehaviorSelector.selectedIndex].value;
+       var tapBehavior = this.options[this.selectedIndex].value;
        listViewControl.tapBehavior = WinJS.UI.TapBehavior[tapBehavior];
        
    }
@@ -25,21 +21,16 @@
 
    function selectSelectionMode() {
        var listViewControl = document.querySelector(".listView").winControl;
-       var selectionModeSelector = document.querySelector(".selectSelectionMode");
-
-       var selectionMode = selectionModeSelector.options[selectionModeSelector.selectedIndex].value
+       var selectionMode = this.options[this.selectedIndex].value
        listViewControl.selectionMode = WinJS.UI.SelectionMode[selectionMode];
-
    }
 
    function openTemplateOptions() {
-       var templateButton = document.querySelector(".changeTemplateButton");
-       document.querySelector(".templateFlyout").winControl.show(templateButton);
+       document.querySelector(".templateFlyout").winControl.show(this);
    }
 
    function openHeaderTemplateOption() {
-       var headerTemplateButton = document.querySelector(".changeHeaderTemplateButton");
-       document.querySelector(".headerTemplateFlyout").winControl.show(headerTemplateButton);
+       document.querySelector(".headerTemplateFlyout").winControl.show(this);
    }
 
    function changeItemTemplate() {
