@@ -14,7 +14,7 @@
     }
 
     function displaySubOption(menuItem, subItems, prevSelection) {
-        elem.classList.add("selectedOption");
+        menuItem.classList.add("selectedOption");
         subItems.hidden = false;
 
         if (prevSelection) {
@@ -22,7 +22,7 @@
         }
     }
 
-    function undoPreviousSelection() {
+    function undoPreviousSelection(prevSelection) {
         if (prevSelection) {
             prevSelection.classList.remove("selectedOption");
         }
