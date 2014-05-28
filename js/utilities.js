@@ -11,7 +11,6 @@
         }
     }
 
-
     WinJS.Namespace.define("Utility", {
         cancelEvent: cancelEvent
     });

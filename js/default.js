@@ -9,8 +9,6 @@
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 //Initialize application
                 
-                Init.addListeners();
-
                 var data = new WinJS.Binding.List(Data.createData());
                 var groupedData = Data.groupData(data);
                 WinJS.Namespace.define("Sample.ListView", {

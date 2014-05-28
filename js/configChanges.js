@@ -12,10 +12,9 @@
        
    }
 
-   function selectHeaderTapBehavior() {
+   function selectHeaderTapBehavior(behavior) {
        var listViewControl = document.querySelector(".listView").winControl;
-       var tapBehavior = this.options[this.selectedIndex].value;
-       listViewControl.groupHeaderTapBehavior = WinJS.UI.GroupHeaderTapBehavior[tapBehavior];
+       listViewControl.groupHeaderTapBehavior = behavior;
    }
 
    function selectionMode(mode) {
@@ -52,34 +51,23 @@
 
    }
 
-   function changeHeaderTemplate() {
-       var listViewControl = document.querySelector(".listView").winControl;
-       var radioButtons = document.getElementsByClassName("headerTemplateRadioButton");
+   function changeHeaderTemplate(templateType) {
+        var listViewControl = document.querySelector(".listView").winControl;
 
-       for (var i = 0; i < radioButtons.length; i++) {
-           var element = radioButtons.item(i);
-           if (!element.checked) {
-               continue;
-           }
+        switch (templateType) {
+            case "text":
+                listViewControl.groupHeaderTemplate = Templates.textHeaderTemplate;
+                break;
+            case "textWithImage":
+                listViewControl.groupHeaderTemplate = Templates.textWithImageHeaderTemplate;
+                break;
+            case "button":
+                listViewControl.groupHeaderTemplate = Templates.buttonHeaderTemplate;
+                break;
+            case "interactive":
+                listViewControl.groupHeaderTemplate = Templates.interactiveHeaderTemplate;
+        }
 
-           switch (element.value) {
-               case "text":
-                   listViewControl.groupHeaderTemplate = Templates.textHeaderTemplate;
-                   break;
-               case "textWithImage":
-                   listViewControl.groupHeaderTemplate = Templates.textWithImageHeaderTemplate;
-                   break;
-               case "button":
-                   listViewControl.groupHeaderTemplate = Templates.buttonHeaderTemplate;
-                   break;
-               case "interactive":
-                   listViewControl.groupHeaderTemplate = Templates.interactiveHeaderTemplate;
-           }
-
-           var flyout = document.querySelector(".headerTemplateFlyout").winControl;
-           flyout.hide();
-           break;
-       }
    }
 
     // Public interface.

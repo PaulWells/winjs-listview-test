@@ -1,7 +1,7 @@
 ﻿.optionMenu
 {
     float: left;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #3A1847;
 }
 
@@ -12,10 +12,10 @@
 
 .optionTab{
     padding-left: 40px;
-    padding-right: 80px;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     background-color: #3A1847;
+    width: 250px;
 }
 
 .menuSubOptions{
@@ -24,10 +24,13 @@
 
 .optionSubTab{
     font-size: 14px;
-    margin-left: 20px;
     background-color: #E4E2E5;
     color: black;
-    padding: 20px;
+    margin-left: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .optionSubTab:active{

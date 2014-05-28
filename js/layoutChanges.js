@@ -57,17 +57,10 @@
         document.querySelector(".headerTapBehavior").hidden = !grouped;
     }
 
-    function selectHeaderPosition() {
-        var selectHeaderPosition = document.querySelector(".selectHeaderPosition");
+    function selectHeaderPosition(position) {
         var listViewControl = document.querySelector(".listView").winControl;
-
-        if (selectHeaderPosition.options[selectHeaderPosition.selectedIndex].value === "top") {
-            listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["top"];
-        } else {
-            listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["left"];
-        }
+        listViewControl.layout.groupHeaderPosition = position;
     }
-
     // Public interface.
     WinJS.Namespace.define("Config", {
 

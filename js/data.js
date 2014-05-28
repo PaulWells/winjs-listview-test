@@ -44,7 +44,7 @@
                 ]
             },
             {
-                name: "Template", subOptions: [
+                name: "Item Template", subOptions: [
                     { name: "Text With Image", eventMethod: function () { Config.changeItemTemplate("textWithImage") } },
                     { name: "Image", eventMethod: function () { Config.changeItemTemplate("image") } },
                     {name: "Inline", eventMethod: function(){Config.changeItemTemplate("inline")}},
@@ -58,17 +58,11 @@
                 ]
             },
             {
-                name: "Group Items", subOptions: [
-                    { name: "Yes", eventMethod: function () { Config.groupItems(true) } },
-                    { name: "No", eventMethod: function () { Config.groupItems(false) } }
-                ]
-            },
-            {
                 name: "Tap Behavior", subOptions: [
-                    { name: "Direct Select", eventMethod: function(){ Config.tapBehavior(WinJS.UI.TapBehavior.directSelect)} },
+                    { name: "Direct Select", eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.directSelect) } },
                     { name: "Toggle Select", eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.toggleSelect) } },
                     { name: "Invoke Only", eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.invokeOnly) } },
-                    { name: "None",  eventMethod: function(){Config.tapBehavior(WinJS.UI.TapBehavior.none) }}
+                    { name: "None", eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.none) } }
                 ]
             },
             {
@@ -76,6 +70,45 @@
                     { name: "None", eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.none) } },
                     { name: "Single", eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.single) } },
                     { name: "Multi", eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.multi) } }
+                ]
+            },
+            {
+                name: "Group Items", subOptions: [
+                    { name: "Yes", eventMethod: function () { Config.groupItems(true) } },
+                    { name: "No", eventMethod: function () { Config.groupItems(false) } }
+                ]
+            },
+            {
+                name: "Header Template", subOptions: [
+                    { name: "Text", eventMethod: function() { Config.changeHeaderTemplate("text")}},
+                    { name: "Text With Image", eventMethod: function() { Config.changeHeaderTemplate("textWithImage")}},
+                    { name: "Button", eventMethod: function() { Config.changeHeaderTemplate("button")}},
+                    { name: "Interactive", eventMethod: function() { Config.changeHeaderTemplate("interactive")}}
+                ]
+            },
+            {
+                name: "Group Header Position", subOptions:[
+                    {name: "Top", eventMethod: function() { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.top)}},
+                    {name: "Left", eventMethod: function() { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.left)}}
+                ]
+            },
+            {
+                name: "Group Header Tap Behavior", subOptions: [
+                    { name: "Invoke", eventMethod: function() { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.invoke)}},
+                    { name: "None", eventMethod: function () { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.none) } }
+                ]
+            },
+            {
+                name: "Data Changes", subOptions: [
+                    { name: "Add Element", eventMethod: Data.addElement },
+                    { name: "Delete Element", eventMethod: Data.deleteElement },
+                    { name: "Change Element", eventMethod: Data.changeElement }
+                ]
+            },
+            {
+                name: "Scrolling", subOptions: [
+                    { name: "Scroll Position", eventMethod: Methods.scrollPosition },
+                    { name: "Ensure Visible", eventMethod: Methods.ensureVisible }
                 ]
             }
         ]
@@ -149,8 +182,8 @@
     function changeElementAt(index) {
         var data = getListViewData();
         var item = data.getAt(index);
-        item.title = "Updated " + item.title;
-        item.text = "This item was updated!";
+        //reverse string
+        item.title = item.title.split("").reverse().join("");
         data.setAt(index, item);
     }
 

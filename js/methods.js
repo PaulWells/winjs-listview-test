@@ -5,7 +5,7 @@
         listView.ensureVisible(fetchInputNumber());
     }
 
-    function scrollTo() {
+    function scrollPosition() {
         listView = document.querySelector(".listView").winControl;
         listView.scrollPosition = fetchInputNumber();
     }
@@ -16,7 +16,7 @@
 
     WinJS.Namespace.define("Methods", {
         ensureVisible: ensureVisible,
-        scrollTo: scrollTo
+        scrollPosition: scrollPosition
     });
 
 })();

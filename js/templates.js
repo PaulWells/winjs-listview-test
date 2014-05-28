@@ -139,7 +139,7 @@
         section.className = "optionMenuSection";
 
         var body = document.createElement("div");
-        body.className = "optionTab";
+        body.classList.add("optionTab");
         body.innerText = item.name;
         section.appendChild(body);
 
@@ -164,7 +164,6 @@
                 subOptions.hidden = true;
             }
 
-            
         }, false);
         
         return template;
