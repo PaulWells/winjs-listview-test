@@ -1,5 +1,4 @@
-﻿/* Template used for ListView Items*/
-.listIconTextTemplate
+﻿.listIconTextTemplate
 {
     width: 100%;
     height: 70px;
@@ -31,6 +30,9 @@
 .listView
 {
     height: 800px;
+    float: left;
 }
+
+
 
                       

@@ -11,7 +11,9 @@
 
     <!-- ListView-Test references -->
     <link href="/css/default.css" rel="stylesheet" />
+    <link href="/css/menu.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
+    <script src="/js/utilities.js"></script>
     <script src="/js/configChanges.js"></script>
     <script src="/js/data.js"></script>
     <script src="/js/initialize.js"></script>
@@ -84,6 +86,7 @@
         <button class="deleteItemButton">Delete Item</button>
         <button class="changeItemButton">Change Item</button>
     </div>
+
     <!--simple inline template for ListView-->
     <div class="listIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
         <div class="listIconTextItem">
@@ -95,15 +98,17 @@
         </div>
     </div>
 
+    <div class="optionMenu"></div>
+
     <!-- declare ListView -->
     <div class="win-selectionstylefilled listView"
         data-win-control="WinJS.UI.ListView"
         data-win-options="{
-        itemDataSource: Sample.ListView.data.dataSource,
-        selectionMode: WinJS.UI.SelectionMode.none,
-        tapBehavior: WinJS.UI.TapBehavior.directSelect,
-        itemsReorderable: false,
-        layout: {type: WinJS.UI.ListLayout}
+            itemDataSource: Sample.ListView.data.dataSource,
+            selectionMode: WinJS.UI.SelectionMode.none,
+            tapBehavior: WinJS.UI.TapBehavior.directSelect,
+            itemsReorderable: false,
+            layout: {type: WinJS.UI.ListLayout}
     }">
     </div>
 

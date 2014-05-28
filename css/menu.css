@@ -1,0 +1,47 @@
+﻿.optionMenu
+{
+    float: left;
+    font-size: 18px;
+    background-color: #3A1847;
+}
+
+.optionMenu:hover
+{
+    cursor: pointer;
+}
+
+.optionTab{
+    padding-left: 40px;
+    padding-right: 80px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: #3A1847;
+}
+
+.menuSubOptions{
+     background-color: #3A1847;
+}
+
+.optionSubTab{
+    font-size: 14px;
+    margin-left: 20px;
+    background-color: #E4E2E5;
+    color: black;
+    padding: 20px;
+}
+
+.optionSubTab:active{
+    background-color: #EEEEEE;
+}
+
+.selectedOption .optionTab{
+    background-color: #EEEEEE;
+    color: black;
+    margin-left: 20px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.selectedOptionValue{
+    font-weight: bold;
+}

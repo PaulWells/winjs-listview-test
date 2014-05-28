@@ -29,6 +29,60 @@
         return items;
     }
 
+    function createMenuOptionData() {
+        var items = [
+            {
+                name: "Layout", subOptions: [
+                    { name: "Grid", eventMethod: Config.gridLayout },
+                    { name: "List", eventMethod: Config.listLayout },
+                ]
+            },
+            {
+                name: "Orientation", subOptions: [
+                    { name: "Vertical", eventMethod: Config.verticalOrientation},
+                    { name: "Horizontal", eventMethod: Config.horizontalOrientation }
+                ]
+            },
+            {
+                name: "Template", subOptions: [
+                    { name: "Text With Image", eventMethod: function () { Config.changeItemTemplate("textWithImage") } },
+                    { name: "Image", eventMethod: function () { Config.changeItemTemplate("image") } },
+                    {name: "Inline", eventMethod: function(){Config.changeItemTemplate("inline")}},
+                    { name: "Interactive", eventMethod: function () { Config.changeItemTemplate("interactive") }}
+                ]
+            },
+            {
+                name: "Items Reorderable", subOptions: [
+                    { name: "On", eventMethod: function () { Config.itemsReorderable(true) } },
+                    { name: "Off", eventMethod: function () { Config.itemsReorderable(false) } }
+                ]
+            },
+            {
+                name: "Group Items", subOptions: [
+                    { name: "Yes", eventMethod: function () { Config.groupItems(true) } },
+                    { name: "No", eventMethod: function () { Config.groupItems(false) } }
+                ]
+            },
+            {
+                name: "Tap Behavior", subOptions: [
+                    { name: "Direct Select", eventMethod: function(){ Config.tapBehavior(WinJS.UI.TapBehavior.directSelect)} },
+                    { name: "Toggle Select", eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.toggleSelect) } },
+                    { name: "Invoke Only", eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.invokeOnly) } },
+                    { name: "None",  eventMethod: function(){Config.tapBehavior(WinJS.UI.TapBehavior.none) }}
+                ]
+            },
+            {
+                name: "Selection Mode", subOptions: [
+                    { name: "None", eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.none) } },
+                    { name: "Single", eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.single) } },
+                    { name: "Multi", eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.multi) } }
+                ]
+            }
+        ]
+
+        return items;
+    }
+
     function groupData(data) {
         var groupedData = data.createGrouped(function (item) {
             //items will be sorted into groups based on this value
@@ -145,6 +199,7 @@
         groupData: groupData,
         addElement: addElement,
         deleteElement: deleteElement,
-        changeElement: changeElement
+        changeElement: changeElement,
+        createMenuOptionData: createMenuOptionData
     });
 })();

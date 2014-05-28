@@ -1,14 +1,14 @@
 ﻿(function () {
 
     function addListeners() {
-        document.querySelector(".itemsReorderableCheckBox").addEventListener("change", Config.itemsReorderable, false);
-        document.querySelector(".groupItemsCheckBox").addEventListener("change", Config.toggleGroupItems, false);
-        document.querySelector(".selectLayout").addEventListener("change", Config.selectLayout, false);
-        document.querySelector(".toggleOrientation").addEventListener("click", Config.toggleOrientation, false);
+        //document.querySelector(".itemsReorderableCheckBox").addEventListener("change", Config.itemsReorderable, false);
+        //document.querySelector(".groupItemsCheckBox").addEventListener("change", Config.toggleGroupItems, false);
+        //document.querySelector(".selectLayout").addEventListener("change", Config.selectLayout, false);
+        //document.querySelector(".toggleOrientation").addEventListener("click", Config.toggleOrientation, false);
         document.querySelector(".selectHeaderPosition").addEventListener("change", Config.selectHeaderPosition, false);
-        document.querySelector(".selectTapBehavior").addEventListener("change", Config.selectTapBehavior, false);
-        document.querySelector(".selectSelectionMode").addEventListener("change", Config.selectSelectionMode, false);
-        document.querySelector(".changeTemplateButton").addEventListener("click", Config.openTemplateOptions, false);
+        //document.querySelector(".selectTapBehavior").addEventListener("change", Config.selectTapBehavior, false);
+        //document.querySelector(".selectSelectionMode").addEventListener("change", Config.selectSelectionMode, false);
+        //document.querySelector(".changeTemplateButton").addEventListener("click", Config.openTemplateOptions, false);
         document.querySelector(".changeHeaderTemplateButton").addEventListener("click", Config.openHeaderTemplateOptions, false);
         document.querySelector(".selectHeaderTapBehavior").addEventListener("change", Config.selectHeaderTapBehavior, false);
         document.querySelector(".ensureVisibleButton").addEventListener("click", Methods.ensureVisible, false);
@@ -17,13 +17,13 @@
         document.querySelector(".deleteItemButton").addEventListener("click", Data.deleteElement, false);
         document.querySelector(".changeItemButton").addEventListener("click", Data.changeElement, false);
 
-        var radioButtons = document.getElementsByClassName("templateRadioButton");
+        //var radioButtons = document.getElementsByClassName("templateRadioButton");
 
-        for (var i = 0; i < radioButtons.length; i++) {
-            radioButtons.item(i).addEventListener("click", Config.changeItemTemplate, false);
-        }
+        //for (var i = 0; i < radioButtons.length; i++) {
+        //    radioButtons.item(i).addEventListener("click", Config.changeItemTemplate, false);
+        //}
 
-        radioButtons = document.getElementsByClassName("headerTemplateRadioButton");
+       var radioButtons = document.getElementsByClassName("headerTemplateRadioButton");
 
         for (var i = 0; i < radioButtons.length; i++) {
             radioButtons.item(i).addEventListener("click", Config.changeHeaderTemplate, false);
@@ -36,8 +36,20 @@
         listView.addEventListener("groupheaderinvoked", Config.ungroupItems, false);
     }
 
+    function createOptionMenu(){
+        var optionsMenu = document.querySelector(".optionMenu");
+        var data = new WinJS.Binding.List(Data.createMenuOptionData());
+        var contentRepeater = new WinJS.UI.Repeater(optionsMenu, {
+            data: data,
+            template: Templates.createMenuOptionTemplate
+        });
+    }
+
+
+
     WinJS.Namespace.define("Init", {
         addListeners: addListeners,
-        initializeListView: initializeListView
+        initializeListView: initializeListView,
+        createOptionMenu: createOptionMenu
     });
 })();
