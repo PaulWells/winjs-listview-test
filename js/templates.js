@@ -41,6 +41,7 @@
     function buildInteractiveTemplate(item) {
         template = buildTextWithImageTemplate(item);
         var ratingElement = document.createElement("div");
+        template.style.height = "120px";
         template.appendChild(ratingElement);
         new WinJS.UI.Rating(ratingElement, {
             averageRating: 3.4

@@ -23,78 +23,17 @@
 </head>
 <body>
     
-    <button class="changeTemplateButton">Template</button>
-    <div class="templateFlyout" data-win-control="WinJS.UI.Flyout">
-       
-        <input type="radio" class="templateRadioButton" name="template" value="textWithImage" />Text With Image<br />
-        <input type="radio" class="templateRadioButton" name="template" value="image" />Image<br />
-        <input type="radio" class="templateRadioButton" name="template" value="inline" />Inline<br />
-        <input type="radio" class="templateRadioButton" name="template" value="interactive" />Interactive
-    </div>
-
-    <button class ="changeHeaderTemplateButton" hidden="hidden">Header Template</button>
-    <div class="headerTemplateFlyout" data-win-control="WinJS.UI.Flyout">
-        <input type="radio" class="headerTemplateRadioButton" name="headerTemplate" value="text" />Text<br />
-        <input type="radio" class="headerTemplateRadioButton" name="headerTemplate" value="textWithImage" />Text With Image<br />
-        <input type="radio" class="headerTemplateRadioButton" name="headerTemplate" value="button" />Button<br />
-        <input type="radio" class="headerTemplateRadioButton" name="headerTemplate" value="interactive" />Interactive<br />
-    </div>
-    <button class="toggleOrientation">Toggle Orientation</button>
-
-    Layout 
-    <select class="selectLayout">
-        <option value="list">List</option>
-        <option value="grid">Grid</option>
-    </select>
-
-    <span class="itemsReorderable">
-        Items Reorderable <input type="checkbox" class="itemsReorderableCheckBox" />  
-    </span>
-    Group Items<input type="checkbox" class="groupItemsCheckBox" />
-    <select class="selectHeaderPosition" hidden="hidden">
-        <option value="top">Top</option>
-        <option value="left">Left</option>
-    </select>
-
-    Tap Behavior
-    <select class="selectTapBehavior">
-        <option value="directSelect">Direct</option>
-        <option value="toggleSelect">Toggle</option>
-        <option value="invokeOnly">Invoke Only</option>
-        <option value="none">None</option>
-    </select>
-
-    <span class="headerTapBehavior" hidden="hidden">
-        Header Tap Behaviour
-        <select class="selectHeaderTapBehavior">
-            <option value="invoke">Invoke</option>
-            <option value="none">None</option>
-        </select>
-    </span>
-    Selection Mode 
-    <select class="selectSelectionMode">
-        <option value="none">None</option>
-        <option value="single">Single</option>
-        <option value="multi">Multi</option>
-    </select>
 
     <div>
         <input type="number" class="textInput" />
-        <button class="ensureVisibleButton">Ensure Visible</button>
-        <button class="scrollToButton">Scroll To</button>
-        <button class="addItemButton">Add Item</button>
-        <button class="deleteItemButton">Delete Item</button>
-        <button class="changeItemButton">Change Item</button>
     </div>
 
     <!--simple inline template for ListView-->
     <div class="listIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
-        <div class="listIconTextItem">
-            <img src="#" class="listIconTextItem-Image" data-win-bind="src: picture" />
-            <div class="listIconTextItem-Detail">
-                <h4 data-win-bind="textContent: title"></h4>
-                <h6 data-win-bind="textContent: text"></h6>
-            </div>
+        <img src="#" class="listIconTextItem-Image" data-win-bind="src: picture" />
+        <div class="listIconTextItem-Detail">
+            <h4 data-win-bind="textContent: title"></h4>
+            <h6 data-win-bind="textContent: text"></h6>
         </div>
     </div>
 

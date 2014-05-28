@@ -9,18 +9,11 @@
 .listIconTextTemplate .listIconTextItem-Image
 {
     width: 60px;
-    height: 60px;
     margin: 5px;                  
     float: left;                  
     margin-right:20px;            
                                   
 }
-
-.listIconTextItem .listIconTextItem-Detail
-{
-    margin: 5px;
-    float: left;
-}     
 
 .listLayoutHeaderTemplate, .listLayoutHeaderTemplate {
     font-size: larger;

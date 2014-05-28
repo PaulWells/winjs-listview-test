@@ -1,35 +1,14 @@
 ﻿(function () {
     "use strict";
 
-    function verticalOrientation() {
-        toggleOrientation(WinJS.UI.Orientation.vertical);
-    }
-
-    function horizontalOrientation() {
-        toggleOrientation(WinJS.UI.Orientation.horizontal);
-    }
-
-    function toggleOrientation(orientation) {
+    function setOrientation(orientation) {
         var listViewControl = document.querySelector(".listView").winControl;
         listViewControl.layout.orientation = orientation;
     }
 
-    function gridLayout() {
-        selectLayout("grid");
-    }
-
-    function listLayout() {
-        selectLayout("list");
-    }
-
-    function selectLayout(option) {
+    function setLayout(layout) {
         var listViewControl = document.querySelector(".listView").winControl;
-
-        if (option === "grid") {
-            listViewControl.layout = new WinJS.UI.GridLayout;
-        } else {
-            listViewControl.layout = new WinJS.UI.ListLayout;
-        }
+        listViewControl.layout = layout;
     }
 
     function groupItems(groupItems) {
@@ -49,14 +28,6 @@
 
     }
 
-    function toggleVisibleOptionsOnGroup(grouped) {
-
-        document.querySelector(".itemsReorderable").hidden = grouped;
-        document.querySelector(".selectHeaderPosition").hidden = !grouped;
-        document.querySelector(".changeHeaderTemplateButton").hidden = !grouped;
-        document.querySelector(".headerTapBehavior").hidden = !grouped;
-    }
-
     function selectHeaderPosition(position) {
         var listViewControl = document.querySelector(".listView").winControl;
         listViewControl.layout.groupHeaderPosition = position;
@@ -64,11 +35,9 @@
     // Public interface.
     WinJS.Namespace.define("Config", {
 
-        verticalOrientation: verticalOrientation,
-        horizontalOrientation: horizontalOrientation,
+        setOrientation: setOrientation,
         groupItems: groupItems,
-        gridLayout: gridLayout,
-        listLayout: listLayout,
+        setLayout: setLayout,
         selectHeaderPosition: selectHeaderPosition
     });
 })();

@@ -22,14 +22,6 @@
        listViewControl.selectionMode = mode;
    }
 
-   function openTemplateOptions() {
-       document.querySelector(".templateFlyout").winControl.show(this);
-   }
-
-   function openHeaderTemplateOption() {
-       document.querySelector(".headerTemplateFlyout").winControl.show(this);
-   }
-
    function changeItemTemplate(templateName) {
        
        var listViewControl = document.querySelector(".listView").winControl;
@@ -76,8 +68,6 @@
         itemsReorderable: itemsReorderable,
         tapBehavior: tapBehavior,
         selectionMode: selectionMode,
-        openTemplateOptions: openTemplateOptions,
-        openHeaderTemplateOptions: openHeaderTemplateOption,
         changeItemTemplate: changeItemTemplate,
         changeHeaderTemplate: changeHeaderTemplate,
         selectHeaderTapBehavior: selectHeaderTapBehavior

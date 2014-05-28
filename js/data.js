@@ -33,14 +33,14 @@
         var items = [
             {
                 name: "Layout", subOptions: [
-                    { name: "Grid", eventMethod: Config.gridLayout },
-                    { name: "List", eventMethod: Config.listLayout },
+                    { name: "Grid", eventMethod: function () { Config.setLayout(WinJS.UI.GridLayout) }},
+                    { name: "List", eventMethod: function () { Config.setLayout(WinJS.UI.ListLayout) }},
                 ]
             },
             {
                 name: "Orientation", subOptions: [
-                    { name: "Vertical", eventMethod: Config.verticalOrientation},
-                    { name: "Horizontal", eventMethod: Config.horizontalOrientation }
+                    { name: "Vertical", eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.vertical) }},
+                    { name: "Horizontal", eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.horizontal) } }
                 ]
             },
             {
