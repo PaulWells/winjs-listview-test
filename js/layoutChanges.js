@@ -18,11 +18,9 @@
             listViewControl.itemDataSource = Sample.ListView.groupedData.dataSource;
             listViewControl.groupDataSource = Sample.ListView.groupedData.groups.dataSource;
             listViewControl.groupHeaderTemplate = Templates.textHeaderTemplate;
-            listViewControl.layout.groupHeaderPosition = WinJS.UI.HeaderPosition["top"];
         } else {
             listViewControl.groupDataSource = null;
             listViewControl.itemDataSource = Sample.ListView.data.dataSource;
-            listViewControl.layout.groupHeaderPosition = null;
             listViewControl.groupHeaderTemplate = null;
         }
 

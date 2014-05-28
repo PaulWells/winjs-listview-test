@@ -176,10 +176,13 @@
         var template = document.createElement("div");
         template.className = "optionSubTab";
         template.innerText = item.name;
+        template.classList.add(item.className);
 
         template.addEventListener("click", function (event) {
             item.eventMethod();
-            var prevSelected = document.querySelector(".selectedOptionValue");
+
+            //TODO: remove dependancy on html structure
+            var prevSelected = this.parentElement.querySelector(".selectedOptionValue");
             if (prevSelected) {
                 prevSelected.classList.remove("selectedOptionValue");
             }
