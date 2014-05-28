@@ -135,79 +135,7 @@
         });
     }
 
-    function createMenuOptionTemplate(item) {
-        var section = document.createElement("div");
-        section.className = "optionMenuSection";
-
-        var body = document.createElement("div");
-        body.classList.add("optionTab");
-        body.innerText = item.name;
-        section.appendChild(body);
-
-        template = addSubOptions(section, item.subOptions);
-        template.addEventListener("click", function () {
-            var subOptions = this.querySelector(".menuSubOptions");
-            var prevSelection = document.querySelector(".selectedOption");
-
-
-            if (prevSelection) {
-                prevSelection.classList.remove("selectedOption");
-            }
-
-            if (subOptions.hidden) {
-                this.classList.add("selectedOption");
-                subOptions.hidden = false;
-
-                if(prevSelection){
-                    prevSelection.querySelector(".menuSubOptions").hidden = true;
-                }
-            } else {
-                subOptions.hidden = true;
-            }
-
-        }, false);
-        
-        return template;
-        
-    }
-
-    function createSubOptionTemplate(item){
-
-        var template = document.createElement("div");
-        template.className = "optionSubTab";
-        template.innerText = item.name;
-        template.classList.add(item.className);
-
-        template.addEventListener("click", function (event) {
-            item.eventMethod();
-
-            //TODO: remove dependancy on html structure
-            var prevSelected = this.parentElement.querySelector(".selectedOptionValue");
-            if (prevSelected) {
-                prevSelected.classList.remove("selectedOptionValue");
-            }
-            
-            this.classList.add("selectedOptionValue");
-            Utility.cancelEvent(event);
-        }, false);
-
-        return template;
-    }
-
-    function addSubOptions(section, subOptions) {
-
-        var elem = document.createElement("div");
-        elem.className = "menuSubOptions";
-        elem.hidden = true;
-        var data = new WinJS.Binding.List(subOptions);
-        //use another repeater for the subelements inside each option section
-        var subOptionRepeater = new WinJS.UI.Repeater(elem, {
-            data: data,
-            template: createSubOptionTemplate
-        });
-        section.appendChild(elem);
-        return section;
-    }
+    
 
     WinJS.Namespace.define("Templates", {
         textWithImageTemplate: textWithImageTemplate,
@@ -217,7 +145,6 @@
         textWithImageHeaderTemplate: textWithImageHeaderTemplate,
         buttonHeaderTemplate: buttonHeaderTemplate,
         interactiveHeaderTemplate: interactiveHeaderTemplate,
-        createMenuOptionTemplate: createMenuOptionTemplate
     });
 
 

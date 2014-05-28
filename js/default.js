@@ -19,7 +19,7 @@
                 // Restore application state
             }
             args.setPromise(WinJS.UI.processAll().then(function () {
-                Init.createOptionMenu();
+                Menu.createOptionMenu();
                 Init.initializeListView();
             }));
         }
