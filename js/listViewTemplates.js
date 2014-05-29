@@ -1,4 +1,5 @@
 ﻿(function () {
+    "use strict";
 
     function buildImageTemplate(item){
         //create base template object
@@ -17,7 +18,7 @@
 
     function buildTextWithImageTemplate(item) {
        
-        template = buildImageTemplate(item);
+        var template = buildImageTemplate(item);
 
         //add text body
         var body = document.createElement("div");
@@ -39,7 +40,7 @@
     }
 
     function buildInteractiveTemplate(item) {
-        template = buildTextWithImageTemplate(item);
+        var template = buildTextWithImageTemplate(item);
         var ratingElement = document.createElement("div");
         template.style.height = "120px";
         template.appendChild(ratingElement);
@@ -50,11 +51,12 @@
     }
 
     function buildTextHeaderTemplate(item) {
-        template = document.createElement("div");
+        var template = document.createElement("div");
         template.className = "listLayoutHeaderTemplate";
         template.style.overflow = "hidden";
 
         var title = document.createElement("div");
+        title.className = "titleDiv"
         title.innerHTML = item.data.title;
         template.appendChild(title);
         return template;
@@ -69,14 +71,20 @@
     }
 
     function buildButtonHeaderTemplate(item) {
-        var template = document.createElement("button");
-        template.innerText = "Group " + item.data.title;
+
+        var template = buildTextHeaderTemplate(item);
+
+        var button = document.createElement("button");
+        button.innerText = "Group " + item.data.title;
+
+        template.appendChild(button);
+
         return template;
     }
 
     function buildInteractiveHeaderTemplate(item) {
 
-        var template = document.createElement("div");
+        var template = buildTextHeaderTemplate(item);
 
         var button = document.createElement("button");
         button.innerText = "Group " + item.data.title;

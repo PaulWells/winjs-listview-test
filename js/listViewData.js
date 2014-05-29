@@ -1,7 +1,8 @@
 ﻿(function () {
+    "use strict";
 
     function generateItemList() {
-        return items = [
+        var items = [
             { title: "Marvelous Mint", text: "Gelato", picture: "/images/fruits/60Mint.png" },
             { title: "Succulent Strawberry", text: "Sorbet", picture: "/images/fruits/60Strawberry.png" },
             { title: "Banana Blast", text: "Low-fat frozen yogurt", picture: "/images/fruits/60Banana.png" },
@@ -10,6 +11,7 @@
             { title: "Very Vanilla", text: "Ice Cream", picture: "/images/fruits/60Vanilla.png" },
             { title: "Lavish Lemon Ice", text: "Sorbet", picture: "/images/fruits/60Lemon.png" }
         ];
+        return items;
     }
 
     function generateItem(itemOptions) {
@@ -21,7 +23,7 @@
     function createData() {
 
         var items = [];
-        itemList = generateItemList();
+        var itemList = generateItemList();
         //Generate 100 items
         for (var i = 0; i < 100 ; i++) {
             items.push(generateItem(itemList));
@@ -31,8 +33,8 @@
 
    
 
-    function groupData(data) {
-        var groupedData = data.createGrouped(function (item) {
+    function groupData(bindingList) {
+        var groupedData = bindingList.createGrouped(function (item) {
             //items will be sorted into groups based on this value
             return item.title.toUpperCase().charAt(0);
         }, function (item) {
@@ -42,7 +44,7 @@
                 picture: item.picture
             };
         }, function (left, right) {
-            //sort items in each group with this comparison
+            //sort groups with this comparison
             return left.charCodeAt(0) - right.charCodeAt(0);
         });
 
@@ -133,8 +135,25 @@
         }
     }
 
+    function invokeItemHandler(eventInfo){
+        var index = eventInfo.detail.itemIndex;
+        var data = getListViewData();
+        var item = data.getAt(index);
+        item.title = "Invoked!";
+        data.setAt(index, item);
+    }
+
+    function invokeGroupHeaderHandler(eventInfo) {
+        var index = eventInfo.detail.groupHeaderIndex;
+        var data = getListViewData().groups;
+        var item = data.getItem(index);
+        item.title = "Invoked!";
+        //TODO: set Item in GroupListProjection
+        //data.setAt(index, item);
+    }
+
     function getListViewData() {
-        listView = document.querySelector(".listView").winControl;
+        var listView = document.querySelector(".listView").winControl;
         if (listView.groupDataSource) {
             return Sample.ListView.groupedData;
         } else {
@@ -148,5 +167,7 @@
         addElement: addElement,
         deleteElement: deleteElement,
         changeElement: changeElement,
+        invokeItemHandler: invokeItemHandler,
+        invokeGroupHeaderHandler: invokeGroupHeaderHandler
     });
 })();

@@ -1,0 +1,34 @@
+﻿.listIconTextTemplate
+{
+    width: 100%;
+    height: 70px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.listIconTextTemplate .listIconTextItem-Image
+{
+    width: 60px;
+    margin: 5px;                  
+    float: left;                  
+    margin-right:20px;            
+                                  
+}
+
+.listLayoutHeaderTemplate, .listLayoutHeaderTemplate {
+    font-size: larger;
+    margin-left: 16px;
+}          
+
+.listView
+{
+    height: 1200px;
+    float: left;
+    width: 1200px;
+    background-color: black;
+    
+}
+
+
+
+                      

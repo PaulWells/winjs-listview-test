@@ -1,4 +1,5 @@
 ﻿(function () {
+    "use strict";
 
     function menuItemClickEvent() {
         var subOptions = this.querySelector(".menuSubOptions");
@@ -43,8 +44,8 @@
         var items = [
             {
                 name: "Layout", subOptions: [
-                    { name: "Grid", className: "layoutGrid", eventMethod: function () { Config.setLayout(WinJS.UI.GridLayout) } },
-                    { name: "List", className: "layoutList", eventMethod: function () { Config.setLayout(WinJS.UI.ListLayout) } },
+                    { name: "Grid", className: "layoutGrid", eventMethod: function () { Config.setLayout(new WinJS.UI.GridLayout) } },
+                    { name: "List", className: "layoutList", eventMethod: function () { Config.setLayout(new WinJS.UI.ListLayout) } },
                 ]
             },
             {
@@ -140,6 +141,8 @@
         menu.querySelector(".itemsReorderableOff").classList.add("selectedOptionValue");
         menu.querySelector(".groupHeaderPositionTop").classList.add("selectedOptionValue");
         menu.querySelector(".groupHeaderTapBehaviorInvoke").classList.add("selectedOptionValue");
+        menu.querySelector(".dataChangesAddElement").classList.add("selectedOptionValue");
+        menu.querySelector(".scrollingScrollPosition").classList.add("selectedOptionValue");
 
     }
 
@@ -152,7 +155,7 @@
         body.innerText = item.name;
         section.appendChild(body);
 
-        template = addSubOptions(section, item.subOptions);
+        var template = addSubOptions(section, item.subOptions);
         template.addEventListener("click", menuItemClickEvent, false);
 
         return template;

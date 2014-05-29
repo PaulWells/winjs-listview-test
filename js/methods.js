@@ -1,4 +1,5 @@
 ﻿(function () {
+    "use strict";
 
     function ensureVisible() {
         listView = document.querySelector(".listView").winControl;

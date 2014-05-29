@@ -1,5 +1,5 @@
 ﻿(function () {
-
+    "use strict";
 
     function cancelEvent(event) {
         if (event.preventDefault) {

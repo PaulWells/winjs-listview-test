@@ -11,6 +11,7 @@
 
     <!-- ListView-Test references -->
     <link href="/css/default.css" rel="stylesheet" />
+    <link href="/css/listView.css" rel="stylesheet" />
     <link href="/css/menu.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
     <script src="/js/utilities.js"></script>
@@ -24,10 +25,11 @@
 </head>
 <body>
     
-
-    <div>
-        <input type="number" class="textInput" />
+    <div class="header">
+        <img class="winjsLogo" src="/images/winjs-logo.png" />
     </div>
+
+    
 
     <!--simple inline template for ListView-->
     <div class="listIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
@@ -40,13 +42,36 @@
 
     <div class="optionMenu"></div>
 
-    <!-- declare ListView -->
-    <div class="win-selectionstylefilled listView"
-        data-win-control="WinJS.UI.ListView"
-        data-win-options="{
-            itemDataSource: Sample.ListView.data.dataSource,
-            layout: {type: WinJS.UI.ListLayout}
-    }">
+    <div class="interactiveSection">
+
+        <div class="interactiveInfoSection">
+
+            <p class="selectionDescription">
+                Here is a sample description about the selected option.  Its very samply and informative.  Just the right length to use as a good normal for forthcoming text
+            </p>
+
+            <p class="selectionSampleCode">
+                listView.layout.orientation = WinJS.UI.Orientation.horizontal;
+            </p>
+
+            <p class="selectionDocumentation">
+                http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx
+            </p>
+
+            <div>
+                <input type="number" class="textInput" hidden="hidden" />
+            </div>
+        </div>
+
+        <!-- declare ListView -->
+        <div class="win-selectionstylefilled listView"
+            data-win-control="WinJS.UI.ListView"
+            data-win-options="{
+                itemDataSource: Sample.ListView.data.dataSource,
+                layout: {type: WinJS.UI.ListLayout}
+            }">
+        </div>
+
     </div>
 
 </body>

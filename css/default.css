@@ -1,31 +1,31 @@
-﻿.listIconTextTemplate
-{
-    width: 100%;
+﻿body {
+    background-color: #EEEEEE;
+}
+
+.header{
+    background-color: #442257;
     height: 70px;
-    padding: 5px;
-    overflow: hidden;
 }
 
-.listIconTextTemplate .listIconTextItem-Image
-{
-    width: 60px;
-    margin: 5px;                  
-    float: left;                  
-    margin-right:20px;            
-                                  
+.winjsLogo{
+    margin-top: 10px;
+    margin-left: 50px;
 }
 
-.listLayoutHeaderTemplate, .listLayoutHeaderTemplate {
-    font-size: larger;
-    margin-left: 16px;
-}          
-
-.listView
-{
-    height: 800px;
-    float: left;
+.interactiveInfoSection{
+    background-color: #442257;
+    height: 200px;
+    width: 1180px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px;
+   
 }
 
+.interactiveSection{
+     float: left;
+}
 
-
-                      
+.interactiveInfoSection p{
+    padding: 10px;
+}
