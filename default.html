@@ -5,9 +5,9 @@
     <title>ListView Test</title>
 
     <!-- WinJS references -->
-    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
-    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
-    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+    <link href="/css/ui-dark.css" rel="stylesheet" />
+    <script src="/js/base.js"></script>
+    <script src="js/ui.js"></script>
 
     <!-- ListView-Test references -->
     <link href="/css/default.css" rel="stylesheet" />
@@ -22,6 +22,8 @@
     <script src="/js/layoutChanges.js"></script>
     <script src="/js/methods.js"></script>
     <script src="/js/menu.js"></script>
+    <script src="/js/notifications.js"></script>
+    <script src="/js/documentation.js"></script>
 </head>
 <body>
     
@@ -62,16 +64,17 @@
                 <input type="number" class="textInput" hidden="hidden" />
             </div>
         </div>
-
         <!-- declare ListView -->
         <div class="win-selectionstylefilled listView"
-            data-win-control="WinJS.UI.ListView"
-            data-win-options="{
-                itemDataSource: Sample.ListView.data.dataSource,
-                layout: {type: WinJS.UI.ListLayout}
-            }">
+                data-win-control="WinJS.UI.ListView"
+                data-win-options="{
+                    itemDataSource: Sample.ListView.data.dataSource,
+                    layout: {type: WinJS.UI.ListLayout}
+                }">
         </div>
 
+        <div class="notificationBanner" hidden="hidden">
+        </div>
     </div>
 
 </body>

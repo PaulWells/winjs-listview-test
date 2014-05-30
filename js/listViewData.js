@@ -135,24 +135,7 @@
         }
     }
 
-    function invokeItemHandler(eventInfo){
-        var index = eventInfo.detail.itemIndex;
-        var data = getListViewData();
-        var item = data.getAt(index);
-        item.title = "Invoked!";
-        data.setAt(index, item);
-    }
-
-    function invokeGroupHeaderHandler(eventInfo) {
-        var index = eventInfo.detail.groupHeaderIndex;
-        var data = getListViewData().groups;
-        var item = data.getItem(index);
-        item.title = "Invoked!";
-        //TODO: set Item in GroupListProjection
-        //data.setAt(index, item);
-    }
-
-    function getListViewData() {
+   function getListViewData() {
         var listView = document.querySelector(".listView").winControl;
         if (listView.groupDataSource) {
             return Sample.ListView.groupedData;
@@ -167,7 +150,5 @@
         addElement: addElement,
         deleteElement: deleteElement,
         changeElement: changeElement,
-        invokeItemHandler: invokeItemHandler,
-        invokeGroupHeaderHandler: invokeGroupHeaderHandler
     });
 })();

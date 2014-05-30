@@ -4,9 +4,8 @@
     function initializeListView() {
         var listView = document.querySelector(".listView").winControl;
         listView.itemTemplate = Templates.textWithImageTemplate;
-        //TODO: change invoke method
-        listView.addEventListener("groupheaderinvoked", Data.invokeGroupHeaderHandler, false);
-        listView.addEventListener("iteminvoked", Data.invokeItemHandler, false);
+        listView.addEventListener("iteminvoked", Notifications.itemInvoked, false);
+        listView.addEventListener("groupheaderinvoked", Notifications.groupHeaderInvoked, false);
     }
 
     WinJS.Namespace.define("Init", {

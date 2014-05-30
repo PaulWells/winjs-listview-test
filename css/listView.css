@@ -22,11 +22,10 @@
 
 .listView
 {
-    height: 1200px;
     float: left;
     width: 1200px;
     background-color: black;
-    
+    height: 700px;
 }
 
 

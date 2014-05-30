@@ -44,82 +44,370 @@
         var items = [
             {
                 name: "Layout", subOptions: [
-                    { name: "Grid", className: "layoutGrid", eventMethod: function () { Config.setLayout(new WinJS.UI.GridLayout) } },
-                    { name: "List", className: "layoutList", eventMethod: function () { Config.setLayout(new WinJS.UI.ListLayout) } },
+                    {
+                        name: "Grid",
+                        className: "layoutGrid",
+                        eventMethod: function () { Config.setLayout(new WinJS.UI.GridLayout, this.info) },
+                        info: {
+                            description: "Sets the layout of the ListView to a GridLayout in which items are arranged in a horizontal grid.",
+                            code: "listView.layout = new WinJS.UI.GridLayout",
+                            link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211751.aspx"
+                        }
+                    },
+                    {
+                        name: "List",
+                        className: "layoutList",
+                        eventMethod: function () { Config.setLayout(new WinJS.UI.ListLayout, this.info) },
+                        info: {
+                            description: "Sets the layout of the ListView to a ListLayout in which items are arranged in a vertical list.",
+                            code: "listView.layout = new WinJS.UI.ListLayout",
+                            link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211792.aspx"
+                        }
+                    },
                 ]
             },
             {
                 name: "Orientation", subOptions: [
-                    { name: "Vertical", className: "orientationVertical", eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.vertical) } },
-                    { name: "Horizontal", className: "orientationHorizontal", eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.horizontal) } }
+                    {
+                        name: "Vertical",
+                        className: "orientationVertical",
+                        eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.vertical, this.info) },
+                        info: {
+                            description: "Sets the orientation of the ListView to vertical.  This property applies to many WinJS controls.",
+                            code: "listViewControl.layout.orientation = WinJS.UI.Orientation.vertical",
+                            link: "http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx"
+                        }
+                    },
+                    {
+                        name: "Horizontal",
+                        className: "orientationHorizontal",
+                        eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.horizontal, this.info) },
+                        info: {
+                            description: "Sets the orientation of the ListView to horizontal.  This property applies to many WinJS controls.",
+                            code: "listViewControl.layout.orientation = WinJS.UI.Orientation.horizontal",
+                            link: "http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx"
+                        }
+                    }
                 ]
             },
             {
                 name: "Item Template", subOptions: [
-                    { name: "Text With Image", className: "itemTemplateTextWithImage", eventMethod: function () { Config.changeItemTemplate("textWithImage") } },
-                    { name: "Image", className: "itemTemplateImage", eventMethod: function () { Config.changeItemTemplate("image") } },
-                    { name: "Inline", className: "itemTemplateInline", eventMethod: function () { Config.changeItemTemplate("inline") } },
-                    { name: "Interactive", className: "itemTemplateInteractive", eventMethod: function () { Config.changeItemTemplate("interactive") } }
+                    {
+                        name: "Text With Image",
+                        className: "itemTemplateTextWithImage",
+                        eventMethod: function () { Config.changeItemTemplate("textWithImage", this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Image",
+                        className: "itemTemplateImage",
+                        eventMethod: function () { Config.changeItemTemplate("image", this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Inline",
+                        className: "itemTemplateInline",
+                        eventMethod: function () { Config.changeItemTemplate("inline", this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Interactive",
+                        className: "itemTemplateInteractive",
+                        eventMethod: function () { Config.changeItemTemplate("interactive", this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    }
                 ]
             },
             {
                 name: "Items Reorderable", subOptions: [
-                    { name: "On", className: "itemsReorderableOn", eventMethod: function () { Config.itemsReorderable(true) } },
-                    { name: "Off", className: "itemsReorderableOff", eventMethod: function () { Config.itemsReorderable(false) } }
+                    {
+                        name: "On",
+                        className: "itemsReorderableOn",
+                        eventMethod: function () { Config.itemsReorderable(true, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Off",
+                        className: "itemsReorderableOff",
+                        eventMethod: function () { Config.itemsReorderable(false, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    }
                 ]
             },
             {
                 name: "Tap Behavior", subOptions: [
-                    { name: "Direct Select", className: "tapBehaviorDirectSelect", eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.directSelect) } },
-                    { name: "Toggle Select", className: "tapBehaviorToggleSelect", eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.toggleSelect) } },
-                    { name: "Invoke Only", className: "tapBehaviorInvokeOnly", eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.invokeOnly) } },
-                    { name: "None", className: "tapBehaviorNone", eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.none) } }
+                    {
+                        name: "Direct Select",
+                        className: "tapBehaviorDirectSelect",
+                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.directSelect, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Toggle Select",
+                        className: "tapBehaviorToggleSelect",
+                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.toggleSelect, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Invoke Only",
+                        className: "tapBehaviorInvokeOnly",
+                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.invokeOnly, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "None",
+                        className: "tapBehaviorNone",
+                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.none, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    }
                 ]
             },
             {
                 name: "Selection Mode", subOptions: [
-                    { name: "None", className: "selectionModeNone", eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.none) } },
-                    { name: "Single", className: "selectionModeSingle", eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.single) } },
-                    { name: "Multi", className: "selectionModeMulti", eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.multi) } }
+                    {
+                        name: "None",
+                        className: "selectionModeNone",
+                        eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.none, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Single",
+                        className: "selectionModeSingle",
+                        eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.single, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Multi",
+                        className: "selectionModeMulti",
+                        eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.multi, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    }
                 ]
             },
             {
                 name: "Group Items", subOptions: [
-                    { name: "Yes", className: "groupItemsYes", eventMethod: function () { Config.groupItems(true) } },
-                    { name: "No", className: "groupItemsNo", eventMethod: function () { Config.groupItems(false) } }
+                    {
+                        name: "Yes",
+                        className: "groupItemsYes",
+                        eventMethod: function () { Config.groupItems(true, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "No",
+                        className: "groupItemsNo",
+                        eventMethod: function () { Config.groupItems(false, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    }
                 ]
             },
             {
                 name: "Group Header Template", subOptions: [
-                    { name: "Text", className: "groupHeaderTemplateText", eventMethod: function () { Config.changeHeaderTemplate("text") } },
-                    { name: "Text With Image", className: "groupHeaderTemplateTextWithImage", eventMethod: function () { Config.changeHeaderTemplate("textWithImage") } },
-                    { name: "Button", className: "groupHeaderTemplateButton", eventMethod: function () { Config.changeHeaderTemplate("button") } },
-                    { name: "Interactive", className: "groupHeaderTemplateInteractive", eventMethod: function () { Config.changeHeaderTemplate("interactive") } }
+                    {
+                        name: "Text",
+                        className: "groupHeaderTemplateText",
+                        eventMethod: function () { Config.changeHeaderTemplate("text", this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Text With Image",
+                        className: "groupHeaderTemplateTextWithImage",
+                        eventMethod: function () { Config.changeHeaderTemplate("textWithImage", this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Button",
+                        className: "groupHeaderTemplateButton",
+                        eventMethod: function () { Config.changeHeaderTemplate("button", this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Interactive",
+                        className: "groupHeaderTemplateInteractive",
+                        eventMethod: function () { Config.changeHeaderTemplate("interactive", this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    }
                 ]
             },
             {
                 name: "Group Header Position", subOptions: [
-                    { name: "Top", className: "groupHeaderPositionTop", eventMethod: function () { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.top) } },
-                    { name: "Left", className: "groupHeaderPositionLeft", eventMethod: function () { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.left) } }
+                    {
+                        name: "Top",
+                        className: "groupHeaderPositionTop",
+                        eventMethod: function () { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.top, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Left",
+                        className: "groupHeaderPositionLeft",
+                        eventMethod: function () { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.left, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    }
                 ]
             },
             {
                 name: "Group Header Tap Behavior", subOptions: [
-                    { name: "Invoke", className: "groupHeaderTapBehaviorInvoke", eventMethod: function () { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.invoke) } },
-                    { name: "None", className: "groupHeaderTapBehaviorNone", eventMethod: function () { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.none) } }
+                    {
+                        name: "Invoke",
+                        className: "groupHeaderTapBehaviorInvoke",
+                        eventMethod: function () { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.invoke, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "None",
+                        className: "groupHeaderTapBehaviorNone",
+                        eventMethod: function () { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.none, this.info) },
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    }
                 ]
             },
             {
                 name: "Data Changes", subOptions: [
-                    { name: "Add Element", className: "dataChangesAddElement", eventMethod: Data.addElement },
-                    { name: "Delete Element", className: "dataChangesDeleteElement", eventMethod: Data.deleteElement },
-                    { name: "Change Element", className: "dataChangesChangeElement", eventMethod: Data.changeElement }
+                    {
+                        name: "Add Element",
+                        className: "dataChangesAddElement",
+                        eventMethod: function(){Data.addElement(this.info)},
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Delete Element",
+                        className: "dataChangesDeleteElement",
+                        eventMethod: function () { Data.deleteElement(this.info)},
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Change Element",
+                        className: "dataChangesChangeElement",
+                        eventMethod: function(){Data.changeElement(this.info)},
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    }
                 ]
             },
             {
                 name: "Scrolling", subOptions: [
-                    { name: "Scroll Position", className: "scrollingScrollPosition", eventMethod: Methods.scrollPosition },
-                    { name: "Ensure Visible", className: "scrollingEnsureVisible", eventMethod: Methods.ensureVisible }
+                    {
+                        name: "Scroll Position",
+                        className: "scrollingScrollPosition",
+                        eventMethod: Methods.scrollPosition,
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    },
+                    {
+                        name: "Ensure Visible",
+                        className: "scrollingEnsureVisible",
+                        eventMethod: Methods.ensureVisible,
+                        info: {
+                            description: "",
+                            code: "",
+                            link: ""
+                        }
+                    }
                 ]
             }
         ]
