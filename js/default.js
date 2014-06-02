@@ -7,7 +7,7 @@
     app.onactivated = function (args) {
         if (args.detail.kind === activation.ActivationKind.launch) {
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
-                //Initialize application
+                ////Initialize application
                 
                 var data = new WinJS.Binding.List(Data.createData());
                 var groupedData = Data.groupData(data);
@@ -15,6 +15,7 @@
                     data: data,
                     groupedData: groupedData
                 });
+
             } else {
                 // Restore application state
             }

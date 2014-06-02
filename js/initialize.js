@@ -8,6 +8,8 @@
         listView.addEventListener("groupheaderinvoked", Notifications.groupHeaderInvoked, false);
     }
 
+
+
     WinJS.Namespace.define("Init", {
         initializeListView: initializeListView,
     });

@@ -38,6 +38,16 @@
         });
 
         boldDefaultOptions(optionsMenu);
+        displayFirstMenuItem(optionsMenu);
+        
+    }
+
+
+    function displayFirstMenuItem(menu) {
+        var firstTab = menu.querySelector(".optionTab");
+        menu.querySelector(".optionMenuSection").classList.add("selectedOption");
+        var subOptions = menu.querySelector(".menuSubOptions");
+        subOptions.hidden = false;
     }
 
     function createMenuOptionData() {
@@ -47,22 +57,12 @@
                     {
                         name: "Grid",
                         className: "layoutGrid",
-                        eventMethod: function () { Config.setLayout(new WinJS.UI.GridLayout, this.info) },
-                        info: {
-                            description: "Sets the layout of the ListView to a GridLayout in which items are arranged in a horizontal grid.",
-                            code: "listView.layout = new WinJS.UI.GridLayout",
-                            link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211751.aspx"
-                        }
+                        eventMethod: function () { Config.setLayout(new WinJS.UI.GridLayout) },
                     },
                     {
                         name: "List",
                         className: "layoutList",
-                        eventMethod: function () { Config.setLayout(new WinJS.UI.ListLayout, this.info) },
-                        info: {
-                            description: "Sets the layout of the ListView to a ListLayout in which items are arranged in a vertical list.",
-                            code: "listView.layout = new WinJS.UI.ListLayout",
-                            link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211792.aspx"
-                        }
+                        eventMethod: function () { Config.setLayout(new WinJS.UI.ListLayout) },
                     },
                 ]
             },
@@ -71,22 +71,13 @@
                     {
                         name: "Vertical",
                         className: "orientationVertical",
-                        eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.vertical, this.info) },
-                        info: {
-                            description: "Sets the orientation of the ListView to vertical.  This property applies to many WinJS controls.",
-                            code: "listViewControl.layout.orientation = WinJS.UI.Orientation.vertical",
-                            link: "http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx"
-                        }
+                        eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.vertical) },
+                       
                     },
                     {
                         name: "Horizontal",
                         className: "orientationHorizontal",
-                        eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.horizontal, this.info) },
-                        info: {
-                            description: "Sets the orientation of the ListView to horizontal.  This property applies to many WinJS controls.",
-                            code: "listViewControl.layout.orientation = WinJS.UI.Orientation.horizontal",
-                            link: "http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx"
-                        }
+                        eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.horizontal) },
                     }
                 ]
             },
@@ -95,42 +86,22 @@
                     {
                         name: "Text With Image",
                         className: "itemTemplateTextWithImage",
-                        eventMethod: function () { Config.changeItemTemplate("textWithImage", this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.changeItemTemplate("textWithImage") }
                     },
                     {
                         name: "Image",
                         className: "itemTemplateImage",
-                        eventMethod: function () { Config.changeItemTemplate("image", this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.changeItemTemplate("image") }
                     },
                     {
                         name: "Inline",
                         className: "itemTemplateInline",
-                        eventMethod: function () { Config.changeItemTemplate("inline", this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.changeItemTemplate("inline") }
                     },
                     {
                         name: "Interactive",
                         className: "itemTemplateInteractive",
-                        eventMethod: function () { Config.changeItemTemplate("interactive", this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                            eventMethod: function () { Config.changeItemTemplate("interactive") }
                     }
                 ]
             },
@@ -139,22 +110,12 @@
                     {
                         name: "On",
                         className: "itemsReorderableOn",
-                        eventMethod: function () { Config.itemsReorderable(true, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.itemsReorderable(true) },
                     },
                     {
                         name: "Off",
                         className: "itemsReorderableOff",
-                        eventMethod: function () { Config.itemsReorderable(false, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.itemsReorderable(false) },
                     }
                 ]
             },
@@ -163,42 +124,22 @@
                     {
                         name: "Direct Select",
                         className: "tapBehaviorDirectSelect",
-                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.directSelect, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.directSelect) },
                     },
                     {
                         name: "Toggle Select",
                         className: "tapBehaviorToggleSelect",
-                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.toggleSelect, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.toggleSelect) },
                     },
                     {
                         name: "Invoke Only",
                         className: "tapBehaviorInvokeOnly",
-                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.invokeOnly, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.invokeOnly) },
                     },
                     {
                         name: "None",
                         className: "tapBehaviorNone",
-                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.none, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.none) },
                     }
                 ]
             },
@@ -207,32 +148,17 @@
                     {
                         name: "None",
                         className: "selectionModeNone",
-                        eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.none, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.none) },
                     },
                     {
                         name: "Single",
                         className: "selectionModeSingle",
-                        eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.single, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.single) },
                     },
                     {
                         name: "Multi",
                         className: "selectionModeMulti",
-                        eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.multi, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.multi) },
                     }
                 ]
             },
@@ -241,22 +167,12 @@
                     {
                         name: "Yes",
                         className: "groupItemsYes",
-                        eventMethod: function () { Config.groupItems(true, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.groupItems(true) },
                     },
                     {
                         name: "No",
                         className: "groupItemsNo",
-                        eventMethod: function () { Config.groupItems(false, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.groupItems(false) },
                     }
                 ]
             },
@@ -265,42 +181,22 @@
                     {
                         name: "Text",
                         className: "groupHeaderTemplateText",
-                        eventMethod: function () { Config.changeHeaderTemplate("text", this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.changeHeaderTemplate("text") },
                     },
                     {
                         name: "Text With Image",
                         className: "groupHeaderTemplateTextWithImage",
-                        eventMethod: function () { Config.changeHeaderTemplate("textWithImage", this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.changeHeaderTemplate("textWithImage") },
                     },
                     {
                         name: "Button",
                         className: "groupHeaderTemplateButton",
-                        eventMethod: function () { Config.changeHeaderTemplate("button", this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.changeHeaderTemplate("button") },
                     },
                     {
                         name: "Interactive",
                         className: "groupHeaderTemplateInteractive",
-                        eventMethod: function () { Config.changeHeaderTemplate("interactive", this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.changeHeaderTemplate("interactive") },
                     }
                 ]
             },
@@ -309,22 +205,12 @@
                     {
                         name: "Top",
                         className: "groupHeaderPositionTop",
-                        eventMethod: function () { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.top, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.top) },
                     },
                     {
                         name: "Left",
                         className: "groupHeaderPositionLeft",
-                        eventMethod: function () { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.left, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.left) },
                     }
                 ]
             },
@@ -333,22 +219,12 @@
                     {
                         name: "Invoke",
                         className: "groupHeaderTapBehaviorInvoke",
-                        eventMethod: function () { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.invoke, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.invoke) },
                     },
                     {
                         name: "None",
                         className: "groupHeaderTapBehaviorNone",
-                        eventMethod: function () { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.none, this.info) },
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: function () { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.none) },
                     }
                 ]
             },
@@ -357,32 +233,17 @@
                     {
                         name: "Add Element",
                         className: "dataChangesAddElement",
-                        eventMethod: function(){Data.addElement(this.info)},
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: Data.addElement,
                     },
                     {
                         name: "Delete Element",
                         className: "dataChangesDeleteElement",
-                        eventMethod: function () { Data.deleteElement(this.info)},
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: Data.deleteElement,
                     },
                     {
                         name: "Change Element",
                         className: "dataChangesChangeElement",
-                        eventMethod: function(){Data.changeElement(this.info)},
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
+                        eventMethod: Data.changeElement,
                     }
                 ]
             },
@@ -392,21 +253,11 @@
                         name: "Scroll Position",
                         className: "scrollingScrollPosition",
                         eventMethod: Methods.scrollPosition,
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
                     },
                     {
                         name: "Ensure Visible",
                         className: "scrollingEnsureVisible",
                         eventMethod: Methods.ensureVisible,
-                        info: {
-                            description: "",
-                            code: "",
-                            link: ""
-                        }
                     }
                 ]
             }
@@ -460,7 +311,6 @@
         template.addEventListener("click", function (event) {
             item.eventMethod();
 
-            //TODO: remove dependancy on html structure
             var prevSelected = this.parentElement.querySelector(".selectedOptionValue");
             if (prevSelected) {
                 prevSelected.classList.remove("selectedOptionValue");
