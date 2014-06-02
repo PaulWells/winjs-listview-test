@@ -2,28 +2,20 @@
     "use strict";
 
     var app = WinJS.Application;
-    var activation = Windows.ApplicationModel.Activation;
 
     app.onactivated = function (args) {
-        if (args.detail.kind === activation.ActivationKind.launch) {
-            if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
-                ////Initialize application
                 
-                var data = new WinJS.Binding.List(Data.createData());
-                var groupedData = Data.groupData(data);
-                WinJS.Namespace.define("Sample.ListView", {
-                    data: data,
-                    groupedData: groupedData
-                });
+        var data = new WinJS.Binding.List(Data.createData());
+        var groupedData = Data.groupData(data);
+        WinJS.Namespace.define("Sample.ListView", {
+            data: data,
+            groupedData: groupedData
+        });
 
-            } else {
-                // Restore application state
-            }
-            args.setPromise(WinJS.UI.processAll().then(function () {
-                Menu.createOptionMenu();
-                Init.initializeListView();
-            }));
-        }
+        args.setPromise(WinJS.UI.processAll().then(function () {
+            Menu.createOptionMenu();
+            Init.initializeListView();
+        }));
     };
 
     app.oncheckpoint = function (args) {
