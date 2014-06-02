@@ -63,7 +63,7 @@
     }
 
     function addElementAt(index) {
-        listView = document.querySelector(".listView").winControl;
+        var listView = document.querySelector(".listView").winControl;
         var data = getListViewData();
         var newItem;
         if (listView.groupDataSource) {

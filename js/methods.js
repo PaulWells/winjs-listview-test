@@ -2,12 +2,12 @@
     "use strict";
 
     function ensureVisible() {
-        listView = document.querySelector(".listView").winControl;
+        var listView = document.querySelector(".listView").winControl;
         listView.ensureVisible(fetchInputNumber());
     }
 
     function scrollPosition() {
-        listView = document.querySelector(".listView").winControl;
+        var listView = document.querySelector(".listView").winControl;
         listView.scrollPosition = fetchInputNumber();
     }
 

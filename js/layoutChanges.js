@@ -1,38 +1,35 @@
 ﻿(function () {
     "use strict";
 
-    function setOrientation(orientation, info) {
-        var listViewControl = document.querySelector(".listView").winControl;
-        listViewControl.layout.orientation = orientation;
-        Documentation.updateInfo(info);
+    function setOrientation(orientation) {
+        var listView = document.querySelector(".listView").winControl;
+        listView.layout.orientation = orientation;
     }
 
-   
-
     function setLayout(layout) {
-        var listViewControl = document.querySelector(".listView").winControl;
-        listViewControl.layout = layout;
+        var listView = document.querySelector(".listView").winControl;
+        listView.layout = layout;
     }
 
     function groupItems(groupItems) {
-        var listViewControl = document.querySelector(".listView").winControl;
+        var listView = document.querySelector(".listView").winControl;
        
         if (groupItems) {
-            listViewControl.itemDataSource = Sample.ListView.groupedData.dataSource;
-            listViewControl.groupDataSource = Sample.ListView.groupedData.groups.dataSource;
-            listViewControl.groupHeaderTemplate = Templates.textHeaderTemplate;
+            listView.itemDataSource = Sample.ListView.groupedData.dataSource;
+            listView.groupDataSource = Sample.ListView.groupedData.groups.dataSource;
+            listView.groupHeaderTemplate = Templates.textHeaderTemplate;
         } else {
-            listViewControl.groupDataSource = null;
-            listViewControl.itemDataSource = Sample.ListView.data.dataSource;
-            listViewControl.groupHeaderTemplate = null;
+            listViewl.groupDataSource = null;
+            listView.itemDataSource = Sample.ListView.data.dataSource;
+            listView.groupHeaderTemplate = null;
         }
-
     }
 
     function selectHeaderPosition(position) {
-        var listViewControl = document.querySelector(".listView").winControl;
-        listViewControl.layout.groupHeaderPosition = position;
+        var listView = document.querySelector(".listView").winControl;
+        listView.layout.groupHeaderPosition = position;
     }
+
     // Public interface.
     WinJS.Namespace.define("Config", {
 

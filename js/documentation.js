@@ -163,7 +163,34 @@
     }
 
     WinJS.Namespace.define("Documentation", {
-      updateInfo: updateInfo
+        updateInfo: updateInfo,
+        horizontalOrientation: horizontalOrientation,
+        verticalOrientation: verticalOrientation,
+        gridLayout: gridLayout,
+        listLayout: listLayout,
+        itemTemplate: itemTemplate,
+        itemsReorderable: itemsReorderable,
+        itemsNotReorderable: itemsNotReorderable,
+        tapBehaviorNone: tapBehaviorNone,
+        tapBehaviorDirectSelect: tapBehaviorDirectSelect,
+        tapBehaviorToggleSelect: tapBehaviorToggleSelect,
+        tapBehaviorInvoke: tapBehaviorInvoke,
+        selectionModeNone: selectionModeNone,
+        selectionModeSingle: selectionModeSingle,
+        selectionModeMulti: selectionModeMulti,
+        groupItemsYes: groupItemsYes,
+        groupItemsNo: groupItemsNo,
+        groupHeaderTemplate: groupHeaderTemplate,
+        groupHeaderPositionTop: groupHeaderPositionTop,
+        groupHeaderPositionLeft: groupHeaderPositionLeft,
+        groupHeaderTapBehaviorNone: groupHeaderTapBehaviorNone,
+        groupHeaderTapBehaviorInvoke: groupHeaderTapBehaviorInvoke,
+        dataChangesAdd: dataChangesAdd,
+        dataChangesDelete: dataChangesDelete,
+        dataChangesChange: dataChangesChange,
+        scrollingScrollPosition: scrollingScrollPosition,
+        scrollingEnsureVisible: scrollingEnsureVisible
+
     });
 
 })();

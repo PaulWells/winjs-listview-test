@@ -39,25 +39,25 @@
             case "interactive":
                 listViewControl.itemTemplate = Templates.interactiveTemplate;
                 break;
-        }
+       }
 
    }
 
    function changeHeaderTemplate(templateType) {
-        var listViewControl = document.querySelector(".listView").winControl;
+        var listView = document.querySelector(".listView").winControl;
 
         switch (templateType) {
             case "text":
-                listViewControl.groupHeaderTemplate = Templates.textHeaderTemplate;
+                listView.groupHeaderTemplate = Templates.textHeaderTemplate;
                 break;
             case "textWithImage":
-                listViewControl.groupHeaderTemplate = Templates.textWithImageHeaderTemplate;
+                listView.groupHeaderTemplate = Templates.textWithImageHeaderTemplate;
                 break;
             case "button":
-                listViewControl.groupHeaderTemplate = Templates.buttonHeaderTemplate;
+                listView.groupHeaderTemplate = Templates.buttonHeaderTemplate;
                 break;
             case "interactive":
-                listViewControl.groupHeaderTemplate = Templates.interactiveHeaderTemplate;
+                listView.groupHeaderTemplate = Templates.interactiveHeaderTemplate;
         }
 
    }
