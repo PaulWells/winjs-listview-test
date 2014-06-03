@@ -13,6 +13,7 @@
     <link href="/css/default.css" rel="stylesheet" />
     <link href="/css/listView.css" rel="stylesheet" />
     <link href="/css/menu.css" rel="stylesheet" />
+    <link href="/css/controlBox.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
     <script src="/js/utilities.js"></script>
     <script src="/js/configChanges.js"></script>
@@ -24,17 +25,12 @@
     <script src="/js/menu.js"></script>
     <script src="/js/notifications.js"></script>
     <script src="/js/documentation.js"></script>
-    <script src="/js/menuData.js"></script>
-    <script src="/js/menuTemplates.js"></script>
+    <script src="/js/controlBox.js"></script>
+    <script src="/js/controlBoxTemplate.js"></script>
+    <script src="/js/ControlBoxData.js"></script>
 </head>
 <body>
     
-    <div class="header">
-        <img class="winjsLogo" src="/images/winjs-logo.png" />
-    </div>
-
-    
-
     <!--simple inline template for ListView-->
     <div class="listIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
         <img src="#" class="listIconTextItem-Image" data-win-bind="src: picture" />
@@ -44,32 +40,17 @@
         </div>
     </div>
 
-    <div class="optionMenu"></div>
+    <h1>Play With ListView</h1>
 
-    <div class="interactiveSection">
-
-        <div class="interactiveInfoSection">
-
-            <p class="selectionDescription">
-                Here is a sample description about the selected option.  Its very samply and informative.  Just the right length to use as a good normal for forthcoming text
-            </p>
-
-            <p class="selectionSampleCode">
-                listView.layout.orientation = WinJS.UI.Orientation.horizontal;
-            </p>
-
-            <p class="selectionDocumentation">
-                http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx
-            </p>
-
-            <div>
-                <input type="number" class="textInput" hidden="hidden" />
-            </div>
-        </div>
+    <table class="controlBox">
+        <tbody class="controlBoxBody"></tbody>
+    </table>
+        
+    <div class="listViewSection">
         <!-- declare ListView -->
         <div class="win-selectionstylefilled listView"
-                data-win-control="WinJS.UI.ListView"
-                data-win-options="{
+             data-win-control="WinJS.UI.ListView"
+             data-win-options="{
                     itemDataSource: Sample.ListView.data.dataSource,
                     layout: {type: WinJS.UI.ListLayout}
                 }">
@@ -78,6 +59,29 @@
         <div class="notificationBanner" hidden="hidden">
         </div>
     </div>
+
+   
+       
+
+    <div class="interactiveInfoSection" >
+
+        <p class="selectionDescription">
+            Here is a sample description about the selected option.  Its very samply and informative.  Just the right length to use as a good normal for forthcoming text
+        </p>
+
+        <p class="selectionSampleCode">
+            listView.layout.orientation = WinJS.UI.Orientation.horizontal;
+        </p>
+
+        <p class="selectionDocumentation">
+            http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx
+        </p>
+
+        <div>
+            <input type="number" class="textInput" hidden="hidden" />
+        </div>
+    </div>
+       
 
 </body>
 </html>

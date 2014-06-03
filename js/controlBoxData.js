@@ -1,19 +1,19 @@
 ﻿(function () {
 
    
-    var optionMenuData = [
+    var rows = [
         {
             name: "Layout", subOptions: [
                 {
                     name: "Grid",
                     className: "layoutGrid",
-                    eventMethod: function () { Config.setLayout(new WinJS.UI.GridLayout) },
+                    eventMethod: function () { Config.setLayout(new WinJS.UI.GridLayout()) },
                     info: Documentation.gridLayout
                 },
                 {
                     name: "List",
                     className: "layoutList",
-                    eventMethod: function () { Config.setLayout(new WinJS.UI.ListLayout) },
+                    eventMethod: function () { Config.setLayout(new WinJS.UI.ListLayout()) },
                     info: Documentation.listLayout
                 },
             ]
@@ -246,7 +246,7 @@
     ];
 
 
-    WinJS.Namespace.define("Menu", {
-        optionMenuData: optionMenuData
-    })
+    WinJS.Namespace.define("ControlBox", {
+        rows: rows
+    });
 })();

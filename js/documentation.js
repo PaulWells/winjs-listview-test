@@ -15,13 +15,13 @@
 
     var gridLayout = {
         description: "Sets the layout of the ListView to a GridLayout in which items are arranged in a horizontal grid.",
-        code: "listView.layout = new WinJS.UI.GridLayout",
+        code: "listView.layout = new WinJS.UI.GridLayout()",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211751.aspx"
     }
 
     var listLayout = {
         description: "Sets the layout of the ListView to a ListLayout in which items are arranged in a vertical list.",
-        code: "listView.layout = new WinJS.UI.ListLayout",
+        code: "listView.layout = new WinJS.UI.ListLayout()",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211792.aspx"
     }
 

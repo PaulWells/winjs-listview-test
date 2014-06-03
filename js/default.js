@@ -13,8 +13,8 @@
         });
 
         args.setPromise(WinJS.UI.processAll().then(function () {
-            Menu.createOptionMenu();
             Init.initializeListView();
+            ControlBox.createControlBox();
         }));
     };
 

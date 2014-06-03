@@ -1,41 +1,33 @@
 ﻿body {
-    background-color: #EEEEEE;
-}
-
-.header{
-    background-color: #442257;
-    height: 70px;
-}
-
-.winjsLogo{
-    margin-top: 10px;
-    margin-left: 50px;
+    background-color: black;
+    overflow: auto;
 }
 
 .interactiveInfoSection{
-    background-color: #442257;
     height: 200px;
-    width: 1180px;
-    margin-top: 30px;
+    width: 500px;
     margin-bottom: 30px;
     padding: 10px;
     float: left;
+    margin-top: 60px;
+    margin-left: 40px;
 }
 
-.interactiveSection{
-}
 
 .interactiveInfoSection p{
     padding: 10px;
 }
 
 .notificationBanner{
-    float: left;
-    background-color:  #68254B;
+    background-color: #007ACC;
     height: 25px;
-    width: 1195px;
+    width: 800px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 5px;
+}
 
+h1{
+    margin-left: 55px;
+    margin-top: 75px;
 }

@@ -1,0 +1,31 @@
+﻿.controlBox{
+    width: 390px;
+    float: left;
+    margin-top: 120px;
+    margin-left: 30px;
+}
+
+.controlBoxRow{
+    background-color: #4C4C4C;
+    
+}
+
+.controlBoxSelector{
+    width: 180px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: inherit;
+    border: none;
+}
+
+.controlBoxLabel{
+    width: 210px;
+    padding: 5px;
+    background-color: #AEAEAE;
+    color: black;
+}
+
+.controlBoxValue{
+    height: inherit;
+    padding: 0px;
+}
