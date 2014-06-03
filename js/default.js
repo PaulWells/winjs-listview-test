@@ -14,6 +14,7 @@
 
         args.setPromise(WinJS.UI.processAll().then(function () {
             Init.initializeListView();
+            Init.initializeDocumentation();
             ControlBox.createControlBox();
         }));
     };

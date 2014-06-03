@@ -8,9 +8,12 @@
         listView.addEventListener("groupheaderinvoked", Notifications.groupHeaderInvoked, false);
     }
 
-
+    function initializeDocumentation() {
+        Documentation.updateInfo(Documentation.listLayout);
+    }
 
     WinJS.Namespace.define("Init", {
         initializeListView: initializeListView,
+        initializeDocumentation: initializeDocumentation
     });
 })();

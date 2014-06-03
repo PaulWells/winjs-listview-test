@@ -10,12 +10,11 @@
     padding: 10px;
     float: left;
     margin-top: 60px;
-    margin-left: 40px;
+    margin-left: 50px;
 }
 
-
-.interactiveInfoSection p{
-    padding: 10px;
+.selectionDocumentation{
+    text-decoration: underline;
 }
 
 .notificationBanner{
@@ -30,4 +29,8 @@
 h1{
     margin-left: 55px;
     margin-top: 75px;
+}
+
+h2{
+    margin-bottom: 40px;
 }

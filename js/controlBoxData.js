@@ -25,7 +25,6 @@
                     className: "orientationVertical",
                     eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.vertical) },
                     info: Documentation.verticalOrientation
-
                 },
                 {
                     name: "Horizontal",
