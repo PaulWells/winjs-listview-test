@@ -5,17 +5,17 @@
         {
             name: "Layout", subOptions: [
                 {
-                    name: "Grid",
-                    className: "layoutGrid",
-                    eventMethod: function () { Config.setLayout(new WinJS.UI.GridLayout()) },
-                    info: Documentation.gridLayout
-                },
-                {
                     name: "List",
                     className: "layoutList",
                     eventMethod: function () { Config.setLayout(new WinJS.UI.ListLayout()) },
                     info: Documentation.listLayout
                 },
+                {
+                    name: "Grid",
+                    className: "layoutGrid",
+                    eventMethod: function () { Config.setLayout(new WinJS.UI.GridLayout()) },
+                    info: Documentation.gridLayout
+                }
             ]
         },
         {
@@ -66,21 +66,27 @@
         {
             name: "Items Reorderable", subOptions: [
                 {
-                    name: "On",
-                    className: "itemsReorderableOn",
-                    eventMethod: function () { Config.itemsReorderable(true) },
-                    info: Documentation.itemsReorderable
-                },
-                {
                     name: "Off",
                     className: "itemsReorderableOff",
                     eventMethod: function () { Config.itemsReorderable(false) },
                     info: Documentation.itemsNotReorderable
+                },
+                {
+                    name: "On",
+                    className: "itemsReorderableOn",
+                    eventMethod: function () { Config.itemsReorderable(true) },
+                    info: Documentation.itemsReorderable
                 }
             ]
         },
         {
             name: "Tap Behavior", subOptions: [
+                {
+                    name: "Invoke Only",
+                    className: "tapBehaviorInvokeOnly",
+                    eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.invokeOnly) },
+                    info: Documentation.tapBehaviorInvoke
+                },
                 {
                     name: "Direct Select",
                     className: "tapBehaviorDirectSelect",
@@ -94,12 +100,6 @@
                     info: Documentation.tapBehaviorToggleSelect
                 },
                 {
-                    name: "Invoke Only",
-                    className: "tapBehaviorInvokeOnly",
-                    eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.invokeOnly) },
-                    info: Documentation.tapBehaviorInvoke
-                },
-                {
                     name: "None",
                     className: "tapBehaviorNone",
                     eventMethod: function () { Config.tapBehavior(WinJS.UI.TapBehavior.none) },
@@ -109,6 +109,12 @@
         },
         {
             name: "Selection Mode", subOptions: [
+                {
+                    name: "Multi",
+                    className: "selectionModeMulti",
+                    eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.multi) },
+                    info: Documentation.selectionModeMulti
+                },
                 {
                     name: "None",
                     className: "selectionModeNone",
@@ -121,27 +127,21 @@
                     eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.single) },
                     info: Documentation.selectionModeSingle
                 },
-                {
-                    name: "Multi",
-                    className: "selectionModeMulti",
-                    eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.multi) },
-                    info: Documentation.selectionModeMulti
-                }
             ]
         },
         {
             name: "Group Items", subOptions: [
                 {
-                    name: "Yes",
-                    className: "groupItemsYes",
-                    eventMethod: function () { Config.groupItems(true) },
-                    info: Documentation.groupItemsYes
-                },
-                {
                     name: "No",
                     className: "groupItemsNo",
                     eventMethod: function () { Config.groupItems(false) },
                     info: Documentation.groupItemsNo
+                },
+                {
+                    name: "Yes",
+                    className: "groupItemsYes",
+                    eventMethod: function () { Config.groupItems(true) },
+                    info: Documentation.groupItemsYes
                 }
             ]
         },

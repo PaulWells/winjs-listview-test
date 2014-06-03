@@ -19,7 +19,8 @@
             listView.groupDataSource = Sample.ListView.groupedData.groups.dataSource;
             listView.groupHeaderTemplate = Templates.textHeaderTemplate;
         } else {
-            listViewl.groupDataSource = null;
+            //listView.groupDataSource = null;
+            listView.groupDataSource = null;
             listView.itemDataSource = Sample.ListView.data.dataSource;
             listView.groupHeaderTemplate = null;
         }
