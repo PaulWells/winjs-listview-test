@@ -24,11 +24,21 @@
         notifier.postNotification("Element changed");
     }
 
-    function scrollPosition() {
-        notifier.postNotification("Scrolled to position 0");
+    function scrollPosition(pixel) {
+        notifier.postNotification("Scrolled to pixel " + pixel);
     }
-    function ensureVisible() {
-        notifier.postNotification("Ensured first element visible");
+    function ensureVisibleFirst() {
+        notifier.postNotification("Ensured the first item is visible");
+    }
+    function ensureVisibleMiddle() {
+        var listView = document.querySelector(".listView").winControl;
+        var index = listView.itemDataSource.length/2;
+        notifier.postNotification("Ensured the middle item (item " + index + ") is visible");
+    }
+    function ensureVisibleLast() {
+        var listView = document.querySelector(".listView").winControl;
+        var index = listView.itemDataSource.length;
+        notifier.postNotification("Ensured the last item (item " + index + ") is visible");
     }
 
     function itemDragStart(event) {
@@ -138,7 +148,9 @@
         elementDeleted: elementDeleted,
         elementChanged: elementChanged,
         scrollPosition: scrollPosition,
-        ensureVisible: ensureVisible,
+        ensureVisibleFirst: ensureVisibleFirst,
+        ensureVisibleMiddle: ensureVisibleMiddle,
+        ensureVisibleLast: ensureVisibleLast,
         itemDragStart: itemDragStart,
         itemDragEnter: itemDragEnter,
         itemDragEnd: itemDragEnd,

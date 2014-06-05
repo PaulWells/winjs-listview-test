@@ -247,20 +247,45 @@
             ]
         },
         {
-            name: "Scrolling", isAction: true, subOptions: [
+            name: "Ensure Visible", isAction: true, subOptions: [
                 {
-                    name: "Scroll Position",
-                    className: "scrollingScrollPosition",
-                    eventMethod: ListView.Methods.scrollPosition,
-                    info: Documentation.scrollingScrollPosition,
-                    notify: Notifications.scrollPosition
+                    name: "First Item",
+                    className: "ensureVisibleFirst",
+                    eventMethod: ListView.Methods.ensureFirstItemVisible,
+                    info: Documentation.ensureVisibleFirst,
+                    notify: Notifications.ensureVisibleFirst
                 },
                 {
-                    name: "Ensure Visible",
-                    className: "scrollingEnsureVisible",
-                    eventMethod: ListView.Methods.ensureVisible,
-                    info: Documentation.scrollingEnsureVisible,
-                    notify: Notifications.ensureVisible
+                    name: "Middle Item",
+                    className: "ensureVisibleMiddle",
+                    eventMethod: ListView.Methods.ensureMiddleItemVisible,
+                    info: Documentation.ensureVisibleMiddle,
+                    notify: Notifications.ensureVisibleMiddle
+                },
+                {
+                    name: "Last Item",
+                    className: "ensureVisibleLast",
+                    eventMethod: ListView.Methods.ensureLastItemVisible,
+                    info: Documentation.ensureVisibleLast,
+                    notify: Notifications.ensureVisibleLast
+                }
+            ]
+        },
+        {
+            name: "Scroll Position", isAction: true, subOptions: [
+                {
+                    name: "Pixel 0",
+                    className: "scrollPositionZero",
+                    eventMethod: function () { ListView.Methods.scrollPosition(0)},
+                    info: Documentation.scrollPositionZero,
+                    notify: function () { Notifications.scrollPosition(0) }
+                },
+                {
+                    name: "Pixel 500",
+                    className: "scrollPositionFiveHundred",
+                    eventMethod: function () { ListView.Methods.scrollPosition(500) },
+                    info: Documentation.scrollPositionFiveHundred,
+                    notify: function () { Notifications.scrollPosition(500)}
                 }
             ]
         }

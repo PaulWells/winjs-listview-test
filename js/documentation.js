@@ -165,16 +165,37 @@
         title: "Modifying An Element"
     }
 
-    var scrollingScrollPosition = {
+    var scrollPositionZero = {
         description: "Gets or sets the distance, in pixels, of the start of the viewable area within the viewport.  For example, setting the scroll position to 0 would scroll the ListView to the beginning of the list",
-        code: "listView.scrollPosition = position; //position is in pixels",
+        code: "listView.scrollPosition = 0; //position is in pixels",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211847.aspx",
         title: "Scroll Position"
     }
 
-    var scrollingEnsureVisible = {
+    var scrollPositionFiveHundred = {
+        description: "Gets or sets the distance, in pixels, of the start of the viewable area within the viewport.  For example, setting the scroll position to 0 would scroll the ListView to the beginning of the list",
+        code: "listView.scrollPosition = 500; //position is in pixels",
+        link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211847.aspx",
+        title: "Scroll Position"
+    }
+
+    var ensureVisibleFirst = {
         description: "Ensure Visible is a ListView method that takes the index of an element in the ListView.  If necessary the ListView will scroll to the item.",
-        code: "listView.ensureVisible(index);",
+        code: "listView.ensureVisible(0);",
+        link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211820.aspx",
+        title: "Ensure Visible"
+    }
+
+    var ensureVisibleMiddle = {
+        description: "Ensure Visible is a ListView method that takes the index of an element in the ListView.  If necessary the ListView will scroll to the item.",
+        code: "listView.ensureVisible(listView.itemDataSource.length / 2);",
+        link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211820.aspx",
+        title: "Ensure Visible"
+    }
+
+    var ensureVisibleLast = {
+        description: "Ensure Visible is a ListView method that takes the index of an element in the ListView.  If necessary the ListView will scroll to the item.",
+        code: "listView.ensureVisible(listView.itemDataSource.length - 1);",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211820.aspx",
         title: "Ensure Visible"
     }
@@ -228,8 +249,11 @@
         dataChangesAdd: dataChangesAdd,
         dataChangesDelete: dataChangesDelete,
         dataChangesChange: dataChangesChange,
-        scrollingScrollPosition: scrollingScrollPosition,
-        scrollingEnsureVisible: scrollingEnsureVisible,
+        scrollPositionZero: scrollPositionZero,
+        scrollPositionFiveHundred: scrollPositionFiveHundred,
+        ensureVisibleFirst: ensureVisibleFirst,
+        ensureVisibleMiddle: ensureVisibleMiddle,
+        ensureVisibleLast: ensureVisibleLast,
         itemsDraggableYes: itemsDraggableYes,
         itemsDraggableNo: itemsDraggableNo
 

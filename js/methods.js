@@ -1,18 +1,32 @@
 ﻿(function () {
     "use strict";
 
-    function ensureVisible() {
-        var listView = document.querySelector(".listView").winControl;
-        listView.ensureVisible(0);
+    function ensureFirstItemVisible() {
+        ensureVisible(0);
     }
 
-    function scrollPosition() {
+    function ensureMiddleItemVisible() {
+        ensureVisible(Sample.ListView.data.length / 2);
+    }
+
+    function ensureLastItemVisible() {
+        ensureVisible(Sample.ListView.data.length - 1);
+    }
+
+    function ensureVisible(index){
         var listView = document.querySelector(".listView").winControl;
-        listView.scrollPosition = 0;
+        listView.ensureVisible(index);
+    }
+
+    function scrollPosition(pixel) {
+        var listView = document.querySelector(".listView").winControl;
+        listView.scrollPosition = pixel;
     }
 
     WinJS.Namespace.define("ListView.Methods", {
-        ensureVisible: ensureVisible,
+        ensureFirstItemVisible: ensureFirstItemVisible,
+        ensureMiddleItemVisible: ensureMiddleItemVisible,
+        ensureLastItemVisible: ensureLastItemVisible,
         scrollPosition: scrollPosition
     });
 
