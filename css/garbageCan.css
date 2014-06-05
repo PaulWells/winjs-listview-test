@@ -1,0 +1,21 @@
+﻿.garbageCan{
+    border: solid;
+    border-color: white;
+    border-width: 5px;
+    height: 100px;
+    width: 100px;
+    margin-right: 200px;
+    float: right;
+}
+
+.garbageCan img{
+    width: 100%;
+    height: 100%;
+}
+
+.garbageCan div{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-top: 10px;
+}

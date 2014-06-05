@@ -88,7 +88,10 @@
     }
 
     function loadingStateChanged(event) {
-        notifier.postNotification("onLoadingStateChanged()");
+        var listView = document.querySelector(".listView").winControl;
+        var firstVisibleIndex = listView.indexOfFirstVisible;
+        var lastVisibleIndex = listView.indexOfLastVisible;
+        notifier.postStickyNotification("onLoadingStateChanged().  First visible item: " + firstVisibleIndex + ", last visible item: " + lastVisibleIndex);
     }
 
     function selectionChanging(event) {
@@ -136,9 +139,9 @@
     }
 
     var notifier = null
-    window.onload = function () {
+    window.addEventListener("load", function () {
         notifier = new Notifier();
-    }
+    }, false);
 
 
     WinJS.Namespace.define("Notifications", {

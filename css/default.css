@@ -4,13 +4,14 @@
 }
 
 .interactiveInfoSection{
-    height: 200px;
+    height: 600px;
     width: 500px;
     margin-bottom: 30px;
     padding: 10px;
     float: left;
     margin-top: 60px;
     margin-left: 50px;
+    overflow: auto;
 }
 
 .selectionDocumentation{
@@ -35,3 +36,5 @@ h1{
 h2{
     margin-bottom: 40px;
 }
+
+

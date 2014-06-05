@@ -16,6 +16,7 @@
             Init.initializeListView();
             Init.initializeDocumentation();
             ControlBox.createControlBox();
+
         }));
     };
 
