@@ -141,7 +141,7 @@
     var notifier = null
     window.addEventListener("load", function () {
         notifier = new Notifier();
-    }, false);
+    });
 
 
     WinJS.Namespace.define("Notifications", {

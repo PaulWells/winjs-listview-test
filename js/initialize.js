@@ -4,19 +4,19 @@
     function initializeListView() {
         var listView = document.querySelector(".listView").winControl;
         listView.itemTemplate = Templates.textWithImageTemplate;
-        listView.addEventListener("iteminvoked", Notifications.itemInvoked, false);
-        listView.addEventListener("groupheaderinvoked", Notifications.groupHeaderInvoked, false);
-        listView.addEventListener("itemdragstart", itemDragStartHandler, false);
-        listView.addEventListener("itemdragenter", itemDragEnterHandler, false);
-        listView.addEventListener("itemdragend", itemDragEndHandler, false);
-        listView.addEventListener("itemdragbetween", Notifications.itemDragBetween, false);
-        listView.addEventListener("itemdragleave", Notifications.itemDragLeave, false);
-        listView.addEventListener("itemdragechanged", Notifications.itemDragChanged, false);
-        listView.addEventListener("itemdragdrop", itemDropHandler, false);
-        listView.addEventListener("keyboardnavigating", Notifications.keyboardNavigating, false);
-        listView.addEventListener("loadingstatechanged", Notifications.loadingStateChanged, false);
-        listView.addEventListener("selectionchanging", Notifications.selectionChanging, false);
-        listView.addEventListener("selectionchanged", Notifications.selectionChanged, false);
+        listView.addEventListener("iteminvoked", Notifications.itemInvoked);
+        listView.addEventListener("groupheaderinvoked", Notifications.groupHeaderInvoked);
+        listView.addEventListener("itemdragstart", itemDragStartHandler);
+        listView.addEventListener("itemdragenter", itemDragEnterHandler);
+        listView.addEventListener("itemdragend", itemDragEndHandler);
+        listView.addEventListener("itemdragbetween", Notifications.itemDragBetween);
+        listView.addEventListener("itemdragleave", Notifications.itemDragLeave);
+        listView.addEventListener("itemdragechanged", Notifications.itemDragChanged);
+        listView.addEventListener("itemdragdrop", itemDropHandler);
+        listView.addEventListener("keyboardnavigating", Notifications.keyboardNavigating);
+        listView.addEventListener("loadingstatechanged", Notifications.loadingStateChanged);
+        listView.addEventListener("selectionchanging", Notifications.selectionChanging);
+        listView.addEventListener("selectionchanged", Notifications.selectionChanged);
     }
 
     function initializeDocumentation() {

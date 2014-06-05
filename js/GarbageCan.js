@@ -87,5 +87,5 @@
     var garbageCan = null;
     window.addEventListener("load", function () {
         garbageCan = new GarbageCan();
-    }, false);
+    });
 })();

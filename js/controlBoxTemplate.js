@@ -32,7 +32,7 @@
 
         valueSelector.addEventListener("change", function () {
             changeListener(event, this, item.isAction);
-        }, false);
+        });
 
         if (item.isAction) {
             valueSelector.selectedIndex = -1;
