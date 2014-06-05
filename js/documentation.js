@@ -214,7 +214,19 @@
         title: "Items Draggable"
     }
 
+    var swipeBehaviorNone = {
+        description: "Gets or sets how the ListView reacts to the swipe gesture. The swipe gesture can select the swiped items or can have no effect on the current selection.",
+        code: "listView.swipeBehavior = WinJS.UI.SwipeBehavior.none",
+        link: "http://msdn.microsoft.com/en-us/library/windows/apps/hh700730.aspx",
+        title: "Swipe Behavior"
+    }
 
+    var swipeBehaviorSelect = {
+        description: "Gets or sets how the ListView reacts to the swipe gesture. The swipe gesture can select the swiped items or can have no effect on the current selection.",
+        code: "listView.swipeBehavior = WinJS.UI.SwipeBehavior.select",
+        link: "http://msdn.microsoft.com/en-us/library/windows/apps/hh700730.aspx",
+        title: "Swipe Behavior"
+    }
 
     function updateInfo(info) {
         document.querySelector(".selectionDescription").innerText = info.description;
@@ -255,7 +267,9 @@
         ensureVisibleMiddle: ensureVisibleMiddle,
         ensureVisibleLast: ensureVisibleLast,
         itemsDraggableYes: itemsDraggableYes,
-        itemsDraggableNo: itemsDraggableNo
+        itemsDraggableNo: itemsDraggableNo,
+        swipeBehaviorSelect: swipeBehaviorSelect,
+        swipeBehaviorNone: swipeBehaviorNone
 
     });
 

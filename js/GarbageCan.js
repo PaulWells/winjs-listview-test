@@ -2,39 +2,19 @@
 
     function GarbageCan() {
         var elem = document.querySelector(".garbageCan");
-        var img = elem.querySelector("img");
-        var text = elem.querySelector("div");
         var self = this;
-        var dragInProgress = false;
-        var full = false;
         var timeOut = null;
-        var delay = 4000;
+        var delay = 1000;
         elem.hidden = true;
         elem.control = this;
-        img.hidden = true;
     
         this.activate = function() {
-            dragInProgress = true;
-            if (!full) {
-                elem.hidden = false;
-            }
+            elem.hidden = false;
         };
         
-
         this.deactivate = function() {
-            if (full) {
-                return;
-            }
-            dragInProgress = false;
             elem.hidden = true;
         };
-
-        this.hide = function () {
-            if (dragInProgress) {
-                return;
-            }
-            elem.hidden = true;
-        }
 
         this.drop = function(indices) {
 
@@ -44,25 +24,8 @@
                 var item = Sample.ListView.data.splice(indices[i], 1)[0];
                 items.unshift(item);
             }
-
-            //show thumbnail of first item
-            img.src = items[0].picture;
-            img.hidden = false;
-            text.hidden = true;
-            full = true;
-            clearTimeout(timeOut);
-            dragInProgress = false;
-            timeOut = setTimeout(this.empty, delay);
         };
 
-        this.empty = function() {
-            img.src = "#"
-            img.hidden = true;
-            text.hidden = false;
-            full = false;
-            self.hide();
-        };
-        
         elem.addEventListener("dragstart", function (event) {
             event.preventDefault();
         })

@@ -2,42 +2,42 @@
     "use strict";
    
    function itemsReorderable(reorderable) {
-       var listViewControl = document.querySelector(".listView").winControl;
-       listViewControl.itemsReorderable = reorderable;
+       var listView = document.querySelector(".listView").winControl;
+       listView.itemsReorderable = reorderable;
    }
 
    function tapBehavior(behavior) {
-       var listViewControl = document.querySelector(".listView").winControl;
-       listViewControl.tapBehavior = behavior;
+       var listView = document.querySelector(".listView").winControl;
+       listView.tapBehavior = behavior;
        
    }
 
    function selectHeaderTapBehavior(behavior) {
-       var listViewControl = document.querySelector(".listView").winControl;
-       listViewControl.groupHeaderTapBehavior = behavior;
+       var listView = document.querySelector(".listView").winControl;
+       listView.groupHeaderTapBehavior = behavior;
    }
 
    function selectionMode(mode) {
-       var listViewControl = document.querySelector(".listView").winControl;
-       listViewControl.selectionMode = mode;
+       var listView = document.querySelector(".listView").winControl;
+       listView.selectionMode = mode;
    }
 
    function changeItemTemplate(templateName) {
        
-       var listViewControl = document.querySelector(".listView").winControl;
+       var listView = document.querySelector(".listView").winControl;
 
         switch (templateName) {
             case "textWithImage":
-                listViewControl.itemTemplate = Templates.textWithImageTemplate;
+                listView.itemTemplate = Templates.textWithImageTemplate;
                 break;
             case "image":
-                listViewControl.itemTemplate = Templates.imageTemplate;
+                listView.itemTemplate = Templates.imageTemplate;
                 break;
             case "inline":
-                listViewControl.itemTemplate = document.querySelector(".listIconTextTemplate");
+                listView.itemTemplate = document.querySelector(".listIconTextTemplate");
                 break;
             case "interactive":
-                listViewControl.itemTemplate = Templates.interactiveTemplate;
+                listView.itemTemplate = Templates.interactiveTemplate;
                 break;
        }
 
@@ -62,6 +62,11 @@
 
    }
 
+   function swipeBehavior(behavior) {
+       var listView = document.querySelector(".listView").winControl;
+       listView.swipeBehavior = behavior;
+   }
+
    function itemsDraggable(draggable) {
        var listView = document.querySelector(".listView").winControl;
        listView.itemsDraggable = draggable;
@@ -76,6 +81,7 @@
         changeItemTemplate: changeItemTemplate,
         changeHeaderTemplate: changeHeaderTemplate,
         selectHeaderTapBehavior: selectHeaderTapBehavior,
-        itemsDraggable: itemsDraggable
+        itemsDraggable: itemsDraggable,
+        swipeBehavior: swipeBehavior
     });
 })();
