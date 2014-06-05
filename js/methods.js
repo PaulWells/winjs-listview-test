@@ -3,19 +3,15 @@
 
     function ensureVisible() {
         var listView = document.querySelector(".listView").winControl;
-        listView.ensureVisible(fetchInputNumber());
+        listView.ensureVisible(0);
     }
 
     function scrollPosition() {
         var listView = document.querySelector(".listView").winControl;
-        listView.scrollPosition = fetchInputNumber();
+        listView.scrollPosition = 0;
     }
 
-    function fetchInputNumber(){
-        return parseInt(document.querySelector(".textInput").value);
-    }
-
-    WinJS.Namespace.define("Methods", {
+    WinJS.Namespace.define("ListView.Methods", {
         ensureVisible: ensureVisible,
         scrollPosition: scrollPosition
     });

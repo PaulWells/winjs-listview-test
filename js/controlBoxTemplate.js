@@ -2,7 +2,6 @@
 
     function controlBoxRowTemplate(item) {
 
-
         var row = document.createElement("tr");
         row.className = "controlBoxRow";
 
@@ -16,36 +15,48 @@
 
         var valueSelector = document.createElement("select");
         valueSelector.classList.add("controlBoxSelector");
+        if (item.isAction) {
+            valueSelector.classList.add("controlBoxActionSelector");
+        }
         var options = item.subOptions
         for (var i = 0; i < options.length; i++) {
             var option = document.createElement("option");
-            var subItem = item.subOptions[i];
             option.text = options[i].name;
-            option.eventMethod = subItem.eventMethod;
-            option.info = subItem.info;
+            option.itemData = item.subOptions[i];
             valueSelector.add(option);
         }
 
         value.appendChild(valueSelector);
         row.appendChild(value);
 
+
         valueSelector.addEventListener("change", function () {
-            changeListener(event, this);
+            changeListener(event, this, item.isAction);
         }, false);
+
+        if (item.isAction) {
+            valueSelector.selectedIndex = -1;
+        }
 
         return row;
 
     }
 
-    function changeListener(event, selector) {
+    function changeListener(event, selector, isAction) {
 
         if (selector.selectedIndex == -1) {
             return;
         }
 
         var option = selector.options[selector.selectedIndex];
-        option.eventMethod();
-        Documentation.updateInfo(option.info);
+        var item = option.itemData;
+        item.eventMethod();
+        Documentation.updateInfo(item.info);
+
+        if (isAction) {
+            selector.selectedIndex = -1;
+            item.notify();
+        }
     }
 
     WinJS.Namespace.define("ControlBox", {

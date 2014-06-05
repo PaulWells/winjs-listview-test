@@ -62,6 +62,11 @@
 
    }
 
+   function itemsDraggable(draggable) {
+       var listView = document.querySelector(".listView").winControl;
+       listView.itemsDraggable = draggable;
+   }
+
     // Public interface.
     WinJS.Namespace.define("Config", {
 
@@ -70,6 +75,7 @@
         selectionMode: selectionMode,
         changeItemTemplate: changeItemTemplate,
         changeHeaderTemplate: changeHeaderTemplate,
-        selectHeaderTapBehavior: selectHeaderTapBehavior
+        selectHeaderTapBehavior: selectHeaderTapBehavior,
+        itemsDraggable: itemsDraggable
     });
 })();

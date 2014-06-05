@@ -144,7 +144,7 @@
         }
     }
 
-    WinJS.Namespace.define("Data", {
+    WinJS.Namespace.define("ListView.Data", {
         createData: createData,
         groupData: groupData,
         addElement: addElement,

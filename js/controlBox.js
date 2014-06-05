@@ -9,6 +9,14 @@
             template: ControlBox.controlBoxRowTemplate
         });
 
+        removeDefaultFromActionSelectors();
+    }
+
+    function removeDefaultFromActionSelectors() {
+        var selectors = document.querySelectorAll(".controlBoxActionSelector");
+        for (var i = 0; i < selectors.length; i++) {
+            selectors[i].selectedIndex = -1;
+        }
     }
 
     WinJS.Namespace.define("ControlBox", {

@@ -65,17 +65,34 @@
         {
             name: "Items Reorderable", subOptions: [
                 {
-                    name: "Off",
+                    name: "False",
                     className: "itemsReorderableOff",
                     eventMethod: function () { Config.itemsReorderable(false) },
                     info: Documentation.itemsNotReorderable
                 },
                 {
-                    name: "On",
+                    name: "True",
                     className: "itemsReorderableOn",
                     eventMethod: function () { Config.itemsReorderable(true) },
                     info: Documentation.itemsReorderable
                 }
+            ]
+        },
+        {
+            name: "Items Draggable", subOptions: [
+                {
+                    name: "False",
+                    className: "itemsDraggableYes",
+                    eventMethod: function () { Config.itemsDraggable(false) },
+                    info: Documentation.itemsDraggableNo
+                },
+                {
+                    name: "True",
+                    className: "itemsDraggableNo",
+                    eventMethod: function () { Config.itemsDraggable(true) },
+                    info: Documentation.itemsDraggableYes
+                }
+
             ]
         },
         {
@@ -115,29 +132,29 @@
                     info: Documentation.selectionModeMulti
                 },
                 {
-                    name: "None",
-                    className: "selectionModeNone",
-                    eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.none) },
-                    info: Documentation.selectionModeNone
-                },
-                {
                     name: "Single",
                     className: "selectionModeSingle",
                     eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.single) },
                     info: Documentation.selectionModeSingle
                 },
+                {
+                    name: "None",
+                    className: "selectionModeNone",
+                    eventMethod: function () { Config.selectionMode(WinJS.UI.SelectionMode.none) },
+                    info: Documentation.selectionModeNone
+                }
             ]
         },
         {
             name: "Group Items", subOptions: [
                 {
-                    name: "No",
+                    name: "False",
                     className: "groupItemsNo",
                     eventMethod: function () { Config.groupItems(false) },
                     info: Documentation.groupItemsNo
                 },
                 {
-                    name: "Yes",
+                    name: "True",
                     className: "groupItemsYes",
                     eventMethod: function () { Config.groupItems(true) },
                     info: Documentation.groupItemsYes
@@ -205,40 +222,45 @@
             ]
         },
         {
-            name: "Data Changes", subOptions: [
+            name: "Data Changes", isAction: true, subOptions: [
                 {
                     name: "Add Element",
                     className: "dataChangesAddElement",
-                    eventMethod: Data.addElement,
-                    info: Documentation.dataChangesAdd
+                    eventMethod: ListView.Data.addElement,
+                    info: Documentation.dataChangesAdd,
+                    notify: Notifications.elementAdded
                 },
                 {
                     name: "Delete Element",
                     className: "dataChangesDeleteElement",
-                    eventMethod: Data.deleteElement,
-                    info: Documentation.dataChangesDelete
+                    eventMethod: ListView.Data.deleteElement,
+                    info: Documentation.dataChangesDelete,
+                    notify: Notifications.elementDeleted
                 },
                 {
                     name: "Change Element",
                     className: "dataChangesChangeElement",
-                    eventMethod: Data.changeElement,
-                    info: Documentation.dataChangesChange
+                    eventMethod: ListView.Data.changeElement,
+                    info: Documentation.dataChangesChange,
+                    notify: Notifications.elementChanged
                 }
             ]
         },
         {
-            name: "Scrolling", subOptions: [
+            name: "Scrolling", isAction: true, subOptions: [
                 {
                     name: "Scroll Position",
                     className: "scrollingScrollPosition",
-                    eventMethod: Methods.scrollPosition,
-                    info: Documentation.scrollingScrollPosition
+                    eventMethod: ListView.Methods.scrollPosition,
+                    info: Documentation.scrollingScrollPosition,
+                    notify: Notifications.scrollPosition
                 },
                 {
                     name: "Ensure Visible",
                     className: "scrollingEnsureVisible",
-                    eventMethod: Methods.ensureVisible,
-                    info: Documentation.scrollingEnsureVisible
+                    eventMethod: ListView.Methods.ensureVisible,
+                    info: Documentation.scrollingEnsureVisible,
+                    notify: Notifications.ensureVisible
                 }
             ]
         }

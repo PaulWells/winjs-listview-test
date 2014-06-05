@@ -166,7 +166,7 @@
     }
 
     var scrollingScrollPosition = {
-        description: "Gets or sets the distance, in pixels, of the start of the viewable area within the viewport.",
+        description: "Gets or sets the distance, in pixels, of the start of the viewable area within the viewport.  For example, setting the scroll position to 0 would scroll the ListView to the beginning of the list",
         code: "listView.scrollPosition = position; //position is in pixels",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211847.aspx",
         title: "Scroll Position"
@@ -178,6 +178,21 @@
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211820.aspx",
         title: "Ensure Visible"
     }
+
+    var itemsDraggableYes = {
+        description: "Gets or sets a value that specifies whether items can be dragged. When this is set to true, the ListView provides built in behaviors related to item dragging.",
+        code: "listView.itemsDraggable = true",
+        link: "http://msdn.microsoft.com/en-us/library/windows/apps/dn301809.aspx",
+        title: "Items Draggable"
+    }
+
+    var itemsDraggableNo = {
+        description: "Gets or sets a value that specifies whether items can be dragged. When this is set to true, the ListView provides built in behaviors related to item dragging.",
+        code: "listView.itemsDraggable = false",
+        link: "http://msdn.microsoft.com/en-us/library/windows/apps/dn301809.aspx",
+        title: "Items Draggable"
+    }
+
 
 
     function updateInfo(info) {
@@ -214,7 +229,9 @@
         dataChangesDelete: dataChangesDelete,
         dataChangesChange: dataChangesChange,
         scrollingScrollPosition: scrollingScrollPosition,
-        scrollingEnsureVisible: scrollingEnsureVisible
+        scrollingEnsureVisible: scrollingEnsureVisible,
+        itemsDraggableYes: itemsDraggableYes,
+        itemsDraggableNo: itemsDraggableNo
 
     });
 

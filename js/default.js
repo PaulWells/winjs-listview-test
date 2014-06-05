@@ -5,8 +5,8 @@
 
     app.onactivated = function (args) {
                 
-        var data = new WinJS.Binding.List(Data.createData());
-        var groupedData = Data.groupData(data);
+        var data = new WinJS.Binding.List(ListView.Data.createData());
+        var groupedData = ListView.Data.groupData(data);
         WinJS.Namespace.define("Sample.ListView", {
             data: data,
             groupedData: groupedData
