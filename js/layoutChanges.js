@@ -15,13 +15,13 @@
         var listView = document.querySelector(".listView").winControl;
        
         if (groupItems) {
-            listView.itemDataSource = Sample.ListView.groupedData.dataSource;
-            listView.groupDataSource = Sample.ListView.groupedData.groups.dataSource;
+            listView.itemDataSource = ListView.groupedData.dataSource;
+            listView.groupDataSource = ListView.groupedData.groups.dataSource;
             listView.groupHeaderTemplate = Templates.textHeaderTemplate;
         } else {
             //listView.groupDataSource = null;
             listView.groupDataSource = null;
-            listView.itemDataSource = Sample.ListView.data.dataSource;
+            listView.itemDataSource = ListView.data.dataSource;
             listView.groupHeaderTemplate = null;
         }
     }

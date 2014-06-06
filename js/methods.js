@@ -6,11 +6,11 @@
     }
 
     function ensureMiddleItemVisible() {
-        ensureVisible(Sample.ListView.data.length / 2);
+        ensureVisible(ListView.data.length / 2);
     }
 
     function ensureLastItemVisible() {
-        ensureVisible(Sample.ListView.data.length - 1);
+        ensureVisible(ListView.data.length - 1);
     }
 
     function ensureVisible(index){

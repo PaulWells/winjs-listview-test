@@ -138,9 +138,9 @@
    function getListViewData() {
         var listView = document.querySelector(".listView").winControl;
         if (listView.groupDataSource) {
-            return Sample.ListView.groupedData;
+            return ListView.groupedData;
         } else {
-            return Sample.ListView.data;
+            return ListView.data;
         }
     }
 

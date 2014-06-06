@@ -1,36 +1,69 @@
 ﻿(function () {
-
+    "use strict";
     var horizontalOrientation = {
         description: "Sets the orientation of the ListView to horizontal.  This property applies to many WinJS controls.",
-        code: "listViewControl.layout.orientation = WinJS.UI.Orientation.horizontal",
+        code: "//first get a reference to your ListView\n" +
+              "var listView = document.querySelector(\".listView\").winControl;  \n" +
+              "listView.layout.orientation = WinJS.UI.Orientation.horizontal;",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx",
         title: "Horizontal Orientation"
     }
 
     var verticalOrientation = {
         description: "Sets the orientation of the ListView to vertical.  This property applies to many WinJS controls.",
-        code: "listViewControl.layout.orientation = WinJS.UI.Orientation.vertical",
+        code: "//first get a reference to your ListView\n" +
+              "var listView = document.querySelector(\".listView\").winControl;  \n" +
+              "listView.layout.orientation = WinJS.UI.Orientation.vertical;",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx",
         title: "Vertical Orientation"
     }
 
     var gridLayout = {
         description: "Sets the layout of the ListView to a GridLayout in which items are arranged in a horizontal grid.",
-        code: "listView.layout = new WinJS.UI.GridLayout()",
+        code: "//first get a reference to your ListView\n" +
+              "var listView = document.querySelector(\".listView\").winControl;  \n" + 
+              "listView.layout = new WinJS.UI.GridLayout();",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211751.aspx",
         title: "Grid Layout",
     }
 
     var listLayout = {
         description: "Sets the layout of the ListView to a ListLayout in which items are arranged in a vertical list.",
-        code: "listView.layout = new WinJS.UI.ListLayout()",
+        code: "//first get a reference to your ListView\n" + 
+              "var listView = document.querySelector(\".listView\").winControl;\n" +
+              "listView.layout = new WinJS.UI.ListLayout();",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211792.aspx",
         title: "List Layout"
     }
 
     var itemTemplate = {
         description: "Gets or sets the WinJS.Binding.Template or templating function that creates the Document Object Model (DOM) elements for each item in the itemDataSource. Each Item can contain multiple elements, but it must have a single root element.",
-        code: "listView.itemTemplate = itemTemplate",
+        code: "function createTemplate(item){\n" +
+              "    //create template element\n"+
+              "    var template = document.createElement(\"div\"); \n" +
+              "    //add image\n" +
+              "    var image = document.createElement(\"img\"); \n" +
+              "    image.src = item.picture;\n" +
+              "    template.appendChild(image);\n" +
+              "    //add element to hold text elements\n" +
+              "    var textArea = document.createElement(\"div\");\n" +
+              "    var template.appendChild(textArea);\n" +
+              "    //add title and description\n" +
+              "    var title = document.createElement(\"h4\");\n" +
+              "    var title.innerText = item.title;\n" +
+              "    textArea.appendChild(title); \n" +
+              "    var description = document.createElement(\"h6\"); \n" +
+              "    var description.innerText = item.description;\n" +
+              "    template.appendChild(description);\n" +
+              "    return template;\n" +
+              "}\n\n" +
+              "function textWithImageTemplate(itemPromise){\n" +
+              "    return itemPromise.then(function (item) {\n " +
+              "        return createTemplate(item);\n" +
+              "    });\n" +
+              "}\n\n" +
+              "var listView = document.querySelector(\".listView\").winControl;  \n" +
+              "listView.itemTemplate = createTemplate;",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/hh700705.aspx",
         title: "Item Template"
     }
@@ -229,10 +262,35 @@
     }
 
     function updateInfo(info) {
-        document.querySelector(".selectionDescription").innerText = info.description;
-        document.querySelector(".selectionSampleCode").innerText = info.code;
-        document.querySelector(".selectionDocumentation").href = info.link;
-        document.querySelector(".selectionTitle").innerText = info.title;
+
+        var infoSection = document.querySelector(".interactiveInfoSection");
+        var title = infoSection.querySelector(".selectionTitle");
+        var code = infoSection.querySelector(".selectionSampleCode");
+        var description = infoSection.querySelector(".selectionDescription");
+
+        var currentInfo = {
+            title: title.innerText,
+            code: code.innerText,
+            description: description.innerText
+        }
+
+        //don't update docs if they don't change
+        if (sameInfo(info, currentInfo)) {
+            return;
+        }
+
+        WinJS.UI.Animation.exitContent(infoSection, null);
+
+        description.innerHTML = info.description;
+        code.innerHTML = hljs.highlightAuto(info.code).value;
+        infoSection.querySelector(".selectionDocumentation").href = info.link;
+        title.innerHTML = info.title;
+
+        WinJS.UI.Animation.enterContent(infoSection, null);
+    }
+
+    function sameInfo(info1, info2) {
+        return (info1.title === info2.title && info1.code === info2.code && info1.description === info2.description);
     }
 
     WinJS.Namespace.define("Documentation", {

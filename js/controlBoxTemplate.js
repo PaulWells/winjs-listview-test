@@ -1,5 +1,5 @@
 ﻿(function () {
-
+    "use strict";
     function controlBoxRowTemplate(item) {
 
         var row = document.createElement("tr");

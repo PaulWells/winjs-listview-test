@@ -1,5 +1,5 @@
 ﻿(function () {
-
+    "use strict";
     function createControlBox() {
 
         var controlBox = document.querySelector(".controlBoxBody");

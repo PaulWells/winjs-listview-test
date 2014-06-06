@@ -1,19 +1,20 @@
 ﻿(function () {
-
+    "use strict";
     function GarbageCan() {
         var elem = document.querySelector(".garbageCan");
         var self = this;
         var timeOut = null;
         var delay = 1000;
-        elem.hidden = true;
+        elem.hidden = false;
+        elem.style.opacity = 0;
         elem.control = this;
     
-        this.activate = function() {
-            elem.hidden = false;
+        this.activate = function () {
+            WinJS.UI.Animation.enterContent(elem, null);
         };
         
-        this.deactivate = function() {
-            elem.hidden = true;
+        this.deactivate = function () {
+            WinJS.UI.Animation.exitContent(elem, null);
         };
 
         this.drop = function(indices) {
@@ -21,7 +22,7 @@
             var items = []
             for (var i = indices.length - 1; i >= 0; i--) {
                 //remove item from ListView datasource
-                var item = Sample.ListView.data.splice(indices[i], 1)[0];
+                var item = ListView.data.splice(indices[i], 1)[0];
                 items.unshift(item);
             }
         };

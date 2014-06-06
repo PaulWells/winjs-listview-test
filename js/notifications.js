@@ -1,5 +1,5 @@
 ﻿(function () {
-
+    "use strict";
     function itemInvoked(eventInfo) {
         var index = eventInfo.detail.itemIndex;
         notification = "onItemInvoked().  Item " + index + " was invoked!";

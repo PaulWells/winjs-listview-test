@@ -1,5 +1,5 @@
 ﻿(function () {
-
+    "use strict";
    
     var rows = [
         {
@@ -31,34 +31,6 @@
                     className: "orientationHorizontal",
                     eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.horizontal) },
                     info: Documentation.horizontalOrientation
-                }
-            ]
-        },
-        {
-            name: "Item Template", subOptions: [
-                {
-                    name: "Text With Image",
-                    className: "itemTemplateTextWithImage",
-                    eventMethod: function () { Config.changeItemTemplate("textWithImage") },
-                    info: Documentation.itemTemplate
-                },
-                {
-                    name: "Image",
-                    className: "itemTemplateImage",
-                    eventMethod: function () { Config.changeItemTemplate("image") },
-                    info: Documentation.itemTemplate
-                },
-                {
-                    name: "Inline",
-                    className: "itemTemplateInline",
-                    eventMethod: function () { Config.changeItemTemplate("inline") },
-                    info: Documentation.itemTemplate
-                },
-                {
-                    name: "Interactive",
-                    className: "itemTemplateInteractive",
-                    eventMethod: function () { Config.changeItemTemplate("interactive") },
-                    info: Documentation.itemTemplate
                 }
             ]
         },
@@ -161,6 +133,34 @@
                 }
             ]
         },
+         {
+             name: "Item Template", subOptions: [
+                 {
+                     name: "Text With Image",
+                     className: "itemTemplateTextWithImage",
+                     eventMethod: function () { Config.changeItemTemplate("textWithImage") },
+                     info: Documentation.itemTemplate
+                 },
+                 {
+                     name: "Image",
+                     className: "itemTemplateImage",
+                     eventMethod: function () { Config.changeItemTemplate("image") },
+                     info: Documentation.itemTemplate
+                 },
+                 {
+                     name: "Inline",
+                     className: "itemTemplateInline",
+                     eventMethod: function () { Config.changeItemTemplate("inline") },
+                     info: Documentation.itemTemplate
+                 },
+                 {
+                     name: "Interactive",
+                     className: "itemTemplateInteractive",
+                     eventMethod: function () { Config.changeItemTemplate("interactive") },
+                     info: Documentation.itemTemplate
+                 }
+             ]
+         },
         {
             name: "Group Items", subOptions: [
                 {

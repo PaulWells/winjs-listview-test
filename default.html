@@ -9,6 +9,10 @@
     <script src="/lib/winjs/js/base.js"></script>
     <script src="/lib/winjs/js/ui.js"></script>
 
+    <!-- Highlight.js reference-->
+    <script src="lib/highlight/highlight.pack.js"></script>
+    <link href="lib/highlight/styles/visualStudioDark.css" rel="stylesheet" />
+
     <!-- ListView-Test references -->
     <link href="css/default.css" rel="stylesheet" />
     <link href="css/listView.css" rel="stylesheet" />
@@ -53,7 +57,7 @@
         <div class="win-selectionstylefilled listView"
              data-win-control="WinJS.UI.ListView"
              data-win-options="{
-                    itemDataSource: Sample.ListView.data.dataSource,
+                    itemDataSource: ListView.data.dataSource,
                     layout: {type: WinJS.UI.ListLayout}
                 }">
         </div>
@@ -65,7 +69,7 @@
     <div class="interactiveInfoSection" >
         <h2 class="selectionTitle"></h2>
         <p class="selectionDescription"></p>
-        <p class="selectionSampleCode"></p>
+        <p ><pre><code class="selectionSampleCode"></code></pre></p>
         <a class="selectionDocumentation" href="http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx" target="_blank">
             Learn more
         </a>
