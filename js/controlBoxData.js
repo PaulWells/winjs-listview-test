@@ -139,25 +139,25 @@
                      name: "Text With Image",
                      className: "itemTemplateTextWithImage",
                      eventMethod: function () { Config.changeItemTemplate("textWithImage") },
-                     info: Documentation.itemTemplate
+                     info: Documentation.itemTemplateTextWithImage
                  },
                  {
                      name: "Image",
                      className: "itemTemplateImage",
                      eventMethod: function () { Config.changeItemTemplate("image") },
-                     info: Documentation.itemTemplate
+                     info: Documentation.itemTemplateImage
                  },
                  {
                      name: "Inline",
                      className: "itemTemplateInline",
                      eventMethod: function () { Config.changeItemTemplate("inline") },
-                     info: Documentation.itemTemplate
+                     info: Documentation.itemTemplateInline
                  },
                  {
                      name: "Interactive",
                      className: "itemTemplateInteractive",
                      eventMethod: function () { Config.changeItemTemplate("interactive") },
-                     info: Documentation.itemTemplate
+                     info: Documentation.itemTemplateInteractive
                  }
              ]
          },
@@ -183,25 +183,25 @@
                     name: "Text",
                     className: "groupHeaderTemplateText",
                     eventMethod: function () { Config.changeHeaderTemplate("text") },
-                    info: Documentation.groupHeaderTemplate
+                    info: Documentation.groupHeaderTemplateText
                 },
                 {
                     name: "Text With Image",
                     className: "groupHeaderTemplateTextWithImage",
                     eventMethod: function () { Config.changeHeaderTemplate("textWithImage") },
-                    info: Documentation.groupHeaderTemplate
+                    info: Documentation.groupHeaderTemplateTextWithImage
                 },
                 {
                     name: "Button",
                     className: "groupHeaderTemplateButton",
                     eventMethod: function () { Config.changeHeaderTemplate("button") },
-                    info: Documentation.groupHeaderTemplate
+                    info: Documentation.groupHeaderTemplateButton
                 },
                 {
                     name: "Interactive",
                     className: "groupHeaderTemplateInteractive",
                     eventMethod: function () { Config.changeHeaderTemplate("interactive") },
-                    info: Documentation.groupHeaderTemplate
+                    info: Documentation.groupHeaderTemplateInteractive
                 }
             ]
         },

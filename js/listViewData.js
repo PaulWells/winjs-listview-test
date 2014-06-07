@@ -31,8 +31,6 @@
         return items;
     }
 
-   
-
     function groupData(bindingList) {
         var groupedData = bindingList.createGrouped(function (item) {
             //items will be sorted into groups based on this value

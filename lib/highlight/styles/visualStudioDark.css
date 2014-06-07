@@ -6,7 +6,7 @@ visual studio dark style
 
 .hljs {
   display: block; padding: 0.5em;
-  background: #000; color: #f8f8f8;
+  background: #1E1E1E; color: #f8f8f8;
 }
 
 .hljs-comment,
@@ -20,19 +20,19 @@ visual studio dark style
 .ruby .hljs-function .hljs-keyword,
 .hljs-request,
 .hljs-status,
+.hljs-literal,
 .nginx .hljs-title {
-  color: #2A7FFF;
+  color: #569CD6;
 }
 
 .hljs-function .hljs-keyword,
 .hljs-sub .hljs-keyword,
 .method,
 .hljs-list .hljs-title {
-  color: #2A7FFF;
+  color: #569CD6;
 }
 
 .hljs-string,
-.hljs-tag .hljs-value,
 .hljs-cdata,
 .hljs-filter .hljs-argument,
 .hljs-attr_selector,
@@ -40,7 +40,7 @@ visual studio dark style
 .hljs-date,
 .tex .hljs-command,
 .coffeescript .hljs-attribute {
-  color: #BA5F30;
+  color: #D69D85;
 }
 
 .hljs-subst {
@@ -54,12 +54,27 @@ visual studio dark style
 .hljs-title,
 .hljs-sub .hljs-identifier,
 .hljs-pi,
-.hljs-tag,
 .hljs-tag .hljs-keyword,
 .hljs-decorator,
 .hljs-shebang,
 .hljs-prompt {
   color: white;
+}
+
+.hljs-tag .hljs-value{
+    color: white;
+}
+
+.hljs-tag .hljs-attribute{
+    color: #5FC0FE;
+}
+
+.hljs-tag .hljs-title{
+    color: #3987D6;
+}
+
+.hljs-tag{
+    color: #787896;
 }
 
 .hljs-class .hljs-title,

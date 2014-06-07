@@ -57,7 +57,7 @@
 
         var title = document.createElement("div");
         title.className = "titleDiv"
-        title.innerHTML = item.data.title;
+        title.innerText = item.key;
         template.appendChild(title);
         return template;
     }
@@ -73,23 +73,15 @@
     function buildButtonHeaderTemplate(item) {
 
         var template = buildTextHeaderTemplate(item);
-
         var button = document.createElement("button");
         button.innerText = "Group " + item.data.title;
-
         template.appendChild(button);
-
         return template;
     }
 
     function buildInteractiveHeaderTemplate(item) {
 
         var template = buildTextHeaderTemplate(item);
-
-        var button = document.createElement("button");
-        button.innerText = "Group " + item.data.title;
-
-        template.appendChild(button);
 
         var ratingElement = document.createElement("div");
         new WinJS.UI.Rating(ratingElement, {
