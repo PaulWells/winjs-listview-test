@@ -2,13 +2,13 @@
     "use strict";
     function itemInvoked(eventInfo) {
         var index = eventInfo.detail.itemIndex;
-        notification = "onItemInvoked().  Item " + index + " was invoked!";
+        var notification = "onItemInvoked().  Item " + index + " was invoked!";
         notifier.postNotification(notification);
     }
 
     function groupHeaderInvoked(eventInfo) {
        var index = eventInfo.detail.groupHeaderIndex;
-       var notification =  "Group header " + index + " was invoked!";
+       var notification =  "onGroupHeaderInvoked().  Header " + index + " was invoked!";
        notifier.postNotification(notification);
     }
 
@@ -84,25 +84,32 @@
     }
 
     function keyboardNavigating(event) {
-        notifier.postNotification("onKeyboardNavigating()");
+        var detail = event.detail;
+        notifier.postNotification("onKeyboardNavigating().  Navigated from item " + detail.oldFocus + " to item " + detail.newFocus);
     }
 
     function loadingStateChanged(event) {
         var listView = document.querySelector(".listView").winControl;
         var firstVisibleIndex = listView.indexOfFirstVisible;
         var lastVisibleIndex = listView.indexOfLastVisible;
+        var detail = event.detail;
         notifier.postStickyNotification("onLoadingStateChanged().  First visible item: " + firstVisibleIndex + ", last visible item: " + lastVisibleIndex);
     }
 
     function selectionChanging(event) {
-        notifier.postNotification("onSelectionChanging()");
+        notifier.postNotification("onSelectionChanging()");querySe
     }
 
     function selectionChanged(event) {
         var listView = document.querySelector(".listView").winControl;
         var indices = listView.selection.getIndices();
+        var indicesLimit = 15;
         if (indices.length > 0) {
-            var notification = "Indices: " + indices.toString();
+            if (indices.length < indicesLimit) {
+                var notification = "Indices: " + indices.toString();
+            } else {
+                var notification = "Indices: " + indices.splice(0, indicesLimit).toString() + "...";
+            }
         } else {
             var notification = "No items are selected";
         }

@@ -4,6 +4,7 @@
     function initializeListView() {
         var listView = document.querySelector(".listView").winControl;
         listView.itemTemplate = Templates.textWithImageTemplate;
+        listView.groupHeaderTemplate = Templates.textHeaderTemplate;
         listView.addEventListener("iteminvoked", Notifications.itemInvoked);
         listView.addEventListener("groupheaderinvoked", Notifications.groupHeaderInvoked);
         listView.addEventListener("itemdragstart", itemDragStartHandler);
@@ -20,7 +21,7 @@
     }
 
     function initializeDocumentation() {
-        Documentation.updateInfo(Documentation.listLayout);
+        Documentation.updateInfo(Documentation.welcome);
     }
 
     function itemDragEnterHandler(event) {

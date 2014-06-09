@@ -8,6 +8,8 @@
 
     function setLayout(layout) {
         var listView = document.querySelector(".listView").winControl;
+        layout.orientation = listView.layout.orientation;
+        layout.groupHeaderPosition = listView.layout.groupHeaderPosition;
         listView.layout = layout;
     }
 
@@ -17,12 +19,9 @@
         if (groupItems) {
             listView.itemDataSource = ListView.groupedData.dataSource;
             listView.groupDataSource = ListView.groupedData.groups.dataSource;
-            listView.groupHeaderTemplate = Templates.textHeaderTemplate;
         } else {
-            //listView.groupDataSource = null;
             listView.groupDataSource = null;
             listView.itemDataSource = ListView.data.dataSource;
-            listView.groupHeaderTemplate = null;
         }
     }
 
@@ -31,7 +30,6 @@
         listView.layout.groupHeaderPosition = position;
     }
 
-    // Public interface.
     WinJS.Namespace.define("Config", {
 
         setOrientation: setOrientation,

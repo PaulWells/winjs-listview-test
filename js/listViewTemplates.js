@@ -144,7 +144,7 @@
         interactiveTemplate: interactiveTemplate,
         textWithImageHeaderTemplate: textWithImageHeaderTemplate,
         buttonHeaderTemplate: buttonHeaderTemplate,
-        interactiveHeaderTemplate: interactiveHeaderTemplate,
+        interactiveHeaderTemplate: interactiveHeaderTemplate
     });
 
 

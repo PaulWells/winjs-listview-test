@@ -5,7 +5,7 @@ visual studio dark style
 */
 
 .hljs {
-  display: block; padding: 0.5em;
+  padding: 0.5em;
   background: #1E1E1E; color: #f8f8f8;
 }
 
@@ -13,7 +13,6 @@ visual studio dark style
 .hljs-template_comment,
 .hljs-javadoc {
   color: #4DA63A;
-  /*font-style: italic;*/
 }
 
 .hljs-keyword,

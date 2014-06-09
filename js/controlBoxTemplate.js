@@ -34,6 +34,10 @@
             changeListener(event, this, item.isAction);
         });
 
+        valueSelector.addEventListener("click", function () {
+            clickListener(event, this);
+        })
+
         if (item.isAction) {
             valueSelector.selectedIndex = -1;
         }
@@ -57,6 +61,15 @@
             selector.selectedIndex = -1;
             item.notify();
         }
+    }
+
+    function clickListener(event, selector) {
+        if (selector.selectedIndex == -1) {
+            return;
+        }
+        var option = selector.options[selector.selectedIndex];
+        var item = option.itemData;
+        Documentation.updateInfo(item.info);
     }
 
     WinJS.Namespace.define("ControlBox", {
