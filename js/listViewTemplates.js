@@ -45,7 +45,8 @@
         template.style.height = "120px";
         template.appendChild(ratingElement);
         new WinJS.UI.Rating(ratingElement, {
-            averageRating: 3.4
+            averageRating: 2,
+            maxRating: 4
         });
         return template;
     }

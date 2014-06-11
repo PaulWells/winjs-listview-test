@@ -8,12 +8,12 @@
         listView.addEventListener("iteminvoked", Notifications.itemInvoked);
         listView.addEventListener("groupheaderinvoked", Notifications.groupHeaderInvoked);
         listView.addEventListener("itemdragstart", itemDragStartHandler);
-        listView.addEventListener("itemdragenter", itemDragEnterHandler);
+        listView.addEventListener("itemdragenter", Notifications.itemDragEnter);
         listView.addEventListener("itemdragend", itemDragEndHandler);
         listView.addEventListener("itemdragbetween", Notifications.itemDragBetween);
         listView.addEventListener("itemdragleave", Notifications.itemDragLeave);
         listView.addEventListener("itemdragechanged", Notifications.itemDragChanged);
-        listView.addEventListener("itemdragdrop", itemDropHandler);
+        listView.addEventListener("itemdragdrop", Notifications.itemDragDrop);
         listView.addEventListener("keyboardnavigating", Notifications.keyboardNavigating);
         listView.addEventListener("loadingstatechanged", Notifications.loadingStateChanged);
         listView.addEventListener("selectionchanging", Notifications.selectionChanging);
@@ -22,14 +22,6 @@
 
     function initializeDocumentation() {
         Documentation.updateInfo(Documentation.welcome);
-    }
-
-    function itemDragEnterHandler(event) {
-        Notifications.itemDragEnter(event);
-    }
-
-    function itemDropHandler(event) {
-        Notifications.itemDragDrop(event);
     }
 
     function itemDragStartHandler(event) {
@@ -49,8 +41,41 @@
         garbageCan.deactivate();
     }
 
+    function addClickListeners() {
+        document.querySelector(".listViewDocumentationToggle").addEventListener("click", function () {
+            var button = this;
+            var listView = document.querySelector(".listViewSection");
+            var docs = document.querySelector(".interactiveInfoSection");
+            var docsButtonText = "Documentation";
+            if (this.innerText === docsButtonText) {
+                WinJS.UI.Animation.exitContent(button, null).done(function () {
+                    WinJS.UI.Animation.enterContent(button, null);
+                })
+                WinJS.UI.Animation.exitContent(listView, null).done(function () {
+                    listView.style.display = "none";
+                    docs.style.display = "block";
+                    WinJS.UI.Animation.enterContent(docs, null);
+                    button.innerText = "ListView";
+                });
+            } else {
+                WinJS.UI.Animation.exitContent(button, null).done(function () {
+                    WinJS.UI.Animation.enterContent(button, null);
+                })
+                WinJS.UI.Animation.exitContent(docs, null).done(function () {
+                    docs.style.display = "none";
+                    listView.style.display = "block";
+                    WinJS.UI.Animation.enterContent(listView, null);
+                    button.innerText = docsButtonText;
+                });
+            }
+        })
+    }
+
+    
+
     WinJS.Namespace.define("Init", {
         initializeListView: initializeListView,
-        initializeDocumentation: initializeDocumentation
+        initializeDocumentation: initializeDocumentation,
+        addClickListeners: addClickListeners
     });
 })();

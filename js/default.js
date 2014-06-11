@@ -17,8 +17,9 @@
         args.setPromise(WinJS.UI.processAll().then(function () {
             Init.initializeListView();
             Init.initializeDocumentation();
+            Init.addClickListeners();
             ControlBox.createControlBox();
-
+            MediaQueries.registerLaptop();
         }));
     };
 

@@ -5,9 +5,9 @@
     <title>ListView Test</title>
 
     <!-- WinJS references -->
-    <link href="/lib/winjs/css/ui-dark.css" rel="stylesheet" />
-    <script src="/lib/winjs/js/base.js"></script>
-    <script src="/lib/winjs/js/ui.js"></script>
+    <link href="lib/winjs/css/ui-dark.css" rel="stylesheet" />
+    <script src="lib/winjs/js/base.js"></script>
+    <script src="lib/winjs/js/ui.js"></script>
 
     <!-- Highlight.js reference-->
     <script src="lib/highlight/highlight.pack.js"></script>
@@ -32,6 +32,7 @@
     <script src="js/controlBoxTemplate.js"></script>
     <script src="js/controlBoxData.js"></script>
     <script src="js/garbageCan.js"></script>
+    <script src="js/mediaQueries.js"></script>
 </head>
 <body>
     
@@ -46,9 +47,11 @@
 
     <h1>Play With ListView</h1>
 
-    <table class="controlBox">
-        <tbody class="controlBoxBody"></tbody>
-    </table>
+    <div class="controlBoxArea">
+        <table class="controlBox">
+            <tbody class="controlBoxBody"></tbody>
+        </table>
+    </div>
         
     <div class="listViewSection">
         <!-- declare ListView -->
@@ -60,14 +63,15 @@
              }">
         </div>
 
-        <div class="notificationBanner" hidden="hidden">
-        </div>
+       
     </div>
 
     <div class="interactiveInfoSection" >
         <h2 class="selectionTitle"></h2>
         <p class="selectionDescription"></p>
-        <p ><pre ><code class="selectionSampleCode" style="display:block"></code></pre></p>
+        <div class="sampleCodeContainer">
+            <p><pre><code class="selectionSampleCode" style="display:block"></code></pre></p>
+        </div>
         <a class="selectionDocumentation" href="http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx" target="_blank">
             Learn more
         </a>
@@ -76,8 +80,13 @@
         </div>
     </div>
 
+    <button class="listViewDocumentationToggle">Documentation</button>
+
     <div class="garbageCan" hidden="hidden">
         &#57607;
+    </div>
+
+    <div class="notificationBanner" hidden="hidden">
     </div>
        
 </body>

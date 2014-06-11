@@ -92,12 +92,11 @@
         var listView = document.querySelector(".listView").winControl;
         var firstVisibleIndex = listView.indexOfFirstVisible;
         var lastVisibleIndex = listView.indexOfLastVisible;
-        var detail = event.detail;
         notifier.postStickyNotification("onLoadingStateChanged().  First visible item: " + firstVisibleIndex + ", last visible item: " + lastVisibleIndex);
     }
 
     function selectionChanging(event) {
-        notifier.postNotification("onSelectionChanging()");querySe
+        notifier.postNotification("onSelectionChanging()");
     }
 
     function selectionChanged(event) {

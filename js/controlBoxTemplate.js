@@ -7,6 +7,9 @@
 
         var label = document.createElement("td");
         label.classList.add("controlBoxLabel");
+        if (item.name.length > 20) {
+            label.classList.add("largeLabel");
+        }
         label.innerText = item.name;
         row.appendChild(label);
 

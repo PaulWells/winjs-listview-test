@@ -81,7 +81,7 @@
               "        return createTemplate(item);\n" +
               "    });\n" +
               "}\n\n" +
-              "var listView = document.querySelector(\".listView\").winControl;  \n" +
+              "var listView = document.querySelector(\".listView\").winControl;\n" +
               "listView.itemTemplate = textWithImageTemplate;",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/jj585523.aspx",
         title: "Item Template"
