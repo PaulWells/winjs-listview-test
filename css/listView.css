@@ -34,12 +34,18 @@
     float: left;
 }
 
-/*and (max-height:768px*/
-@media (max-width: 1366px){
+@media (max-width: 1366px) and (min-width: 851px){
     .listViewSection{
-         width: 55%;
+         width: 45%;
          margin-left: 3%;
     }
+}
+
+@media (max-width: 850px) and (min-height: 600px){
+   .listViewSection{
+       width: 80%;
+       height: 50%;
+   }
 }
 
                       

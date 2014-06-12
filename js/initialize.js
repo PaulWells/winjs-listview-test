@@ -42,33 +42,35 @@
     }
 
     function addClickListeners() {
-        document.querySelector(".listViewDocumentationToggle").addEventListener("click", function () {
-            var button = this;
-            var listView = document.querySelector(".listViewSection");
-            var docs = document.querySelector(".interactiveInfoSection");
-            var docsButtonText = "Documentation";
-            if (this.innerText === docsButtonText) {
-                WinJS.UI.Animation.exitContent(button, null).done(function () {
-                    WinJS.UI.Animation.enterContent(button, null);
-                })
-                WinJS.UI.Animation.exitContent(listView, null).done(function () {
-                    listView.style.display = "none";
-                    docs.style.display = "block";
-                    WinJS.UI.Animation.enterContent(docs, null);
-                    button.innerText = "ListView";
-                });
-            } else {
-                WinJS.UI.Animation.exitContent(button, null).done(function () {
-                    WinJS.UI.Animation.enterContent(button, null);
-                })
-                WinJS.UI.Animation.exitContent(docs, null).done(function () {
-                    docs.style.display = "none";
-                    listView.style.display = "block";
-                    WinJS.UI.Animation.enterContent(listView, null);
-                    button.innerText = docsButtonText;
-                });
-            }
-        })
+        document.querySelector(".listViewDocumentationToggle").addEventListener("click", docListViewToggleHandler);
+    }
+
+    function docListViewToggleHandler(event) {
+        var button = this;
+        var listView = document.querySelector(".listViewSection");
+        var docs = document.querySelector(".interactiveInfoSection");
+        var docsButtonText = "Documentation";
+        if (this.innerText === docsButtonText) {
+            WinJS.UI.Animation.exitContent(button, null).done(function () {
+                WinJS.UI.Animation.enterContent(button, null);
+            })
+            WinJS.UI.Animation.exitContent(listView, null).done(function () {
+                listView.style.display = "none";
+                docs.style.display = "block";
+                WinJS.UI.Animation.enterContent(docs, null);
+                button.innerText = "ListView";
+            });
+        } else {
+            WinJS.UI.Animation.exitContent(button, null).done(function () {
+                WinJS.UI.Animation.enterContent(button, null);
+            })
+            WinJS.UI.Animation.exitContent(docs, null).done(function () {
+                docs.style.display = "none";
+                listView.style.display = "block";
+                WinJS.UI.Animation.enterContent(listView, null);
+                button.innerText = docsButtonText;
+            });
+        }
     }
 
     

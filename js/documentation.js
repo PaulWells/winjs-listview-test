@@ -226,7 +226,7 @@
     }
     var selectionModeSingle = {
         id:16,
-        description: "No more than one item in the ListView may be selected at a time",
+        description: "No more than one item in the ListView may be selected at a time.",
         code: "var listView = document.querySelector(\".listView\").winControl;\nlistView.selectionMode = WinJS.UI.SelectionMode.single;",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/hh465449.aspx",
         title: "Selection Mode: Single"

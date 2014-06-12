@@ -7,7 +7,7 @@
 
         var label = document.createElement("td");
         label.classList.add("controlBoxLabel");
-        if (item.name.length > 20) {
+        if (item.name.length > 22) {
             label.classList.add("largeLabel");
         }
         label.innerText = item.name;
@@ -16,33 +16,35 @@
         var value = document.createElement("td");
         value.classList.add("controlBoxValue");
 
-        var valueSelector = document.createElement("select");
-        valueSelector.classList.add("controlBoxSelector");
+        var selector = document.createElement("select");
+        selector.classList.add("controlBoxSelector");
         if (item.isAction) {
-            valueSelector.classList.add("controlBoxActionSelector");
+            selector.classList.add("controlBoxActionSelector");
         }
-        var options = item.subOptions
+        var options = item.subOptions;
         for (var i = 0; i < options.length; i++) {
             var option = document.createElement("option");
             option.text = options[i].name;
+            
             option.itemData = item.subOptions[i];
-            valueSelector.add(option);
+            selector.add(option);
         }
+        adjustTextSize(selector);
 
-        value.appendChild(valueSelector);
+        value.appendChild(selector);
         row.appendChild(value);
 
 
-        valueSelector.addEventListener("change", function () {
+        selector.addEventListener("change", function () {
             changeListener(event, this, item.isAction);
         });
 
-        valueSelector.addEventListener("click", function () {
+        selector.addEventListener("click", function () {
             clickListener(event, this);
         })
 
         if (item.isAction) {
-            valueSelector.selectedIndex = -1;
+            selector.selectedIndex = -1;
         }
 
         return row;
@@ -71,8 +73,22 @@
             return;
         }
         var option = selector.options[selector.selectedIndex];
+        adjustTextSize(selector,option);
         var item = option.itemData;
         Documentation.updateInfo(item.info);
+    }
+
+    function adjustTextSize(selector, option) {
+
+        option = option || selector.options[0];
+
+        var text = option.innerText;
+        
+        if (text.length > 12) {
+            selector.classList.add("largeSelector");
+        } else {
+            selector.classList.remove("largeSelector");
+        }
     }
 
     WinJS.Namespace.define("ControlBox", {

@@ -19,7 +19,7 @@
             Init.initializeDocumentation();
             Init.addClickListeners();
             ControlBox.createControlBox();
-            MediaQueries.registerLaptop();
+            MediaQueries.registerQueries();
         }));
     };
 

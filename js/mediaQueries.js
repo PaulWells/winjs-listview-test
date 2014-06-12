@@ -1,28 +1,51 @@
 ﻿(function () {
 
+    var portraitMQ = window.matchMedia("(max-width: 768px) and (min-height: 800px)");
+
     function registerLaptop() {
         var laptopMQ = window.matchMedia("(max-width: 1366px)");
         var laptopMQHandler = function () {
             var docs = document.querySelector(".interactiveInfoSection");
             if (laptopMQ.matches) {
                 //smaller than laptop size
-                //docs.style.opacity = 0;
-                //docs.elem.style.opacity = 100;
-                document.querySelector(".listViewDocumentationToggle").style.display = "block";
+                var button = document.querySelector(".listViewDocumentationToggle");
+                button.innerText = "Documentation";
+                button.style.display = "block";
                 docs.style.display = "none";
             } else {
                 //larger than laptop size
-                document.querySelector(".interactiveInfoSection").style.display = "block";
+                if (document.querySelector(".listViewDocumentationToggle").innerText === "Documentation") {
+                    docs.style.display = "block";
+                    WinJS.UI.Animation.enterContent(docs, null);
+                } else {
+                    var listView = document.querySelector(".listViewSection");
+                    listView.style.display = "block";
+                    WinJS.UI.Animation.enterContent(listView, null);
+                }
                 document.querySelector(".listViewDocumentationToggle").style.display = "none";
-                docs.style.display = "block";
             }
         }
         laptopMQ.addListener(laptopMQHandler);
         laptopMQHandler();
     }
 
+    function registerPortrait() {
+        var portraitMQHandler = function () {
+            
+        }
+
+        portraitMQ.addListener(portraitMQHandler);
+    }
+
+
+    function registerQueries() {
+        registerLaptop();
+    }
+
+
     WinJS.Namespace.define("MediaQueries", {
-        registerLaptop: registerLaptop
+        registerQueries: registerQueries,
+        portraitMQ: portraitMQ
     })
 
 })();
