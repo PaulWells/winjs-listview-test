@@ -29,27 +29,27 @@
 
         elem.addEventListener("dragstart", function (event) {
             event.preventDefault();
-        })
+        }, false);
 
         elem.addEventListener("dragover", function (event) {
             event.preventDefault();
-        });
+        }, false);
 
         elem.addEventListener("dragenter", function (event) {
             event.preventDefault();
             event.dataTransfer.dropEffect = "move";
-        });
+        }, false);
 
         elem.addEventListener("drop", function (event) {
             event.preventDefault();
             var indices = event.dataTransfer.getData("text").split(",");
             this.control.drop(indices);
             this.control.deactivate();
-        });
+        }, false);
     }
     
     var garbageCan = null;
     window.addEventListener("load", function () {
         garbageCan = new GarbageCan();
-    });
+    }, false);
 })();

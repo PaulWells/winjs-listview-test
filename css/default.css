@@ -3,6 +3,17 @@
     overflow: auto;
 }
 
+html, body {
+    height:100%;
+    width:100%;
+}
+
+.playWithListViewHeader .win-navigation-backbutton{
+    margin-left:1%;
+    margin-right:1%;
+    float: left;
+}
+
 
 .notificationBanner{
     position: absolute;
@@ -17,10 +28,18 @@
     margin-top:-25px;
 }
 
-h1{
+.playWithListViewHeader h1{
     margin-left: 2%;
-    margin-top: 3%;
-    font-size:3.5vw;
+    font-size:2.5vw;
+    display: inline;
+}
+
+.playWithListViewHeader{
+    position: absolute;
+    z-index: 1;
+    top: 45px;
+    left: 50px;
+    width: 600px;
 }
 
 .garbageCan{

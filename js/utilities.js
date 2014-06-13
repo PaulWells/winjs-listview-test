@@ -11,7 +11,25 @@
         }
     }
 
+    function getInnerText(elem) {
+        return elem.innerText || elem.textContent;
+    }
+
+    function setInnerText(elem, text) {
+        if (!elem) {
+            return;
+        }
+
+        if ("innerText" in elem) {
+            elem.innerText = text;
+        } else if ("textContent" in elem) {
+            elem.textContent = text;
+        }
+    }
+
     WinJS.Namespace.define("Utility", {
-        cancelEvent: cancelEvent
+        cancelEvent: cancelEvent,
+        getInnerText: getInnerText,
+        setInnerText: setInnerText
     });
 })();

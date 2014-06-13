@@ -3,6 +3,10 @@
 
     var app = WinJS.Application;
     hljs.initHighlightingOnLoad();
+    document.addEventListener("DOMContentLoaded", function () {
+        WinJS.Navigation.history.backStack = [{ location: "optionsPage" }];
+
+    }, false);
 
     app.onactivated = function (args) {
         var listView = document.querySelector(".listView");

@@ -5,19 +5,19 @@
         var listView = document.querySelector(".listView").winControl;
         listView.itemTemplate = Templates.textWithImageTemplate;
         listView.groupHeaderTemplate = Templates.textHeaderTemplate;
-        listView.addEventListener("iteminvoked", Notifications.itemInvoked);
-        listView.addEventListener("groupheaderinvoked", Notifications.groupHeaderInvoked);
-        listView.addEventListener("itemdragstart", itemDragStartHandler);
-        listView.addEventListener("itemdragenter", Notifications.itemDragEnter);
-        listView.addEventListener("itemdragend", itemDragEndHandler);
-        listView.addEventListener("itemdragbetween", Notifications.itemDragBetween);
-        listView.addEventListener("itemdragleave", Notifications.itemDragLeave);
-        listView.addEventListener("itemdragechanged", Notifications.itemDragChanged);
-        listView.addEventListener("itemdragdrop", Notifications.itemDragDrop);
-        listView.addEventListener("keyboardnavigating", Notifications.keyboardNavigating);
-        listView.addEventListener("loadingstatechanged", Notifications.loadingStateChanged);
-        listView.addEventListener("selectionchanging", Notifications.selectionChanging);
-        listView.addEventListener("selectionchanged", Notifications.selectionChanged);
+        listView.addEventListener("iteminvoked", Notifications.itemInvoked, false);
+        listView.addEventListener("groupheaderinvoked", Notifications.groupHeaderInvoked, false);
+        listView.addEventListener("itemdragstart", itemDragStartHandler, false);
+        listView.addEventListener("itemdragenter", Notifications.itemDragEnter, false);
+        listView.addEventListener("itemdragend", itemDragEndHandler, false);
+        listView.addEventListener("itemdragbetween", Notifications.itemDragBetween, false);
+        listView.addEventListener("itemdragleave", Notifications.itemDragLeave, false);
+        listView.addEventListener("itemdragechanged", Notifications.itemDragChanged, false);
+        listView.addEventListener("itemdragdrop", Notifications.itemDragDrop, false);
+        listView.addEventListener("keyboardnavigating", Notifications.keyboardNavigating, false);
+        listView.addEventListener("loadingstatechanged", Notifications.loadingStateChanged, false);
+        listView.addEventListener("selectionchanging", Notifications.selectionChanging, false);
+        listView.addEventListener("selectionchanged", Notifications.selectionChanged, false);
     }
 
     function initializeDocumentation() {
@@ -42,15 +42,23 @@
     }
 
     function addClickListeners() {
-        document.querySelector(".listViewDocumentationToggle").addEventListener("click", docListViewToggleHandler);
+        document.querySelector(".listViewDocumentationToggle").addEventListener("click", docListViewToggleHandler, false);
+        addBackButtonListener();
     }
+
+    function addBackButtonListener() {
+        document.querySelector(".win-navigation-backbutton").addEventListener("click", function () {
+            parent.postMessage("back", "*");
+        }, false);
+    }
+
 
     function docListViewToggleHandler(event) {
         var button = this;
         var listView = document.querySelector(".listViewSection");
         var docs = document.querySelector(".interactiveInfoSection");
         var docsButtonText = "Documentation";
-        if (this.innerText === docsButtonText) {
+        if (Utility.getInnerText(this) === docsButtonText) {
             WinJS.UI.Animation.exitContent(button, null).done(function () {
                 WinJS.UI.Animation.enterContent(button, null);
             })
@@ -58,7 +66,7 @@
                 listView.style.display = "none";
                 docs.style.display = "block";
                 WinJS.UI.Animation.enterContent(docs, null);
-                button.innerText = "ListView";
+                Utility.setInnerText(button, "ListView");
             });
         } else {
             WinJS.UI.Animation.exitContent(button, null).done(function () {
@@ -68,7 +76,7 @@
                 docs.style.display = "none";
                 listView.style.display = "block";
                 WinJS.UI.Animation.enterContent(listView, null);
-                button.innerText = docsButtonText;
+                Utility.setInnerText(button,docsButtonText);
             });
         }
     }
@@ -78,6 +86,7 @@
     WinJS.Namespace.define("Init", {
         initializeListView: initializeListView,
         initializeDocumentation: initializeDocumentation,
-        addClickListeners: addClickListeners
+        addClickListeners: addClickListeners,
+        addBackButtonListener: addBackButtonListener,
     });
 })();

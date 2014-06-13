@@ -9,12 +9,12 @@
             if (laptopMQ.matches) {
                 //smaller than laptop size
                 var button = document.querySelector(".listViewDocumentationToggle");
-                button.innerText = "Documentation";
+                Utility.setInnerText(button,"Documentation");
                 button.style.display = "block";
                 docs.style.display = "none";
             } else {
                 //larger than laptop size
-                if (document.querySelector(".listViewDocumentationToggle").innerText === "Documentation") {
+                if (Utility.getInnerText(document.querySelector(".listViewDocumentationToggle")) === "Documentation") {
                     docs.style.display = "block";
                     WinJS.UI.Animation.enterContent(docs, null);
                 } else {
@@ -27,14 +27,6 @@
         }
         laptopMQ.addListener(laptopMQHandler);
         laptopMQHandler();
-    }
-
-    function registerPortrait() {
-        var portraitMQHandler = function () {
-            
-        }
-
-        portraitMQ.addListener(portraitMQHandler);
     }
 
 

@@ -92,7 +92,9 @@
         var listView = document.querySelector(".listView").winControl;
         var firstVisibleIndex = listView.indexOfFirstVisible;
         var lastVisibleIndex = listView.indexOfLastVisible;
-        notifier.postStickyNotification("onLoadingStateChanged().  First visible item: " + firstVisibleIndex + ", last visible item: " + lastVisibleIndex);
+        if (notifier) {
+            notifier.postStickyNotification("onLoadingStateChanged().  First visible item: " + firstVisibleIndex + ", last visible item: " + lastVisibleIndex);
+        }
     }
 
     function selectionChanging(event) {
@@ -139,15 +141,15 @@
 
         var showNotification = function showNotification(notification) {
             banner.hidden = false;
-            banner.innerText = notification;
+            Utility.setInnerText(banner, notification);
             console.log(notification);
         }
     }
 
     var notifier = null
-    window.addEventListener("load", function () {
+    addEventListener("load", function () {
         notifier = new Notifier();
-    });
+    }, false);
 
 
     WinJS.Namespace.define("Notifications", {

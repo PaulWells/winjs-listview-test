@@ -10,7 +10,7 @@
         if (item.name.length > 22) {
             label.classList.add("largeLabel");
         }
-        label.innerText = item.name;
+        Utility.setInnerText(label, item.name);
         row.appendChild(label);
 
         var value = document.createElement("td");
@@ -35,13 +35,13 @@
         row.appendChild(value);
 
 
-        selector.addEventListener("change", function () {
+        selector.addEventListener("change", function (event) {
             changeListener(event, this, item.isAction);
-        });
+        }, false);
 
-        selector.addEventListener("click", function () {
+        selector.addEventListener("click", function (event) {
             clickListener(event, this);
-        })
+        }, false);
 
         if (item.isAction) {
             selector.selectedIndex = -1;
@@ -82,7 +82,7 @@
 
         option = option || selector.options[0];
 
-        var text = option.innerText;
+        var text = Utility.getInnerText(option);
         
         if (text.length > 12) {
             selector.classList.add("largeSelector");

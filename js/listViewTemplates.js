@@ -28,12 +28,12 @@
 
         //add title
         var title = document.createElement("h4");
-        title.innerText = item.data.title;
+        Utility.setInnerText(title,item.data.title);
         body.appendChild(title);
 
         //add display text
         var fulltext = document.createElement("h6");
-        fulltext.innerText = item.data.text;
+        Utility.setInnerText(fulltext,item.data.text);
         body.appendChild(fulltext);
 
         return template;
@@ -58,7 +58,7 @@
 
         var title = document.createElement("div");
         title.className = "titleDiv"
-        title.innerText = item.key;
+        Utility.setInnerText(title, item.key);
         template.appendChild(title);
         return template;
     }
@@ -75,7 +75,7 @@
 
         var template = buildTextHeaderTemplate(item);
         var button = document.createElement("button");
-        button.innerText = "Group " + item.data.title;
+        Utility.setInnerText(button, "Group " + item.data.title);
         template.appendChild(button);
         return template;
     }

@@ -5,9 +5,9 @@
     <title>ListView Test</title>
 
     <!-- WinJS references -->
-    <link href="lib/winjs/css/ui-dark.css" rel="stylesheet" />
-    <script src="lib/winjs/js/base.js"></script>
-    <script src="lib/winjs/js/ui.js"></script>
+    <link href="/lib/winjs/css/ui-dark.css" rel="stylesheet" />
+    <script src="/lib/winjs/js/base.js"></script>
+    <script src="/lib/winjs/js/ui.js"></script>
 
     <!-- Other Library references-->
     <script src="lib/highlight/highlight.pack.js"></script>
@@ -25,7 +25,7 @@
     <script src="js/initialize.js"></script>
     <script src="js/listViewTemplates.js"></script>
     <script src="js/layoutChanges.js"></script>
-    <script src="js/methods.js"></script>
+    <script src="js/listViewMethods.js"></script>
     <script src="js/notifications.js"></script>
     <script src="js/documentation.js"></script>
     <script src="js/controlBox.js"></script>
@@ -45,7 +45,12 @@
         </div>
     </div>
 
-    <h1>Play With ListView</h1>
+    <div class="playWithListViewHeader">
+        <button title="Back" class="win-navigation-backbutton" aria-label="Back" type="button" data-win-control="WinJS.UI.BackButton">
+            <span class="win-back"></span>
+        </button>
+        <h1>Play With ListView</h1>
+    </div>
 
     <div class="controlBoxArea">
     </div>
@@ -59,15 +64,17 @@
                  layout: {type: WinJS.UI.ListLayout}
              }">
         </div>
-
-       
     </div>
 
     <div class="interactiveInfoSection" >
         <h2 class="selectionTitle"></h2>
         <p class="selectionDescription"></p>
         <div class="sampleCodeContainer">
-            <p><pre><code class="selectionSampleCode" style="display:block"></code></pre></p>
+            <p>
+                <pre>
+                    <code class="selectionSampleCode" style="display:block"></code>
+                </pre>
+            </p>
         </div>
         <a class="selectionDocumentation" href="http://msdn.microsoft.com/en-us/library/windows/apps/dn301804.aspx" target="_blank">
             Learn more

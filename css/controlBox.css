@@ -8,7 +8,7 @@
 .controlBoxArea{
     width: 22%;
     float: left;
-    margin-top: 5%;
+    margin-top: 10%;
     padding-left: 1%;
     max-height: 70%;
     overflow: auto;
@@ -34,16 +34,17 @@
 }
 
 .controlBoxValue{
-    height: inherit;
+    height: 100%;
     padding: 0px;
     width: 46%;
+    background-color: #E8E8E8;
 }
 
 .controlBoxSelector{
     width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
-    height: inherit;
+    height: 100%;
     border: none;
     font-size: 1vw;
 }

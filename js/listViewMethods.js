@@ -6,7 +6,7 @@
     }
 
     function ensureMiddleItemVisible() {
-        ensureVisible(ListView.data.length / 2);
+        ensureVisible(Math.floor(ListView.data.length / 2));
     }
 
     function ensureLastItemVisible() {
