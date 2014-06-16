@@ -1,6 +1,8 @@
 ﻿(function () {
     "use strict";
 
+    /* Controls logic for dragging an item into a garbage can.  ListView must have 
+    itemsReorderable set to true or itemsDraggable set to true*/
     var GarbageCan = WinJS.Class.define(
         function GarbageCan() {
             var _elem = document.querySelector(".garbageCan");

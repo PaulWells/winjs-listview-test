@@ -70,10 +70,10 @@
               "    var template.appendChild(textArea);\n" +
               "    //add title and description\n" +
               "    var title = document.createElement(\"h4\");\n" +
-              "    title.innerText = item.title;\n" +
+              "    title.textContent = item.title;\n" +
               "    textArea.appendChild(title); \n" +
               "    var description = document.createElement(\"h6\"); \n" +
-              "    description.innerText = item.description;\n" +
+              "    description.textContent = item.description;\n" +
               "    template.appendChild(description);\n" +
               "    return template;\n" +
               "}\n\n" +
@@ -146,10 +146,10 @@
               "    var template.appendChild(textArea);\n" +
               "    //add title and description\n" +
               "    var title = document.createElement(\"h4\");\n" +
-              "    title.innerText = item.title;\n" +
+              "    title.textContent = item.title;\n" +
               "    textArea.appendChild(title); \n" +
               "    var description = document.createElement(\"h6\"); \n" +
-              "    description.innerText = item.description;\n" +
+              "    description.textContent = item.description;\n" +
               "    template.appendChild(description);\n" +
               "    //add WinJS Rating control\n" +
               "    var ratingElement = document.createElement(\"div\");\n" +
@@ -274,7 +274,7 @@
              "    var template = document.createElement(\"div\"); \n" +
              "    //add title\n" +
              "    var title = document.createElement(\"div\"); \n" +
-             "    title.innerText = item.data.title;\n" +
+             "    title.textContent = item.data.title;\n" +
              "    template.appendChild(title);\n" +
              "    return template;\n" +
              "}\n\n" +
@@ -298,7 +298,7 @@
             "    var template = document.createElement(\"div\"); \n" +
             "    //add title\n" +
             "    var title = document.createElement(\"div\"); \n" +
-            "    title.innerText = item.data.title;\n" +
+            "    title.textContent = item.data.title;\n" +
             "    template.appendChild(title);\n" +
             "    //add image\n" +
             "    var image = document.createElement(\"img\");\n" +
@@ -325,11 +325,11 @@
              "    var template = document.createElement(\"div\"); \n" +
              "    //add title\n" +
              "    var title = document.createElement(\"div\"); \n" +
-             "    title.innerText = item.data.title;\n" +
+             "    title.textContent = item.data.title;\n" +
              "    template.appendChild(title);\n" +
              "    //add button\n" +
              "    var button = document.createElement(\"button\");\n" +
-             "    button.innerText = \"Group \" + item.key;\n" +
+             "    button.textContent = \"Group \" + item.key;\n" +
              "    template.appendChild(button);\n" +
              "    return template;\n" +
              "}\n\n" +
@@ -352,7 +352,7 @@
              "    var template = document.createElement(\"div\"); \n" +
              "    //add title\n" +
              "    var title = document.createElement(\"div\"); \n" +
-             "    title.innerText = item.data.title;\n" +
+             "    title.textContent = item.data.title;\n" +
              "    template.appendChild(title);\n" +
              "    //add WinJS Rating control\n" +
              "    var ratingElement = document.createElement(\"div\");\n" +
@@ -410,7 +410,7 @@
     var dataChangesAdd = {
         id: 28,
         description: "To add an element to the ListView you only have to add an element to the WinJS.Binding.List that is assigned to the itemDataSourceproperty of the ListView.  This change will be immediatley reflected in the ListView.   If the ListView is grouped then the data is stored in a different order than it is shown, so adding an element to index 0 of the Binding List may not add an element to the beginning of the grouped list.  The groups will be dynamically updated as you make changes to the dataset.",
-        code: "/*data is the WinJS.Binding.List that you assigned to itemDataSource\nof your ListView*/\ndata.splice(index, 0, newItem);",
+        code: "/*data is the WinJS.Binding.List that you assigned to\nitemDataSource of your ListView*/\ndata.splice(index, 0, newItem);",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/Hh700774.aspx",
         title: "Adding An Element"
     }
@@ -418,7 +418,7 @@
     var dataChangesDelete = {
         id: 29,
         description: "To delete an element to the ListView you only have to remove the element from the WinJS.Binding.List that is assigned to the itemDataSource property of the ListView.  This change will be immediatley reflected in the ListView. If the ListView is grouped then the groups will be dynamically updated as you make changes to the dataset.",
-        code: "/*data is the WinJS.Binding.List that you assigned to itemDataSource\nof your ListView*/\ndata.splice(index, 1);",
+        code: "/*data is the WinJS.Binding.List that you assigned to\nitemDataSource of your ListView*/\ndata.splice(index, 1);",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/Hh700774.aspx",
         title: "Deleting An Element"
     }
@@ -426,7 +426,7 @@
     var dataChangesChange = {
         id: 30,
         description: "To change an element in the ListView you only have to change the element in the WinJS.Binding.List that is assigned to the itemDataSource property of the ListView.  This change will be immediatley reflected in the ListView.  If the ListView is grouped then the data is stored in a different order than it is shown, so changing the element at index 0 may not change the first element shown in the ListView.  The groups will be dynamically updated as you make changes to the dataset.",
-        code: "/*data is the WinJS.Binding.List that you assigned to itemDataSource\nof your ListView*/\ndata.splice(index, 1, newItem);",
+        code: "/*data is the WinJS.Binding.List that you assigned to\nitemDataSource of your ListView*/\ndata.splice(index, 1, newItem);",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/Hh700774.aspx",
         title: "Modifying An Element"
     }
@@ -458,7 +458,7 @@
     var ensureVisibleMiddle = {
         id: 34,
         description: "Ensure Visible is a ListView method that takes the index of an element in the ListView.  If necessary the ListView will scroll to the item.",
-        code: "//to ensure the middle item is visible\nvar listView = document.querySelector(\".listView\").winControl;\nlistView.ensureVisible(listView.itemDataSource.length / 2);",
+        code: "//to ensure the middle item is visible\nvar listView = document.querySelector(\".listView\").winControl;\nlistView.ensureVisible(Math.floor(ListView.data.length / 2));",
         link: "http://msdn.microsoft.com/en-us/library/windows/apps/br211820.aspx",
         title: "Ensure Visible"
     }
@@ -555,16 +555,6 @@
             element.style.display = "none";
             element.textContent = "";
         }
-    }
-
-    function sameInfo(info1, info2) {
-        var x = info1.title == info2.title;
-        if (info1.code && info2.code) {
-            var abc = info1.code.replace(/\n/g, "");
-            var y = info1.code.replace(/\n/g, "") == info2.code;
-        }
-        var z = info1.description == info2.description;
-        return (info1.title === info2.title && info1.code === info2.code && info1.description === info2.description);
     }
 
     WinJS.Namespace.define("Documentation", {

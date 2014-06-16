@@ -3,6 +3,15 @@
 
     function initializeListView() {
         var listView = document.querySelector(".listView").winControl;
+        addListViewEventListeners(listView);
+
+        WinJS.Namespace.define("ListView", {
+            listView: listView
+        });
+
+    }
+
+    function addListViewEventListeners(listView) {
         listView.itemTemplate = Templates.textWithImageTemplate;
         listView.groupHeaderTemplate = Templates.textHeaderTemplate;
         listView.addEventListener("iteminvoked", Notifications.itemInvoked, false);
@@ -27,7 +36,7 @@
     function itemDragStartHandler(event) {
         Notifications.itemDragStart(event);
 
-        //pass indices of dragged itmes into event so its available for later drag events
+        //pass indices of dragged items into event so its available for later drag events
         event.detail.dataTransfer.setData("text", event.detail.dragInfo.getIndices().toString());
         event.detail.dataTransfer.effectAllowed = "all";
 
@@ -40,7 +49,6 @@
     }
 
     function addClickListeners() {
-       
         addBackButtonListener();
     }
 

@@ -102,14 +102,11 @@
         data.setAt(index, item);
     }
 
+    /*Gets selected item indices or 0 if none are selected*/
     function getActionItemIndices(oneItem) {
-        var listView = document.querySelector(".listView").winControl;
-        var inputValue = document.querySelector(".textInput").value;
-        var indices = [];
-        if (inputValue) {
-            indices.push(parseInt(inputValue));
-        } else if (listView.selection.count() > 0) {
-            indices = listView.selection.getIndices();
+       var indices = [];
+       if (ListView.listView.selection.count() > 0) {
+            indices = LIstView.listView.selection.getIndices();
         } else {
             indices.push(0);
         }
@@ -134,10 +131,11 @@
     }
 
    function getListViewData() {
-        var listView = document.querySelector(".listView").winControl;
-        if (listView.groupDataSource) {
+       if (ListView.listView.groupDataSource) {
+           //ListView is grouped
             return ListView.groupedData;
-        } else {
+       } else {
+           //ListView is not grouped
             return ListView.data;
         }
     }

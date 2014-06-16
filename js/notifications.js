@@ -141,6 +141,7 @@
         return listView.groupDataSource === null || listView.groupDataSource === undefined;
     }
 
+    /* Controls logic for showing notifications */
     var Notifier = WinJS.Class.define(
         function () {
             var _banner = document.querySelector(".notificationBanner");
@@ -152,6 +153,7 @@
                 _timeOut = setTimeout(hideNotification, _interval);
             }
 
+            /*sticky notifications don't timeout*/
             this.postStickyNotification = function postStickyNotification(content, type) {
                 if (_timeOut) {
                     clearTimeout(_timeOut);

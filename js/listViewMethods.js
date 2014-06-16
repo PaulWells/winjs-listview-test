@@ -2,25 +2,19 @@
     "use strict";
 
     function ensureFirstItemVisible() {
-        ensureVisible(0);
+        ListView.listView.ensureVisible(0);
     }
 
     function ensureMiddleItemVisible() {
-        ensureVisible(Math.floor(ListView.data.length / 2));
+        ListView.listView.ensureVisible(Math.floor(ListView.data.length / 2));
     }
 
     function ensureLastItemVisible() {
-        ensureVisible(ListView.data.length - 1);
-    }
-
-    function ensureVisible(index){
-        var listView = document.querySelector(".listView").winControl;
-        listView.ensureVisible(index);
+        ListView.listView.ensureVisible(ListView.data.length - 1);
     }
 
     function scrollPosition(pixel) {
-        var listView = document.querySelector(".listView").winControl;
-        listView.scrollPosition = pixel;
+        ListView.listView.scrollPosition = pixel;
     }
 
     WinJS.Namespace.define("ListView.Methods", {

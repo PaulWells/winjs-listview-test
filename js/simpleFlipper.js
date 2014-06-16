@@ -1,6 +1,8 @@
 ﻿(function () {
     "use strict";
 
+    /*Controls logic for displaying ListView and Documentation either together
+     when the screen is large enough or one at a time if the screen is smaller*/
     var SimpleFlipper = WinJS.Class.define(
         function () {
             var _toggle = document.querySelector(".listViewDocumentationToggle");

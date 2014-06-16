@@ -7,6 +7,8 @@
 
         var label = document.createElement("td");
         label.classList.add("controlBoxLabel");
+
+        //largeLabel is used to apply a smaller font
         if (item.name.length > 22) {
             label.classList.add("largeLabel");
         }
@@ -51,6 +53,7 @@
 
     }
 
+    //invokes action on ListView
     function changeListener(event, selector, isAction) {
 
         if (selector.selectedIndex == -1) {
@@ -61,7 +64,6 @@
         var item = option.itemData;
         item.eventMethod();
         Documentation.updateInfo(item.info);
-
         if (isAction) {
             selector.selectedIndex = -1;
         }
@@ -70,6 +72,7 @@
         }
     }
 
+    //shows documentation
     function clickListener(event, selector) {
         if (selector.selectedIndex == -1) {
             return;
@@ -80,6 +83,7 @@
         Documentation.updateInfo(item.info);
     }
 
+    //if the option text is long then apply class to reduce font size
     function adjustTextSize(selector, option) {
 
         option = option || selector.options[0];

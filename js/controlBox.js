@@ -49,6 +49,8 @@
         return controlBox;
     }
 
+    /*To get behavior where selecting an action invokes the action but leaves the selector empty
+      e.g. selecting EnsureVisble*/
     function removeDefaultFromActionSelectors() {
         var selectors = document.querySelectorAll(".controlBoxActionSelector");
         for (var i = 0; i < selectors.length; i++) {

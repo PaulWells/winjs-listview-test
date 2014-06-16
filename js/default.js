@@ -9,13 +9,11 @@
     }, false);
 
     app.onactivated = function (args) {
-        var listView = document.querySelector(".listView");
         var data = new WinJS.Binding.List(ListView.Data.createData());
         var groupedData = ListView.Data.groupData(data);
         WinJS.Namespace.define("ListView", {
             data: data,
             groupedData: groupedData,
-            listView: listView
         });
 
         args.setPromise(WinJS.UI.processAll().then(function () {

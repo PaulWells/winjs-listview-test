@@ -2,77 +2,66 @@
     "use strict";
    
    function itemsReorderable(reorderable) {
-       var listView = document.querySelector(".listView").winControl;
-       listView.itemsReorderable = reorderable;
+       ListView.listView.itemsReorderable = reorderable;
    }
 
    function tapBehavior(behavior) {
-       var listView = document.querySelector(".listView").winControl;
-       listView.tapBehavior = behavior;
-       
+       ListView.listView.tapBehavior = behavior;
    }
 
    function selectHeaderTapBehavior(behavior) {
-       var listView = document.querySelector(".listView").winControl;
-       listView.groupHeaderTapBehavior = behavior;
+       ListView.listView.groupHeaderTapBehavior = behavior;
    }
 
    function selectionMode(mode) {
-       var listView = document.querySelector(".listView").winControl;
-       listView.selectionMode = mode;
+       ListView.listView.selectionMode = mode;
    }
 
    function changeItemTemplate(templateName) {
        
-       var listView = document.querySelector(".listView").winControl;
-
         switch (templateName) {
             case "textWithImage":
-                listView.itemTemplate = Templates.textWithImageTemplate;
+                ListView.listView.itemTemplate = Templates.textWithImageTemplate;
                 break;
             case "image":
-                listView.itemTemplate = Templates.imageTemplate;
+                ListView.listView.itemTemplate = Templates.imageTemplate;
                 break;
             case "inline":
-                listView.itemTemplate = document.querySelector(".listIconTextTemplate");
+                ListView.listView.itemTemplate = document.querySelector(".listIconTextTemplate");
                 break;
             case "interactive":
-                listView.itemTemplate = Templates.interactiveTemplate;
+                ListView.listView.itemTemplate = Templates.interactiveTemplate;
                 break;
        }
 
    }
 
    function changeHeaderTemplate(templateType) {
-        var listView = document.querySelector(".listView").winControl;
 
         switch (templateType) {
             case "text":
-                listView.groupHeaderTemplate = Templates.textHeaderTemplate;
+                ListView.listView.groupHeaderTemplate = Templates.textHeaderTemplate;
                 break;
             case "textWithImage":
-                listView.groupHeaderTemplate = Templates.textWithImageHeaderTemplate;
+                ListView.listView.groupHeaderTemplate = Templates.textWithImageHeaderTemplate;
                 break;
             case "button":
-                listView.groupHeaderTemplate = Templates.buttonHeaderTemplate;
+                ListView.listView.groupHeaderTemplate = Templates.buttonHeaderTemplate;
                 break;
             case "interactive":
-                listView.groupHeaderTemplate = Templates.interactiveHeaderTemplate;
+                ListView.listView.groupHeaderTemplate = Templates.interactiveHeaderTemplate;
         }
 
    }
 
    function swipeBehavior(behavior) {
-       var listView = document.querySelector(".listView").winControl;
-       listView.swipeBehavior = behavior;
+       ListView.listView.swipeBehavior = behavior;
    }
 
    function itemsDraggable(draggable) {
-       var listView = document.querySelector(".listView").winControl;
-       listView.itemsDraggable = draggable;
+       ListView.listView.itemsDraggable = draggable;
    }
 
-    // Public interface.
     WinJS.Namespace.define("Config", {
 
         itemsReorderable: itemsReorderable,
