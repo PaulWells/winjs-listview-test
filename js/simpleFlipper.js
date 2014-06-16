@@ -42,6 +42,7 @@
                 WinJS.UI.Animation.exitContent(_docs, null).done(function () {
                     _docs.style.display = "none";
                     _listView.style.display = "block";
+                    _listView.querySelector(".listView").winControl.forceLayout();
                     WinJS.UI.Animation.enterContent(_listView, null);
                     _toggle.textContent = _docsText;
                 });
