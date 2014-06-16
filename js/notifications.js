@@ -147,22 +147,37 @@
             var _banner = document.querySelector(".notificationBanner");
             var _timeOut = null;
             var _interval = 4000;
+            var _busy = false;
 
             this.postNotification = function postNotification(content, type) {
+                if (_busy) {
+                    return;
+                }
+
                 this.postStickyNotification(content, type);
                 _timeOut = setTimeout(hideNotification, _interval);
             }
 
             /*sticky notifications don't timeout*/
             this.postStickyNotification = function postStickyNotification(content, type) {
+
+                if (_busy) {
+                    return;
+                }
+
                 if (_timeOut) {
                     clearTimeout(_timeOut);
                 }
                 showNotification(content, type);
-            }
 
+                if (type === Notifier.NotificationTypes.warning) {
+                    _busy = true;
+                }
+            }
+            
             var hideNotification = function hideNotification() {
                 _banner.hidden = true;
+                _busy = false;
             }
 
             var showNotification = function showNotification(notification, type) {
