@@ -51,9 +51,7 @@ html, body {
 
 .listViewDocumentationToggle{
     font-size: 1.5vw;
-    margin-top: -10px;
-    margin-left: -40px;
-    float: left;
+    margin-top: 4%;
 }
 
 @media (max-width: 1366px) and (min-width: 1101px) {
@@ -80,6 +78,9 @@ html, body {
 @media (max-width: 850px) and (min-height: 600px) {
     .listViewDocumentationToggle{
         font-size: 2vw;
+        margin-top: -10px;
+        margin-left: -40px;
+        float: left;
     }
 
      .garbageCan{

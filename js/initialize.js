@@ -31,18 +31,16 @@
         event.detail.dataTransfer.setData("text", event.detail.dragInfo.getIndices().toString());
         event.detail.dataTransfer.effectAllowed = "all";
 
-        var garbageCan = document.querySelector(".garbageCan").control;
-        garbageCan.activate();
+        Dragging.garbageCan.activate();
     }
 
     function itemDragEndHandler(event) {
         Notifications.itemDragEnd(event);
-        var garbageCan = document.querySelector(".garbageCan").control;
-        garbageCan.deactivate();
+        Dragging.garbageCan.deactivate();
     }
 
     function addClickListeners() {
-        document.querySelector(".listViewDocumentationToggle").addEventListener("click", docListViewToggleHandler, false);
+       
         addBackButtonListener();
     }
 
@@ -51,38 +49,7 @@
             parent.postMessage("back", "*");
         }, false);
     }
-
-
-    function docListViewToggleHandler(event) {
-        var button = this;
-        var listView = document.querySelector(".listViewSection");
-        var docs = document.querySelector(".interactiveInfoSection");
-        var docsButtonText = "Documentation";
-        if (Utility.getInnerText(this) === docsButtonText) {
-            WinJS.UI.Animation.exitContent(button, null).done(function () {
-                WinJS.UI.Animation.enterContent(button, null);
-            })
-            WinJS.UI.Animation.exitContent(listView, null).done(function () {
-                listView.style.display = "none";
-                docs.style.display = "block";
-                WinJS.UI.Animation.enterContent(docs, null);
-                Utility.setInnerText(button, "ListView");
-            });
-        } else {
-            WinJS.UI.Animation.exitContent(button, null).done(function () {
-                WinJS.UI.Animation.enterContent(button, null);
-            })
-            WinJS.UI.Animation.exitContent(docs, null).done(function () {
-                docs.style.display = "none";
-                listView.style.display = "block";
-                WinJS.UI.Animation.enterContent(listView, null);
-                Utility.setInnerText(button,docsButtonText);
-            });
-        }
-    }
-
     
-
     WinJS.Namespace.define("Init", {
         initializeListView: initializeListView,
         initializeDocumentation: initializeDocumentation,

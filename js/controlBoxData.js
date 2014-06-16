@@ -7,13 +7,13 @@
                 {
                     name: "List",
                     className: "layoutList",
-                    eventMethod: function () { Config.setLayout(new WinJS.UI.ListLayout()) },
+                    eventMethod: function () { Layout.setLayout(new WinJS.UI.ListLayout()) },
                     info: Documentation.listLayout
                 },
                 {
                     name: "Grid",
                     className: "layoutGrid",
-                    eventMethod: function () { Config.setLayout(new WinJS.UI.GridLayout()) },
+                    eventMethod: function () { Layout.setLayout(new WinJS.UI.GridLayout()) },
                     info: Documentation.gridLayout
                 }
             ]
@@ -23,13 +23,13 @@
                 {
                     name: "Vertical",
                     className: "orientationVertical",
-                    eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.vertical) },
+                    eventMethod: function () { Layout.setOrientation(WinJS.UI.Orientation.vertical) },
                     info: Documentation.verticalOrientation
                 },
                 {
                     name: "Horizontal",
                     className: "orientationHorizontal",
-                    eventMethod: function () { Config.setOrientation(WinJS.UI.Orientation.horizontal) },
+                    eventMethod: function () { Layout.setOrientation(WinJS.UI.Orientation.horizontal) },
                     info: Documentation.horizontalOrientation
                 }
             ]
@@ -166,13 +166,13 @@
                 {
                     name: "False",
                     className: "groupItemsNo",
-                    eventMethod: function () { Config.groupItems(false) },
+                    eventMethod: function () { Layout.groupItems(false) },
                     info: Documentation.groupItemsNo
                 },
                 {
                     name: "True",
                     className: "groupItemsYes",
-                    eventMethod: function () { Config.groupItems(true) },
+                    eventMethod: function () { Layout.groupItems(true) },
                     info: Documentation.groupItemsYes
                 }
             ]
@@ -183,25 +183,29 @@
                     name: "Text",
                     className: "groupHeaderTemplateText",
                     eventMethod: function () { Config.changeHeaderTemplate("text") },
-                    info: Documentation.groupHeaderTemplateText
+                    info: Documentation.groupHeaderTemplateText,
+                    notify: Notifications.groupHeaderTemplateWarning
                 },
                 {
                     name: "Text With Image",
                     className: "groupHeaderTemplateTextWithImage",
                     eventMethod: function () { Config.changeHeaderTemplate("textWithImage") },
-                    info: Documentation.groupHeaderTemplateTextWithImage
+                    info: Documentation.groupHeaderTemplateTextWithImage,
+                    notify: Notifications.groupHeaderTemplateWarning
                 },
                 {
                     name: "Button",
                     className: "groupHeaderTemplateButton",
                     eventMethod: function () { Config.changeHeaderTemplate("button") },
-                    info: Documentation.groupHeaderTemplateButton
+                    info: Documentation.groupHeaderTemplateButton,
+                    notify: Notifications.groupHeaderTemplateWarning
                 },
                 {
                     name: "Interactive",
                     className: "groupHeaderTemplateInteractive",
                     eventMethod: function () { Config.changeHeaderTemplate("interactive") },
-                    info: Documentation.groupHeaderTemplateInteractive
+                    info: Documentation.groupHeaderTemplateInteractive,
+                    notify: Notifications.groupHeaderTemplateWarning
                 }
             ]
         },
@@ -210,14 +214,16 @@
                 {
                     name: "Top",
                     className: "groupHeaderPositionTop",
-                    eventMethod: function () { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.top) },
-                    info: Documentation.groupHeaderPositionTop
+                    eventMethod: function () { Layout.selectHeaderPosition(WinJS.UI.HeaderPosition.top) },
+                    info: Documentation.groupHeaderPositionTop,
+                    notify: Notifications.groupHeaderPositionWarning
                 },
                 {
                     name: "Left",
                     className: "groupHeaderPositionLeft",
-                    eventMethod: function () { Config.selectHeaderPosition(WinJS.UI.HeaderPosition.left) },
-                    info: Documentation.groupHeaderPositionLeft
+                    eventMethod: function () { Layout.selectHeaderPosition(WinJS.UI.HeaderPosition.left) },
+                    info: Documentation.groupHeaderPositionLeft,
+                    notify: Notifications.groupHeaderPositionWarning
                 }
             ]
         },
@@ -227,13 +233,15 @@
                     name: "Invoke",
                     className: "groupHeaderTapBehaviorInvoke",
                     eventMethod: function () { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.invoke) },
-                    info: Documentation.groupHeaderTapBehaviorInvoke
+                    info: Documentation.groupHeaderTapBehaviorInvoke,
+                    notify: Notifications.groupHeaderTapBehaviorWarning
                 },
                 {
                     name: "None",
                     className: "groupHeaderTapBehaviorNone",
                     eventMethod: function () { Config.selectHeaderTapBehavior(WinJS.UI.GroupHeaderTapBehavior.none) },
-                    info: Documentation.groupHeaderTapBehaviorNone
+                    info: Documentation.groupHeaderTapBehaviorNone,
+                    notify: Notifications.groupHeaderTapBehaviorWarning
                 }
             ]
         },

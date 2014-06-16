@@ -30,7 +30,7 @@
         listView.layout.groupHeaderPosition = position;
     }
 
-    WinJS.Namespace.define("Config", {
+    WinJS.Namespace.define("Layout", {
 
         setOrientation: setOrientation,
         groupItems: groupItems,

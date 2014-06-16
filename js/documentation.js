@@ -511,9 +511,9 @@
         var link = infoSection.querySelector(".selectionDocumentation");
 
         var currentInfo = {
-            title: Utility.getInnerText(title),
-            code: Utility.getInnerText(code),
-            description: Utility.getInnerText(description)
+            title: title.textContent,
+            code: code.textContent,
+            description: description.textContent
         }
 
         //don't update docs if they don't change
@@ -542,7 +542,7 @@
             element.innerHTML = info;
         } else {
             element.hidden = true;
-            Utility.setInnerText(element, "");
+            element.textContent = "";
         }
     }
 
@@ -552,7 +552,7 @@
             element.innerHTML = hljs.highlightAuto(code).value;
         } else {
             element.style.display = "none";
-            Utility.setInnerText(element, "");
+            element.textContent = "";
         }
     }
 

@@ -10,7 +10,7 @@
         if (item.name.length > 22) {
             label.classList.add("largeLabel");
         }
-        Utility.setInnerText(label, item.name);
+        label.textContent =  item.name;
         row.appendChild(label);
 
         var value = document.createElement("td");
@@ -64,6 +64,8 @@
 
         if (isAction) {
             selector.selectedIndex = -1;
+        }
+        if ("notify" in item) {
             item.notify();
         }
     }
@@ -82,7 +84,7 @@
 
         option = option || selector.options[0];
 
-        var text = Utility.getInnerText(option);
+        var text = option.textContent;
         
         if (text.length > 12) {
             selector.classList.add("largeSelector");

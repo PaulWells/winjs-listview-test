@@ -118,33 +118,71 @@
         notifier.postStickyNotification("onSelectionChanged().  " + notification);
     }
 
-    function Notifier() {
-        var banner = document.querySelector(".notificationBanner");
-        var timeOut = null;
-        var interval = 4000;
-
-        this.postNotification = function postNotification(content) {
-            this.postStickyNotification(content);
-            timeOut = setTimeout(hideNotification, interval);
-        }
-
-        this.postStickyNotification = function postStickyNotification(content) {
-            if (timeOut) {
-                clearTimeout(timeOut);
-            }
-            showNotification(content);
-        }
-
-        var hideNotification = function hideNotification() {
-            banner.hidden = true;
-        }
-
-        var showNotification = function showNotification(notification) {
-            banner.hidden = false;
-            Utility.setInnerText(banner, notification);
-            console.log(notification);
+    function groupHeaderPositionWarning(event) {
+        if (listViewIsNotGrouped()) {
+            notifier.postNotification("Group header position changed, enable grouping to see the group header.", Notifier.NotificationTypes.warning);
         }
     }
+
+    function groupHeaderTemplateWarning(event) {
+        if (listViewIsNotGrouped()) {
+            notifier.postNotification("Group header template changed, enable grouping to see the group header template.", Notifier.NotificationTypes.warning);
+        }
+    }
+
+    function groupHeaderTapBehaviorWarning(event) {
+        if(listViewIsNotGrouped()){
+            notifier.postNotification("Group header tap behavior changed, enable grouping to see the group header.", Notifier.NotificationTypes.warning);
+         }
+    }
+
+    function listViewIsNotGrouped() {
+        var listView = document.querySelector(".listView").winControl;
+        return listView.groupDataSource === null || listView.groupDataSource === undefined;
+    }
+
+    var Notifier = WinJS.Class.define(
+        function () {
+            var _banner = document.querySelector(".notificationBanner");
+            var _timeOut = null;
+            var _interval = 4000;
+
+            this.postNotification = function postNotification(content, type) {
+                this.postStickyNotification(content, type);
+                _timeOut = setTimeout(hideNotification, _interval);
+            }
+
+            this.postStickyNotification = function postStickyNotification(content, type) {
+                if (_timeOut) {
+                    clearTimeout(_timeOut);
+                }
+                showNotification(content, type);
+            }
+
+            var hideNotification = function hideNotification() {
+                _banner.hidden = true;
+            }
+
+            var showNotification = function showNotification(notification, type) {
+                var color = (type ? type.color : Notifier.NotificationTypes.info.color);
+                _banner.style.backgroundColor = color;
+                _banner.hidden = false;
+                _banner.textContent = notification;
+                console.log(notification);
+            }
+        },
+        {},
+        {
+            NotificationTypes: {
+                info: {
+                    color: "#007ACC"
+                },
+                warning: {
+                    color: "#CA5100"
+                }
+            }
+        }
+    );
 
     var notifier = null
     addEventListener("load", function () {
@@ -172,6 +210,9 @@
         keyboardNavigating: keyboardNavigating,
         loadingStateChanged: loadingStateChanged,
         selectionChanging: selectionChanging,
-        selectionChanged: selectionChanged
+        selectionChanged: selectionChanged,
+        groupHeaderPositionWarning: groupHeaderPositionWarning,
+        groupHeaderTemplateWarning: groupHeaderTemplateWarning,
+        groupHeaderTapBehaviorWarning: groupHeaderTapBehaviorWarning
     });
 })();
