@@ -9,6 +9,10 @@
             listView: listView
         });
 
+        window.addEventListener("resize", function () {
+            ListView.listView.recalculateItemPosition();
+        }, false);
+
     }
 
     function addListViewEventListeners(listView) {
@@ -50,12 +54,18 @@
 
     function addClickListeners() {
         addBackButtonListener();
+        addGitHubListener();
     }
 
     function addBackButtonListener() {
         document.querySelector(".win-navigation-backbutton").addEventListener("click", function () {
             parent.postMessage("back", "*");
         }, false);
+    }
+
+    function addGitHubListener() {
+        document.querySelector(".gitHubIssueOpener").addEventListener("click", function () {
+        });
     }
     
     WinJS.Namespace.define("Init", {

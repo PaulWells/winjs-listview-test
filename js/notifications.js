@@ -118,6 +118,14 @@
         notifier.postStickyNotification("onSelectionChanged().  " + notification);
     }
 
+    function dataSourceSmall() {
+        notifier.postNotification("Data source changed to 100 items");
+    }
+
+    function dataSourceLarge() {
+        notifier.postNotification("Data source changed to 1000 items");
+    }
+
     function groupHeaderPositionWarning(event) {
         if (listViewIsNotGrouped()) {
             notifier.postNotification("Group header position changed, enable grouping to see the group header.", Notifier.NotificationTypes.warning);
@@ -137,8 +145,7 @@
     }
 
     function listViewIsNotGrouped() {
-        var listView = document.querySelector(".listView").winControl;
-        return listView.groupDataSource === null || listView.groupDataSource === undefined;
+        return ListView.listView.groupDataSource === null || ListView.listView.groupDataSource === undefined;
     }
 
     /* Controls logic for showing notifications */
@@ -228,6 +235,8 @@
         loadingStateChanged: loadingStateChanged,
         selectionChanging: selectionChanging,
         selectionChanged: selectionChanged,
+        dataSourceSmall: dataSourceSmall,
+        dataSourceLarge: dataSourceLarge,
         groupHeaderPositionWarning: groupHeaderPositionWarning,
         groupHeaderTemplateWarning: groupHeaderTemplateWarning,
         groupHeaderTapBehaviorWarning: groupHeaderTapBehaviorWarning

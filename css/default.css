@@ -54,11 +54,28 @@ html, body {
     margin-top: 4%;
 }
 
+.gitHubIssueOpener{
+    position: absolute;
+    top: 100%;
+    margin-top: -60px;
+    left:100%;
+    margin-left: -150px;
+}
+
+.win-navigation-backbutton{
+    width:5%;
+    height:5%;
+}
+
 @media (max-width: 1366px) and (min-width: 1101px) {
     .garbageCan{
        margin-right: 5px;
        margin-top: 30%;
        font-size: 7vw;
+    }
+
+    .playWithListViewHeader h1{
+        font-size:3vw;
     }
 
 }
@@ -72,6 +89,10 @@ html, body {
         font-size: 7vw;
         margin-top: 30%;
         margin-right: 5px;
+    }
+
+     .playWithListViewHeader h1{
+        font-size:4vw;
     }
 }
 
@@ -89,8 +110,8 @@ html, body {
         margin-right: 10px;
     }
 
-    h1{
-        font-size:6vw;
+    .playWithListViewHeader h1{
+        font-size:4vw;
     }
 }
 

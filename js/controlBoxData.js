@@ -246,6 +246,24 @@
             ]
         },
         {
+            name: "Data Source", subOptions: [
+                {
+                    name: "100 Items",
+                    className: "dataSourceSmallList",
+                    eventMethod: ListView.Data.assignSmallDataset,
+                    info: Documentation.dataSourceAssign,
+                    notify: Notifications.dataSourceSmall
+                },
+                {
+                    name: "10000 Items",
+                    className: "dataSourceLargeList",
+                    eventMethod: ListView.Data.assignLargeDataset,
+                    info: Documentation.dataSourceAssign,
+                    notify: Notifications.dataSourceLarge
+                }
+            ]
+        },
+        {
             name: "Data Changes", isAction: true, subOptions: [
                 {
                     name: "Add Element",

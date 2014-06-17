@@ -503,6 +503,14 @@
         title: "Swipe Behavior: Select"
     }
 
+    var dataSourceAssign = {
+        id: 40,
+        description: "Assign data to a list by wrapping it in a WinJS.Binding.List and then assigning that to the itemDataSource property of the ListView.",
+        code: "var listView = document.querySelector(\".listView\").winControl;\n//data is an array containing the items to be displayed in the ListView\nlistView.itemDataSource = new WinJS.Binding.List(data);",
+        link: "http://try.buildwinjs.com/#listview:edits",
+        title: "Datasource"
+    }
+
     function updateInfo(info) {
 
         var infoSection = document.querySelector(".interactiveInfoSection");
@@ -598,7 +606,8 @@
         itemsDraggableYes: itemsDraggableYes,
         itemsDraggableNo: itemsDraggableNo,
         swipeBehaviorSelect: swipeBehaviorSelect,
-        swipeBehaviorNone: swipeBehaviorNone
+        swipeBehaviorNone: swipeBehaviorNone,
+        dataSourceAssign: dataSourceAssign
 
     });
 

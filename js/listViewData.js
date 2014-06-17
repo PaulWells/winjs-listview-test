@@ -24,8 +24,8 @@
 
         var items = [];
         var itemList = generateItemList();
-        //Generate 100 items
-        for (var i = 0; i < 100 ; i++) {
+        //Generate 10000 items
+        for (var i = 0; i < 10000 ; i++) {
             items.push(generateItem(itemList));
         }
         return items;
@@ -61,10 +61,9 @@
     }
 
     function addElementAt(index) {
-        var listView = document.querySelector(".listView").winControl;
         var data = getListViewData();
         var newItem;
-        if (listView.groupDataSource) {
+        if (ListView.listView.groupDataSource) {
             var item = data.getItem(index);
             newItem = cloneItem(item);
         } else {
@@ -130,15 +129,44 @@
         }
     }
 
-   function getListViewData() {
+    function getListViewData() {
+       var isSmall = document.querySelector(".dataSourceSmallList") !== null;
        if (ListView.listView.groupDataSource) {
            //ListView is grouped
-            return ListView.groupedData;
+           if (isSmall) {
+               return ListView.smallGroupedData;
+           } else {
+               return ListView.groupedData;
+           }
        } else {
            //ListView is not grouped
-            return ListView.data;
+           if (isSmall) {
+               return ListView.smallData;
+           } else {
+               return ListView.data;
+           }
         }
-    }
+   }
+
+   function assignSmallDataset() {
+       if (ListView.listView.groupDataSource) {
+           ListView.listView.itemDataSource = ListView.smallGroupedData.dataSource;
+           ListView.listView.groupDataSource = ListView.smallGroupedData.groups.dataSource;
+       } else {
+           ListView.listView.groupDataSource = null;
+           ListView.listView.itemDataSource = ListView.smallData.dataSource;
+       }
+   }
+
+   function assignLargeDataset() {
+       if (ListView.listView.groupDataSource) {
+           ListView.listView.itemDataSource = ListView.groupedData.dataSource;
+           ListView.listView.groupDataSource = ListView.groupedData.groups.dataSource;
+       } else {
+           ListView.listView.groupDataSource = null;
+           ListView.listView.itemDataSource = ListView.data.dataSource;
+       }
+   }
 
     WinJS.Namespace.define("ListView.Data", {
         createData: createData,
@@ -146,5 +174,7 @@
         addElement: addElement,
         deleteElement: deleteElement,
         changeElement: changeElement,
+        assignSmallDataset: assignSmallDataset,
+        assignLargeDataset: assignLargeDataset
     });
 })();

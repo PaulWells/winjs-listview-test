@@ -27,7 +27,7 @@
         for (var i = 0; i < options.length; i++) {
             var option = document.createElement("option");
             option.text = options[i].name;
-            
+            option.labelTitle = item.name;
             option.itemData = item.subOptions[i];
             selector.add(option);
         }
@@ -66,6 +66,8 @@
         Documentation.updateInfo(item.info);
         if (isAction) {
             selector.selectedIndex = -1;
+        } else {
+            GitHub.issueOpener.update(option.labelTitle, item.name)
         }
         if ("notify" in item) {
             item.notify();

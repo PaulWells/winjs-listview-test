@@ -20,7 +20,6 @@
 }
 
 
-
 .controlBoxLabel{
     width: 54%;
     padding: 1%;
@@ -111,6 +110,7 @@
     .controlBoxArea{
         padding-left: 2%;
         width: 98%;
+        margin-top: 15%;
     }
 
      .controlBoxLabel{
