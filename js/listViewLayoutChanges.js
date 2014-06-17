@@ -6,8 +6,8 @@
     }
 
     function setLayout(layout) {
-        layout.orientation = listView.layout.orientation;
-        layout.groupHeaderPosition = listView.layout.groupHeaderPosition;
+        layout.orientation = ListView.listView.layout.orientation;
+        layout.groupHeaderPosition = ListView.listView.layout.groupHeaderPosition;
         ListView.listView.layout = layout;
     }
 
