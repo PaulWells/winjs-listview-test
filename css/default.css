@@ -99,7 +99,7 @@ html, body {
 @media (max-width: 850px) and (min-height: 600px) {
     .listViewDocumentationToggle{
         font-size: 2vw;
-        margin-top: -10px;
+        /*margin-top: -10px;*/
         margin-left: -40px;
         float: left;
     }
@@ -112,6 +112,11 @@ html, body {
 
     .playWithListViewHeader h1{
         font-size:4vw;
+    }
+
+    .gitHubIssueOpener{
+        font-size: 2vw;
+        margin-left: -130px;
     }
 }
 
