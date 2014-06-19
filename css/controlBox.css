@@ -8,7 +8,7 @@
 .controlBoxArea{
     width: 22%;
     float: left;
-    margin-top: 10%;
+    margin-top: 5%;
     padding-left: 1%;
     max-height: 70%;
     overflow: auto;
@@ -59,10 +59,6 @@
         padding-left: 2%;
     }
 
-    .controlBox{
-        margin-top: 0px;
-    }
-   
     .controlBoxLabel{
         font-size: 1.3vw;
     }
@@ -86,9 +82,6 @@
         padding-left: 2%;
     }
 
-    .controlBox{
-        margin-top: 0px;
-    }
     .controlBoxLabel{
         font-size: 1.3vw;
     }
@@ -117,7 +110,7 @@
     .controlBoxArea{
         padding-left: 2%;
         width: 98%;
-        margin-top: 15%;
+        margin-top: 5%;
     }
 
      .controlBoxLabel{

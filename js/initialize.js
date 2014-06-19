@@ -53,14 +53,7 @@
     }
 
     function addClickListeners() {
-        addBackButtonListener();
         addGitHubListener();
-    }
-
-    function addBackButtonListener() {
-        document.querySelector(".win-navigation-backbutton").addEventListener("click", function () {
-            parent.postMessage("back", "*");
-        }, false);
     }
 
     function addGitHubListener() {
@@ -72,6 +65,5 @@
         initializeListView: initializeListView,
         initializeDocumentation: initializeDocumentation,
         addClickListeners: addClickListeners,
-        addBackButtonListener: addBackButtonListener,
     });
 })();
