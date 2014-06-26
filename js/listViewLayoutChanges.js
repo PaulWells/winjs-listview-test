@@ -13,12 +13,36 @@
 
     function groupItems(groupItems) {
         if (groupItems) {
-            ListView.listView.itemDataSource = ListView.groupedData.dataSource;
-            ListView.listView.groupDataSource = ListView.groupedData.groups.dataSource;
+            getGroupedData().done(function (groupedData) {
+                ListView.listView.itemDataSource = groupedData.dataSource;
+                ListView.listView.groupDataSource = groupedData.groups.dataSource;
+            });
         } else {
-            ListView.listView.groupDataSource = null;
-            ListView.listView.itemDataSource = ListView.data.dataSource;
+            getData().done(function (itemData) {
+                ListView.listView.groupDataSource = null;
+                ListView.listView.itemDataSource = itemData.dataSource;
+            });
         }
+    }
+
+    function getGroupedData() {
+        return ListView.listView.itemDataSource.getCount().then(function (count) {
+            if (count === ListView.smallData.length) {
+                return ListView.smallGroupedData;
+            } else {
+                return ListView.groupedData;
+            }
+        });
+    }
+
+    function getData() {
+        return ListView.listView.itemDataSource.getCount().then(function (count) {
+            if (count === ListView.smallData.length) {
+                return ListView.smallData;
+            } else {
+                return ListView.data;
+            }
+        });
     }
 
     function selectHeaderPosition(position) {

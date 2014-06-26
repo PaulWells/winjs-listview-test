@@ -1,8 +1,8 @@
 ﻿(function () {
     "use strict";
 
-    /* Controls logic for dragging an item into a garbage can.  ListView must have 
-    itemsReorderable set to true or itemsDraggable set to true*/
+    //Controls logic for dragging an item into a garbage can.  ListView must have 
+    //itemsReorderable set to true or itemsDraggable set to true
     var GarbageCan = WinJS.Class.define(
         function GarbageCan() {
             var _elem = document.querySelector(".garbageCan");
@@ -32,33 +32,35 @@
 
             this.activate = function () {
                 WinJS.UI.Animation.enterContent(_elem, null);
-            }
+            };
 
             this.deactivate = function () {
                 WinJS.UI.Animation.exitContent(_elem, null);
-            }
+            };
 
             this.drop = function (indices) {
-
-                var items = []
                 for (var i = indices.length - 1; i >= 0; i--) {
-                    //remove item from ListView datasource
-                    var item = ListView.data.splice(indices[i], 1)[0];
-                    items.unshift(item);
+                    var usesSmallData = (ListView.listView.itemDataSource === ListView.smallData.dataSource);
+                    if (usesSmallData) {
+                        var data = ListView.smallData;
+                    } else {
+                        var data = ListView.data;
+                    }
+                    var item = data.splice(indices[i], 1)[0];
                 }
             }
-        },
-        {},
-        {}
+        }
     );
 
     
     var garbageCan = null;
-    addEventListener("load", function () {
-        Dragging.garbageCan = new GarbageCan();
-    }, false);
+
+    var initGarbageCan = function () {
+        Dragging.garbageCan = Dragging.garbageCan || new GarbageCan();
+    }
 
     WinJS.Namespace.define("Dragging", {
-        garbageCan: garbageCan
+        garbageCan: garbageCan,
+        initGarbageCan: initGarbageCan
     })
 })();

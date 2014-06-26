@@ -1,16 +1,16 @@
 ﻿(function () {
     "use strict";
     function controlBoxRowTemplate(item) {
-
         var row = document.createElement("tr");
         row.className = "controlBoxRow";
 
         var label = document.createElement("td");
         label.classList.add("controlBoxLabel");
 
-        //largeLabel is used to apply a smaller font
+        // LongLabel is applied to labels with a large number of
+        // characters to reduce the font size
         if (item.name.length > 22) {
-            label.classList.add("largeLabel");
+            label.classList.add("longLabel");
         }
         label.textContent =  item.name;
         row.appendChild(label);
@@ -22,6 +22,7 @@
         selector.classList.add("controlBoxSelector");
         if (item.isAction) {
             selector.classList.add("controlBoxActionSelector");
+            selector.placeHolder = "Select An Action..."
         }
         var options = item.subOptions;
         for (var i = 0; i < options.length; i++) {
@@ -36,7 +37,6 @@
         value.appendChild(selector);
         row.appendChild(value);
 
-
         selector.addEventListener("change", function (event) {
             changeListener(event, this, item.isAction);
         }, false);
@@ -50,12 +50,9 @@
         }
 
         return row;
-
     }
 
-    //invokes action on ListView
     function changeListener(event, selector, isAction) {
-
         if (selector.selectedIndex == -1) {
             return;
         }
@@ -63,7 +60,6 @@
         var option = selector.options[selector.selectedIndex];
         var item = option.itemData;
         item.eventMethod();
-        Documentation.updateInfo(item.info);
         if (isAction) {
             selector.selectedIndex = -1;
         } else {
@@ -74,7 +70,6 @@
         }
     }
 
-    //shows documentation
     function clickListener(event, selector) {
         if (selector.selectedIndex == -1) {
             return;
@@ -85,17 +80,17 @@
         Documentation.updateInfo(item.info);
     }
 
-    //if the option text is long then apply class to reduce font size
     function adjustTextSize(selector, option) {
 
         option = option || selector.options[0];
 
         var text = option.textContent;
         
+        // If the option text is long then apply class to reduce font size
         if (text.length > 12) {
-            selector.classList.add("largeSelector");
+            selector.classList.add("longSelector");
         } else {
-            selector.classList.remove("largeSelector");
+            selector.classList.remove("longSelector");
         }
     }
 

@@ -1,11 +1,10 @@
 ﻿(function () {
 
     var GitHubIssueLink = WinJS.Class.define(function () {
+        this._link = document.querySelector(".gitHubIssueOpener").querySelector("a");
+        this._config = {};
 
-        var _link = document.querySelector(".gitHubIssueOpener").querySelector("a");
-        var _config = {};
-
-        /*retrieve ListView Configuration*/
+        // Retrieve ListView configuration
         var cb = document.querySelector(".controlBoxArea");
         var tables = cb.querySelectorAll(".controlBox");
         for (var i = 0; i < tables.length ; i++) {
@@ -15,44 +14,42 @@
                 var selector = rows[j].querySelector(".controlBoxSelector");
                 if (selector.selectedIndex >= 0) {
                     var value = selector.options[selector.selectedIndex].textContent;
-                    _config[label] = value;
+                    this._config[label] = value;
                 }
             }
         }
 
-        function getOpenIssueHref() {
-            return "https://github.com/winjs/winjs/issues/new?body=Feature:+" + encodeURIComponent("ListView") +
-                "%0AEnvironment:+" + encodeURIComponent(navigator.userAgent) + "%0ASource:+http://try.buildwinjs.com%20Play%20With%20ListView%0A" + encodeURIComponent(configToString()) + "&title=" + encodeURIComponent("ListView") + ":%20%3Ctitle%20here%3E";
-        }
-
-        _link.href = getOpenIssueHref();
-
-        function configToString() {
-            var url = "";
-            for (var label in _config) {
-                url = url + label + ": " + _config[label] + "\n";
-            }
-
-            return url;
-        }
-
-        this.update = function (label, value) {
-            _config[label] = value;
-            _link.href = getOpenIssueHref();
-        }
-
+        this._link.href = this.getOpenIssueHref();
     },
-    {},
-    {});
+    {
+        configToString: function(){
+            var url = "";
+            for (var label in this._config) {
+                url = url + label + ": " + this._config[label] + "\n";
+            }
+            return url;
+        },
+
+        getOpenIssueHref: function(){
+            return "https://github.com/winjs/winjs/issues/new?body=Feature:+" + encodeURIComponent("ListView") +
+              "%0AEnvironment:+" + encodeURIComponent(navigator.userAgent) + "%0ASource:+http://try.buildwinjs.com%20Play%20With%20ListView%0A" + encodeURIComponent(this.configToString()) + "&title=" + encodeURIComponent("ListView") + ":%20%3Ctitle%20here%3E";
+        },
+
+        update: function (label, value) {
+            this._config[label] = value;
+            this._link.href = this.getOpenIssueHref();
+        }
+    });
 
     var issueOpener = null;
 
-    window.addEventListener("load", function () {
-        GitHub.issueOpener = new GitHubIssueLink();
-    }, false);
+    var initGitHubIssueOpener = function(){
+        GitHub.issueOpener = GitHub.issueOpener || new GitHubIssueLink();
+    }
 
     WinJS.Namespace.define("GitHub", {
-        issueOpener: issueOpener
+        issueOpener: issueOpener,
+        initGitHubIssueOpener: initGitHubIssueOpener
     })
 
 })();

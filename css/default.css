@@ -42,12 +42,17 @@ h1{
    
 }
 
+.gitHubIssueOpener a{
+     cursor:pointer;
+}
+
 .gitHubIssueOpener{
     position: absolute;
     top: 100%;
     margin-top: -60px;
     left:100%;
     margin-left: -150px;
+    cursor:pointer;
 }
 
 
@@ -56,6 +61,7 @@ h1{
        margin-right: 5px;
        margin-top: 30%;
        font-size: 7vw;
+       cursor:pointer;
     }
 
     h1{
@@ -84,10 +90,11 @@ h1{
         font-size: 7vw;
         margin-top: 30%;
         margin-right: 5px;
+        cursor:pointer;
     }
 
      h1{
-        font-size: 4vw;
+        font-size:4vw;
         margin-left: 2%;
         margin-top: 3%;
     }
@@ -104,6 +111,7 @@ h1{
         font-size: 9vw;
         margin-top: 30%;
         margin-right: 10px;
+        cursor:pointer;
     }
 
     h1{
@@ -117,3 +125,7 @@ h1{
         margin-left: -130px;
     }
 }
+
+
+
+

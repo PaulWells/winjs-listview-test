@@ -21,16 +21,16 @@
        
         switch (templateName) {
             case "textWithImage":
-                ListView.listView.itemTemplate = Templates.textWithImageTemplate;
+                ListView.listView.itemTemplate = WinJS.UI.simpleItemRenderer(Templates.textWithImageTemplate);
                 break;
             case "image":
-                ListView.listView.itemTemplate = Templates.imageTemplate;
+                ListView.listView.itemTemplate = WinJS.UI.simpleItemRenderer(Templates.imageTemplate);
                 break;
             case "inline":
                 ListView.listView.itemTemplate = document.querySelector(".listIconTextTemplate");
                 break;
             case "interactive":
-                ListView.listView.itemTemplate = Templates.interactiveTemplate;
+                ListView.listView.itemTemplate = WinJS.UI.simpleItemRenderer(Templates.interactiveTemplate);
                 break;
        }
 
@@ -40,16 +40,16 @@
 
         switch (templateType) {
             case "text":
-                ListView.listView.groupHeaderTemplate = Templates.textHeaderTemplate;
+                ListView.listView.groupHeaderTemplate = WinJS.UI.simpleItemRenderer(Templates.textHeaderTemplate);
                 break;
             case "textWithImage":
-                ListView.listView.groupHeaderTemplate = Templates.textWithImageHeaderTemplate;
+                ListView.listView.groupHeaderTemplate =  WinJS.UI.simpleItemRenderer(Templates.textWithImageHeaderTemplate);
                 break;
             case "button":
-                ListView.listView.groupHeaderTemplate = Templates.buttonHeaderTemplate;
+                ListView.listView.groupHeaderTemplate =  WinJS.UI.simpleItemRenderer(Templates.buttonHeaderTemplate);
                 break;
             case "interactive":
-                ListView.listView.groupHeaderTemplate = Templates.interactiveHeaderTemplate;
+                ListView.listView.groupHeaderTemplate =  WinJS.UI.simpleItemRenderer(Templates.interactiveHeaderTemplate);
         }
 
    }

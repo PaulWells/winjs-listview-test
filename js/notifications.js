@@ -12,24 +12,14 @@
        notifier.postNotification(notification);
     }
 
-    function elementAdded() {
-        notifier.postNotification("Element Added");
-    }
-
-    function elementDeleted() {
-        notifier.postNotification("Element deleted");
-    }
-
-    function elementChanged() {
-        notifier.postNotification("Element changed");
+    function notify(notification) {
+        return function () { notifier.postNotification(notification) };
     }
 
     function scrollPosition(pixel) {
         notifier.postNotification("Scrolled to pixel " + pixel);
     }
-    function ensureVisibleFirst() {
-        notifier.postNotification("Ensured the first item is visible");
-    }
+
     function ensureVisibleMiddle() {
         var listView = document.querySelector(".listView").winControl;
         var index = listView.itemDataSource.length/2;
@@ -43,36 +33,6 @@
 
     function itemDragStart(event) {
         var notification = "onItemDragStart().  Indices: " + getIndices(event);
-        notifier.postNotification(notification);
-    }
-
-    function itemDragEnter(event) {
-        var notification = "onItemDragEnter()";
-        notifier.postNotification(notification);
-    }
-
-    function itemDragEnd(event) {
-        var notification = "onItemDragEnd()";
-        notifier.postNotification(notification);
-    }
-
-    function itemDragBetween(event) {
-        var notification = "onItemDragBetween()";
-        notifier.postNotification(notification);
-    }
-
-    function itemDragLeave(event) {
-        var notification = "onItemDragLeave()";
-        notifier.postNotification(notification);
-    }
-
-    function itemDragChanged(event) {
-        var notification = "onItemDragChanged()";
-        notifier.postNotification(notification);
-    }
-
-    function itemDragDrop(event) {
-        var notification = "onItemDragDrop()";
         notifier.postNotification(notification);
     }
 
@@ -97,10 +57,6 @@
         }
     }
 
-    function selectionChanging(event) {
-        notifier.postNotification("onSelectionChanging()");
-    }
-
     function selectionChanged(event) {
         var listView = document.querySelector(".listView").winControl;
         var indices = listView.selection.getIndices();
@@ -118,37 +74,19 @@
         notifier.postStickyNotification("onSelectionChanged().  " + notification);
     }
 
-    function dataSourceSmall() {
-        notifier.postNotification("Data source changed to 100 items");
-    }
-
-    function dataSourceLarge() {
-        notifier.postNotification("Data source changed to 1000 items");
-    }
-
-    function groupHeaderPositionWarning(event) {
-        if (listViewIsNotGrouped()) {
-            notifier.postNotification("Group header position changed, enable grouping to see the group header.", Notifier.NotificationTypes.warning);
+    function postWarning(notification) {
+        return function () {
+            if (listViewIsNotGrouped()) {
+                notifier.postNotification(notification, Notifier.NotificationTypes.warning);
+            }
         }
-    }
-
-    function groupHeaderTemplateWarning(event) {
-        if (listViewIsNotGrouped()) {
-            notifier.postNotification("Group header template changed, enable grouping to see the group header template.", Notifier.NotificationTypes.warning);
-        }
-    }
-
-    function groupHeaderTapBehaviorWarning(event) {
-        if(listViewIsNotGrouped()){
-            notifier.postNotification("Group header tap behavior changed, enable grouping to see the group header.", Notifier.NotificationTypes.warning);
-         }
     }
 
     function listViewIsNotGrouped() {
         return ListView.listView.groupDataSource === null || ListView.listView.groupDataSource === undefined;
     }
 
-    /* Controls logic for showing notifications */
+    // Controls logic for showing notifications
     var Notifier = WinJS.Class.define(
         function () {
             var _banner = document.querySelector(".notificationBanner");
@@ -165,7 +103,7 @@
                 _timeOut = setTimeout(hideNotification, _interval);
             }
 
-            /*sticky notifications don't timeout*/
+            // Sticky notifications don't timeout
             this.postStickyNotification = function postStickyNotification(content, type) {
 
                 if (_busy) {
@@ -209,36 +147,35 @@
     );
 
     var notifier = null
-    addEventListener("load", function () {
+    WinJS.Utilities.ready(function () {
         notifier = new Notifier();
-    }, false);
-
+    });
 
     WinJS.Namespace.define("Notifications", {
         itemInvoked: itemInvoked,
         groupHeaderInvoked: groupHeaderInvoked,
-        elementAdded: elementAdded,
-        elementDeleted: elementDeleted,
-        elementChanged: elementChanged,
+        elementAdded: notify("Element Added"),
+        elementDeleted: notify("Element deleted"),
+        elementChanged: notify("Element changed"),
         scrollPosition: scrollPosition,
-        ensureVisibleFirst: ensureVisibleFirst,
+        ensureVisibleFirst: notify("Ensured the first item is visible"),
         ensureVisibleMiddle: ensureVisibleMiddle,
         ensureVisibleLast: ensureVisibleLast,
         itemDragStart: itemDragStart,
-        itemDragEnter: itemDragEnter,
-        itemDragEnd: itemDragEnd,
-        itemDragBetween: itemDragBetween,
-        itemDragLeave: itemDragLeave,
-        itemDragChanged: itemDragChanged,
-        itemDragDrop: itemDragDrop,
+        itemDragEnter: notify("onItemDragEnter()"),
+        itemDragEnd: notify("onItemDragEnd()"),
+        itemDragBetween: notify("onItemDragBetween()"),
+        itemDragLeave: notify("onItemDragLeave()"),
+        itemDragChanged: notify("onItemDragChanged()"),
+        itemDragDrop: notify("onItemDragDrop()"),
         keyboardNavigating: keyboardNavigating,
         loadingStateChanged: loadingStateChanged,
-        selectionChanging: selectionChanging,
+        selectionChanging: notify("onSelectionChanging()"),
         selectionChanged: selectionChanged,
-        dataSourceSmall: dataSourceSmall,
-        dataSourceLarge: dataSourceLarge,
-        groupHeaderPositionWarning: groupHeaderPositionWarning,
-        groupHeaderTemplateWarning: groupHeaderTemplateWarning,
-        groupHeaderTapBehaviorWarning: groupHeaderTapBehaviorWarning
+        dataSourceSmall: notify("Data source changed to 100 items"),
+        dataSourceLarge: notify("Data source changed to 10000 items"),
+        groupHeaderPositionWarning: postWarning("Group header position changed, enable grouping to see the group header."),
+        groupHeaderTemplateWarning: postWarning("Group header template changed, enable grouping to see the group header template."),
+        groupHeaderTapBehaviorWarning: postWarning("Group header tap behavior changed, enable grouping to see the group header.")
     });
 })();

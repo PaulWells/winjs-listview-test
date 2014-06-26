@@ -6,11 +6,21 @@
     }
 
     function ensureMiddleItemVisible() {
-        ListView.listView.ensureVisible(Math.floor(ListView.data.length / 2));
+        ListView.listView.itemDataSource.getCount().done(
+           function (count) {
+               ListView.listView.ensureVisible(Math.floor(count / 2));
+           },
+           function () {}
+        );
     }
 
     function ensureLastItemVisible() {
-        ListView.listView.ensureVisible(ListView.data.length - 1);
+        ListView.listView.itemDataSource.getCount().done(
+            function (count) {
+                ListView.listView.ensureVisible(count - 1);
+            },
+            function () {}
+        );
     }
 
     function scrollPosition(pixel) {

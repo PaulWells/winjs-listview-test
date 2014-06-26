@@ -17,14 +17,14 @@
     }
 
     function getBucketSizes(numTables, numRows ) {
-        //each element in bucketsizes represents the number of rows in a table
+        // Each element in bucketsizes represents the number of rows in a table
         var bucketSizes = [];
         var tableSize = Math.floor(numRows / numTables);
         for (var i = 0; i < numTables; i++) {
             bucketSizes[i] = tableSize;
         }
 
-        //distribute remaining rows after distributing equally
+        // Distribute remaining rows after distributing equally
         var remainder = numRows - tableSize * numTables;
         var i = 0;
         while (remainder--) {
@@ -49,8 +49,8 @@
         return controlBox;
     }
 
-    /*To get behavior where selecting an action invokes the action but leaves the selector empty
-      e.g. selecting EnsureVisble*/
+    //To get behavior where selecting an action invokes the action but leaves the selector empty
+    //e.g. selecting EnsureVisble
     function removeDefaultFromActionSelectors() {
         var selectors = document.querySelectorAll(".controlBoxActionSelector");
         for (var i = 0; i < selectors.length; i++) {

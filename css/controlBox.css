@@ -28,7 +28,7 @@
     font-size: 1vw;
 }
 
-.controlBoxLabel.largeLabel{
+.controlBoxLabel.longLabel{
     font-size: 0.8vw
 }
 
@@ -48,7 +48,7 @@
     font-size: 1vw;
 }
 
-.controlBoxSelector.largeSelector{
+.controlBoxSelector.longSelector{
     font-size: 0.95vw;
 }
 
@@ -63,14 +63,14 @@
         font-size: 1.3vw;
     }
 
-    .controlBoxLabel.largeLabel{
+    .controlBoxLabel.longLabel{
         font-size: 1.05vw
     }
 
     .controlBoxSelector{
         font-size: 1.5vw;
     }
-    .controlBoxSelector.largeSelector{
+    .controlBoxSelector.longSelector{
         font-size: 1.3vw;
     }
 }
@@ -86,7 +86,7 @@
         font-size: 1.3vw;
     }
 
-    .controlBoxLabel.largeLabel{
+    .controlBoxLabel.longLabel{
         font-size: 1.05vw
     }
 
@@ -94,7 +94,7 @@
         font-size: 1.5vw;
     }
 
-     .controlBoxSelector.largeSelector{
+     .controlBoxSelector.longSelector{
         font-size: 1.1vw;
     }
 }
@@ -117,14 +117,14 @@
         font-size: 1.8vw;
     }
 
-    .controlBoxLabel.largeLabel{
+    .controlBoxLabel.longLabel{
         font-size: 1.6vw
     }
 
     .controlBoxSelector{
         font-size: 2vw;
     }
-    .controlBoxSelector.largeSelector{
+    .controlBoxSelector.longSelector{
         font-size: 1.7vw;
     }
 }

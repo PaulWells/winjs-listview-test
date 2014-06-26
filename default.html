@@ -5,19 +5,19 @@
     <title>ListView Test</title>
 
     <!-- WinJS references -->
-    <link href="lib/winjs/css/ui-dark.css" rel="stylesheet" />
-    <script src="lib/winjs/js/base.js"></script>
-    <script src="lib/winjs/js/ui.js"></script>
+    <link href="/lib/winjs/css/ui-dark.css" rel="stylesheet" />
+    <script src="/lib/winjs/js/base.min.js"></script>
+    <script src="/lib/winjs/js/ui.min.js"></script>
 
     <!-- Other Library references-->
     <script src="lib/highlight/highlight.pack.js"></script>
-    <link href="lib/highlight/styles/visualStudioDark.css" rel="stylesheet" />
 
     <!-- ListView-Test references -->
     <link href="css/default.css" rel="stylesheet" />
     <link href="css/listView.css" rel="stylesheet" />
     <link href="css/controlBox.css" rel="stylesheet" />
     <link href="css/infoSection.css" rel="stylesheet" />
+    <link href="css/customHighlightStyle.css" rel="stylesheet" />
     <script src="js/default.js"></script>
     <script src="js/listViewConfigChanges.js"></script>
     <script src="js/listViewData.js"></script>
@@ -31,14 +31,12 @@
     <script src="js/controlBoxTemplate.js"></script>
     <script src="js/controlBoxData.js"></script>
     <script src="js/garbageCan.js"></script>
-    <script src="js/mediaQueries.js"></script>
     <script src="js/simpleFlipper.js"></script>
     <script src="js/gitHubIssue.js"></script>
-
 </head>
 <body>
     
-    <!--simple inline template for ListView-->
+    <!-- Simple inline template for ListView-->
     <div class="listIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
         <img src="#" class="listIconTextItem-Image" data-win-bind="src: picture" />
         <div class="listIconTextItem-Detail">
@@ -47,29 +45,28 @@
         </div>
     </div>
 
-    <h1>Play With ListView</h1>
+    <h1>Play with ListView</h1>
 
     <div class="controlBoxArea">
     </div>
         
     <div class="listViewSection">
-        <!-- declare ListView -->
         <div class="win-selectionstylefilled listView"
              data-win-control="WinJS.UI.ListView"
              data-win-options="{
                  itemDataSource: ListView.smallData.dataSource,
-                 layout: {type: WinJS.UI.ListLayout}
+                 layout: { type: WinJS.UI.ListLayout }
              }">
         </div>
     </div>
 
-    <div class="interactiveInfoSection" >
+    <div class="interactiveInfoSection" style="display:none">
         <h2 class="selectionTitle"></h2>
         <p class="selectionDescription"></p>
         <div class="sampleCodeContainer">
             <p>
                 <pre>
-                    <code class="selectionSampleCode" style="display:block"></code>
+                <code class="selectionSampleCode" style="display:block"></code>
                 </pre>
             </p>
         </div>
@@ -83,11 +80,11 @@
 
     <div class="gitHubIssueOpener">
         <a href="#" target="_blank">
-            <img src="images/github-light.png" />
+            <img src="/images/github-light.png" />
             Open an Issue
         </a>
     </div>
-    <button class="listViewDocumentationToggle">Documentation</button>
+    <button class="listViewDocumentationToggle" style="display:none">Documentation</button>
 
     <div class="garbageCan" hidden="hidden">
         &#57607;

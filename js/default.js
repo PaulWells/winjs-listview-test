@@ -3,11 +3,14 @@
 
     var app = WinJS.Application;
     hljs.initHighlightingOnLoad();
-    document.addEventListener("DOMContentLoaded", function () {
-        WinJS.Navigation.history.backStack = [{ location: "optionsPage" }];
-        ControlBox.createControlBox();
 
-    }, false);
+    app.onloaded = function (args) {
+        ControlBox.createControlBox();
+        GitHub.initGitHubIssueOpener();
+        Init.initializeDocumentation();
+        ExpandingFlipper.initFlipper();
+        Dragging.initGarbageCan();
+    };
 
     app.onactivated = function (args) {
         var data = new WinJS.Binding.List(ListView.Data.createData());
@@ -23,11 +26,9 @@
         });
 
         args.setPromise(WinJS.UI.processAll().then(function () {
-
             Init.initializeListView();
-            Init.initializeDocumentation();
-            Init.addClickListeners();
         }));
+
     };
 
     app.start();

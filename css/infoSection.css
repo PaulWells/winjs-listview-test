@@ -2,9 +2,11 @@
     height: 52%;
     width: 32%;
     margin-bottom: 0.5%;
-    padding: 1%;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
     float: left;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: 1.5%;
     overflow: visible;
     user-select: text;

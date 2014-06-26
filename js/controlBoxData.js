@@ -98,16 +98,16 @@
         {
             name: "Swipe Behavior", subOptions:[
                 {
-                    name: "None",
-                    className: "swipeBehaviorNone",
-                    eventMethod: function(){Config.swipeBehavior(WinJS.UI.SwipeBehavior.none)},
-                    info: Documentation.swipeBehaviorNone
-                },
-                {
                     name: "Select",
                     className: "swipeBehaviorSelect",
                     eventMethod: function(){Config.swipeBehavior(WinJS.UI.SwipeBehavior.select)},
                     info: Documentation.swipeBehaviorSelect
+                },
+                {
+                    name: "None",
+                    className: "swipeBehaviorNone",
+                    eventMethod: function(){Config.swipeBehavior(WinJS.UI.SwipeBehavior.none)},
+                    info: Documentation.swipeBehaviorNone
                 }
             ]
         },

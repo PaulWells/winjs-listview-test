@@ -12,12 +12,11 @@
         window.addEventListener("resize", function () {
             ListView.listView.recalculateItemPosition();
         }, false);
-
     }
 
     function addListViewEventListeners(listView) {
-        listView.itemTemplate = Templates.textWithImageTemplate;
-        listView.groupHeaderTemplate = Templates.textHeaderTemplate;
+        listView.itemTemplate = WinJS.UI.simpleItemRenderer(Templates.textWithImageTemplate);
+        listView.groupHeaderTemplate = WinJS.UI.simpleItemRenderer(Templates.textHeaderTemplate);
         listView.addEventListener("iteminvoked", Notifications.itemInvoked, false);
         listView.addEventListener("groupheaderinvoked", Notifications.groupHeaderInvoked, false);
         listView.addEventListener("itemdragstart", itemDragStartHandler, false);
@@ -34,13 +33,13 @@
     }
 
     function initializeDocumentation() {
-        Documentation.updateInfo(Documentation.welcome);
+        Documentation.updateInfoImmediate(Documentation.welcome);
     }
 
     function itemDragStartHandler(event) {
         Notifications.itemDragStart(event);
 
-        //pass indices of dragged items into event so its available for later drag events
+        // Pass indices of dragged items into event so they're available for later drag events
         event.detail.dataTransfer.setData("text", event.detail.dragInfo.getIndices().toString());
         event.detail.dataTransfer.effectAllowed = "all";
 
@@ -52,18 +51,8 @@
         Dragging.garbageCan.deactivate();
     }
 
-    function addClickListeners() {
-        addGitHubListener();
-    }
-
-    function addGitHubListener() {
-        document.querySelector(".gitHubIssueOpener").addEventListener("click", function () {
-        });
-    }
-    
     WinJS.Namespace.define("Init", {
         initializeListView: initializeListView,
         initializeDocumentation: initializeDocumentation,
-        addClickListeners: addClickListeners,
     });
 })();
