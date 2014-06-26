@@ -19,13 +19,18 @@
     border-width:thin;
 }
 
-
 .controlBoxLabel{
     width: 54%;
     padding: 1%;
     background-color: #AEAEAE;
     color: black;
     font-size: 1vw;
+    height: 100%;
+}
+
+.controlBoxPlaceholder{
+    height: 0px;
+    visibility: hidden;
 }
 
 .controlBoxLabel.longLabel{
@@ -48,6 +53,22 @@
     font-size: 1vw;
 }
 
+.controlBoxButton{
+    width: 52%;
+    margin-right: 4%;
+}
+
+.controlActionArea{
+    width: 100%;
+}
+
+.controlBoxActionSelector{
+     background-color: #FCFCFC;
+     width: 43%;
+     width: calc(44% - 2px);
+     padding: 0px;
+}
+
 .controlBoxSelector.longSelector{
     font-size: 0.95vw;
 }
@@ -61,6 +82,7 @@
 
     .controlBoxLabel{
         font-size: 1.3vw;
+        height: 100%;
     }
 
     .controlBoxLabel.longLabel{
@@ -84,6 +106,7 @@
 
     .controlBoxLabel{
         font-size: 1.3vw;
+        height: 100%;
     }
 
     .controlBoxLabel.longLabel{
@@ -107,14 +130,31 @@
         margin-top: 0px;
     }
 
+    .controlBoxPlaceholder{
+        height: 40px;
+        font-size: 1.8vw;
+        padding: 1%;
+        visibility: hidden;
+    }
+
     .controlBoxArea{
         padding-left: 2%;
         width: 98%;
         margin-top: 5%;
     }
 
+    .controlBoxButton{
+        width: 45%;
+        margin-right: 2%;
+    }
+
+    .controlBoxActionSelector{
+        width: 45%;
+    }
+
      .controlBoxLabel{
         font-size: 1.8vw;
+        height: 100%;
     }
 
     .controlBoxLabel.longLabel{

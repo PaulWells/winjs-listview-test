@@ -1,6 +1,14 @@
 ﻿(function () {
     "use strict";
     function controlBoxRowTemplate(item) {
+
+        if (item.placeholder) {
+            var blank = document.createElement("tr");
+            blank.classList.add("controlBoxPlaceholder");
+            blank.textContent = "BLANK";
+            return blank;
+        }
+
         var row = document.createElement("tr");
         row.className = "controlBoxRow";
 
@@ -20,10 +28,6 @@
 
         var selector = document.createElement("select");
         selector.classList.add("controlBoxSelector");
-        if (item.isAction) {
-            selector.classList.add("controlBoxActionSelector");
-            selector.placeHolder = "Select An Action..."
-        }
         var options = item.subOptions;
         for (var i = 0; i < options.length; i++) {
             var option = document.createElement("option");
@@ -38,42 +42,28 @@
         row.appendChild(value);
 
         selector.addEventListener("change", function (event) {
-            changeListener(event, this, item.isAction);
+            changeListener(event, this);
         }, false);
 
         selector.addEventListener("click", function (event) {
             clickListener(event, this);
         }, false);
 
-        if (item.isAction) {
-            selector.selectedIndex = -1;
-        }
-
         return row;
     }
 
-    function changeListener(event, selector, isAction) {
-        if (selector.selectedIndex == -1) {
-            return;
-        }
-
+    function changeListener(event, selector) {
         var option = selector.options[selector.selectedIndex];
         var item = option.itemData;
         item.eventMethod();
-        if (isAction) {
-            selector.selectedIndex = -1;
-        } else {
-            GitHub.issueOpener.update(option.labelTitle, item.name)
-        }
+        GitHub.issueOpener.update(option.labelTitle, item.name)
+
         if ("notify" in item) {
             item.notify();
         }
     }
 
     function clickListener(event, selector) {
-        if (selector.selectedIndex == -1) {
-            return;
-        }
         var option = selector.options[selector.selectedIndex];
         adjustTextSize(selector,option);
         var item = option.itemData;
@@ -81,9 +71,7 @@
     }
 
     function adjustTextSize(selector, option) {
-
         option = option || selector.options[0];
-
         var text = option.textContent;
         
         // If the option text is long then apply class to reduce font size
@@ -94,8 +82,58 @@
         }
     }
 
-    WinJS.Namespace.define("ControlBox", {
-        controlBoxRowTemplate: controlBoxRowTemplate
-    });
+    function controlBoxActionTemplate(action) {
+        var actionRow = document.createElement("div");
+        actionRow.classList.add("controlBoxActionRow");
+        var select = createSelector(action);
+        var button = createButton(action);
+        connectActionElements(select, button);
+        actionRow.appendChild(button);
+        actionRow.appendChild(select);
+        return actionRow;
+    }
 
+    function createSelector(action) {
+        var select = document.createElement("select");
+        select.classList.add("controlBoxActionSelector");
+        var subOptions = action.subOptions;
+        for (var i = 0; i < subOptions.length; i++) {
+            var option = document.createElement("option");
+            option.text = subOptions[i].name;
+            option.labelTitle = item.name;
+            option.itemData = subOptions[i];
+            select.add(option);
+        }
+        return select;
+    }
+
+    function createButton(action) {
+        var button = document.createElement("button");
+        button.classList.add("controlBoxButton");
+        button.textContent = action.name;
+        return button;
+    }
+
+    function connectActionElements(select, button) {
+        var option = select.options[select.selectedIndex];
+        button.onclick = function () {
+            option.itemData.eventMethod();
+        }
+        select.addEventListener("change", function () {
+            var option = this.options[this.selectedIndex];
+            button.onclick = function () {
+                option.itemData.eventMethod();
+            }
+        }, false);
+
+        select.addEventListener("click", function () {
+            var option = this.options[this.selectedIndex];
+            Documentation.updateInfo(option.itemData.info);
+        }, false);
+    }
+
+    WinJS.Namespace.define("ControlBox", {
+        controlBoxRowTemplate: controlBoxRowTemplate,
+        controlBoxActionTemplate: controlBoxActionTemplate
+    });
 })();

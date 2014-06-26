@@ -10,6 +10,9 @@
         for (var i = 0; i < tables.length ; i++) {
             var rows = tables[i].rows;
             for (var j = 0; j < rows.length; j++) {
+                if( !rows[j].querySelector(".controlBoxLabel")) {
+                    continue;
+                }
                 var label = rows[j].querySelector(".controlBoxLabel").textContent;
                 var selector = rows[j].querySelector(".controlBoxSelector");
                 if (selector.selectedIndex >= 0) {

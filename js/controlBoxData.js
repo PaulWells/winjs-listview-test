@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
    
-    var rows = [
+    var configs = [
         {
             name: "Layout", subOptions: [
                 {
@@ -263,24 +263,27 @@
                 }
             ]
         },
+    ];
+
+    var actions = [
         {
-            name: "Data Changes", isAction: true, subOptions: [
+            name: "Data Change", subOptions: [
                 {
-                    name: "Add Element",
+                    name: "Add",
                     className: "dataChangesAddElement",
                     eventMethod: ListView.Data.addElement,
                     info: Documentation.dataChangesAdd,
                     notify: Notifications.elementAdded
                 },
                 {
-                    name: "Delete Element",
+                    name: "Delete",
                     className: "dataChangesDeleteElement",
                     eventMethod: ListView.Data.deleteElement,
                     info: Documentation.dataChangesDelete,
                     notify: Notifications.elementDeleted
                 },
                 {
-                    name: "Change Element",
+                    name: "Change",
                     className: "dataChangesChangeElement",
                     eventMethod: ListView.Data.changeElement,
                     info: Documentation.dataChangesChange,
@@ -289,7 +292,7 @@
             ]
         },
         {
-            name: "Ensure Visible", isAction: true, subOptions: [
+            name: "Ensure Visible", subOptions: [
                 {
                     name: "First Item",
                     className: "ensureVisibleFirst",
@@ -314,7 +317,7 @@
             ]
         },
         {
-            name: "Scroll Position", isAction: true, subOptions: [
+            name: "Scroll Position", subOptions: [
                 {
                     name: "Pixel 0",
                     className: "scrollPositionZero",
@@ -335,6 +338,7 @@
 
 
     WinJS.Namespace.define("ControlBox", {
-        rows: rows
+        configs: configs,
+        actions: actions
     });
 })();

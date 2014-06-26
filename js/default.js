@@ -28,9 +28,7 @@
         args.setPromise(WinJS.UI.processAll().then(function () {
             Init.initializeListView();
         }));
-
     };
 
     app.start();
-   
 })();
