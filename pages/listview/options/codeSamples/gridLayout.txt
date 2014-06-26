@@ -1,0 +1,8 @@
+﻿// First get a reference to your ListView
+var listView = document.querySelector(".listView").winControl;
+var layout = new WinJS.UI.GridLayout();
+
+//save the current state of the ListView's layout
+layout.orientation = listView.layout.orientation;
+layout.groupHeaderPosition = listView.layout.groupHeaderPosition;
+listView.layout = layout;

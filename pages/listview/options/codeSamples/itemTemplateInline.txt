@@ -1,0 +1,20 @@
+﻿<div class="listIconTextTemplate"
+	data-win-control="WinJS.Binding.Template"
+	style="display: none">
+
+    <img src="#" data-win-bind="src: picture" />
+    <div class="listIconTextItem-Detail">
+        <h4 data-win-bind="textContent: title"></h4>
+        <h6 data-win-bind="textContent: text"></h6>
+    </div>
+</div>
+
+<!-- ListView.data is the WinJS.Binding.List you want assigned -->
+<!-- to your ListView, exposed through a namespace called "ListView" -->
+<div class="win-selectionstylefilled listView"
+     data-win-control="WinJS.UI.ListView"
+     data-win-options="{
+         itemDataSource: ListView.data.dataSource,
+         layout: {type: WinJS.UI.ListLayout}
+     }">
+</div>

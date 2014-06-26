@@ -1,0 +1,7 @@
+﻿var listView = document.querySelector(".listView").winControl;
+// ArrayData is an array of the data you want to display
+var list = WinJS.UI.Binding.List(arrayData);
+var groupedList = list.createGrouped();
+listView.itemDataSource = groupedList.dataSource;
+listView.groupDataSource = groupedList.groups.dataSource;
+//NOTE: you will also want to assign a group header template

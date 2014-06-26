@@ -1,0 +1,15 @@
+﻿function createHeaderTemplate(item){
+    var template = document.createElement("div");
+
+    var title = document.createElement("div");
+    title.textContent = item.data.title;
+    template.appendChild(title);
+
+    var button = document.createElement("button");
+    button.textContent = "Group " + item.key;
+    template.appendChild(button);
+    return template;
+}
+
+var listView = document.querySelector(".listView").winControl;
+listView.itemTemplate = WinJS.UI.simpleItemRenderer(createHeaderTemplate);

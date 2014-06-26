@@ -1,0 +1,5 @@
+﻿var listView = document.querySelector(".listView").winControl;
+// ArrayData is an array of the data you want to display
+var list = WinJS.UI.Binding.List(arrayData);
+listView.dataSource = list;
+listView.groupDataSource = null;

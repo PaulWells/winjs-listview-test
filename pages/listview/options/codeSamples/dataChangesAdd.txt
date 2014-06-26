@@ -1,0 +1,3 @@
+﻿// data is the WinJS.Binding.List that you assigned to
+// itemDataSource of your ListView
+data.splice(index, 0, newItem);

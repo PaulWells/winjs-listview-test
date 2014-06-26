@@ -1,0 +1,4 @@
+﻿var listView = document.querySelector(".listView").winControl;
+// data is an array containing the items 
+// to be displayed in the ListView
+listView.itemDataSource = new WinJS.Binding.List(data);

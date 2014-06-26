@@ -1,0 +1,28 @@
+﻿function createTemplate(item){
+    var template = document.createElement("div");
+
+    var image = document.createElement("img");
+    image.src = item.picture;
+    template.appendChild(image);
+
+    var textArea = document.createElement("div\);
+    var template.appendChild(textArea);
+
+    var title = document.createElement("h4");
+    title.textContent = item.title;
+    textArea.appendChild(title);
+    var description = document.createElement("h6");
+    description.textContent = item.description;
+    template.appendChild(description);
+
+    var ratingElement = document.createElement("div");
+    template.style.height = "120px";
+    template.appendChild(ratingElement);
+    new WinJS.UI.Rating(ratingElement, {
+        averageRating: 3.4
+    });
+    return template;
+}
+
+var listView = document.querySelector(".listView").winControl;
+listView.itemTemplate = WinJS.UI.simpleItemRenderer(createTemplate);

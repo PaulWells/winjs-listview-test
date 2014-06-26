@@ -1,0 +1,2 @@
+﻿var listView = document.querySelector(".listView").winControl;
+listView.itemsDraggable = true;

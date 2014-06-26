@@ -1,0 +1,3 @@
+﻿// First get a reference to your ListView
+var listView = document.queryselector(".listView").winControl;
+listView.layout.orientation = WinJS.UI.Orientation.vertical;

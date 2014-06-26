@@ -1,0 +1,3 @@
+﻿// To ensure the first item is visible
+var listView = document.querySelector(".listView").winControl;
+listView.ensureVisible(0);

@@ -1,0 +1,3 @@
+﻿// To scroll to the 500th pixel
+var listView = document.querySelector(".listView").winControl;
+listView.scrollPosition = 500;
