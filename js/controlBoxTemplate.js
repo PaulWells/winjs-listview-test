@@ -5,7 +5,6 @@
         if (item.placeholder) {
             var blank = document.createElement("tr");
             blank.classList.add("controlBoxPlaceholder");
-            blank.textContent = "BLANK";
             return blank;
         }
 
@@ -17,7 +16,7 @@
 
         // LongLabel is applied to labels with a large number of
         // characters to reduce the font size
-        if (item.name.length > 22) {
+        if (item.name.length > 18) {
             label.classList.add("longLabel");
         }
         label.textContent =  item.name;
@@ -29,7 +28,7 @@
         var selector = document.createElement("select");
         selector.classList.add("controlBoxSelector");
         var options = item.subOptions;
-        for (var i = 0; i < options.length; i++) {
+        for (var i = 0, len = options.length; i < len; i++) {
             var option = document.createElement("option");
             option.text = options[i].name;
             option.labelTitle = item.name;
@@ -46,7 +45,7 @@
         }, false);
 
         selector.addEventListener("click", function (event) {
-            clickListener(event, this);
+            clickListener(event, this, label);
         }, false);
 
         return row;
@@ -63,11 +62,16 @@
         }
     }
 
-    function clickListener(event, selector) {
+    function clickListener(event, selector, label) {
         var option = selector.options[selector.selectedIndex];
         adjustTextSize(selector,option);
         var item = option.itemData;
         Documentation.updateInfo(item.info);
+        var prevSelected = document.querySelector(".controlBoxArea").querySelector(".selectedLabel");
+        if (prevSelected) {
+            prevSelected.classList.remove("selectedLabel");
+        }
+        label.classList.add("selectedLabel");
     }
 
     function adjustTextSize(selector, option) {
@@ -97,10 +101,9 @@
         var select = document.createElement("select");
         select.classList.add("controlBoxActionSelector");
         var subOptions = action.subOptions;
-        for (var i = 0; i < subOptions.length; i++) {
+        for (var i = 0, length = subOptions.length; i < length; i++) {
             var option = document.createElement("option");
             option.text = subOptions[i].name;
-            option.labelTitle = item.name;
             option.itemData = subOptions[i];
             select.add(option);
         }

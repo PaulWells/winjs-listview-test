@@ -16,9 +16,14 @@
 
 
 .selectionSampleCode{
-    max-height: 400px;
+    max-height: 250px;
     overflow: auto;
     font-size: 0.85vw;
+}
+
+pre.selectionSampleCodePre{
+    margin-bottom: 0px;
+    max-height: 300px;
 }
 
 .selectionDocumentation{

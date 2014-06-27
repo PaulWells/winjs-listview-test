@@ -7,9 +7,10 @@
         // Retrieve ListView configuration
         var cb = document.querySelector(".controlBoxArea");
         var tables = cb.querySelectorAll(".controlBox");
-        for (var i = 0; i < tables.length ; i++) {
+        
+        for (var i = 0, len = tables.length; i < len ; i++) {
             var rows = tables[i].rows;
-            for (var j = 0; j < rows.length; j++) {
+            for (var j = 0, length = rows.length; j < length; j++) {
                 if( !rows[j].querySelector(".controlBoxLabel")) {
                     continue;
                 }

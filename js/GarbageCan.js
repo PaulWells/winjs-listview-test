@@ -5,25 +5,25 @@
     //itemsReorderable set to true or itemsDraggable set to true
     var GarbageCan = WinJS.Class.define(
         function GarbageCan() {
-            var _elem = document.querySelector(".garbageCan");
-            _elem.hidden = false;
-            _elem.style.opacity = 0;
-            _elem.control = this;
+            var elem = document.querySelector(".garbageCan");
+            elem.hidden = false;
+            elem.style.opacity = 0;
+            elem.control = this;
 
-            _elem.addEventListener("dragstart", function (event) {
+            elem.addEventListener("dragstart", function (event) {
                 event.preventDefault();
             }, false);
 
-            _elem.addEventListener("dragover", function (event) {
+            elem.addEventListener("dragover", function (event) {
                 event.preventDefault();
             }, false);
 
-            _elem.addEventListener("dragenter", function (event) {
+            elem.addEventListener("dragenter", function (event) {
                 event.preventDefault();
                 event.dataTransfer.dropEffect = "move";
             }, false);
 
-            _elem.addEventListener("drop", function (event) {
+            elem.addEventListener("drop", function (event) {
                 event.preventDefault();
                 var indices = event.dataTransfer.getData("text").split(",");
                 this.control.drop(indices);
@@ -31,11 +31,11 @@
             }, false);
 
             this.activate = function () {
-                WinJS.UI.Animation.enterContent(_elem, null);
+                WinJS.UI.Animation.enterContent(elem, null);
             };
 
             this.deactivate = function () {
-                WinJS.UI.Animation.exitContent(_elem, null);
+                WinJS.UI.Animation.exitContent(elem, null);
             };
 
             this.drop = function (indices) {
