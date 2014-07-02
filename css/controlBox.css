@@ -22,7 +22,8 @@
 }
 
 .controlBoxArea td.selectedLabel{
-     background-color: #99929D;
+     background-color: #533663;
+     color: white;
 }
 
 .controlBoxRow{
@@ -177,5 +178,11 @@
     }
     .controlBoxSelector.longSelector{
         font-size: 1.7vw;
+    }
+}
+
+@media (max-width: 850px) and (max-height: 599px) {
+    .controlBoxArea{
+       width: 35%;
     }
 }

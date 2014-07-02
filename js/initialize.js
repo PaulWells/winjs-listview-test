@@ -51,8 +51,18 @@
         Dragging.garbageCan.deactivate();
     }
 
+    function addClipBoardClickHandler() {
+        var clipBoard = document.querySelector(".copyToClipboardButton");
+        clipBoard.addEventListener("click", function () {
+            var codeElem = document.querySelector(".selectionSampleCode");
+            codeElem.textContent.select();
+            document.execCommand("Copy");
+        }, false);
+    }
+
     WinJS.Namespace.define("Init", {
         initializeListView: initializeListView,
         initializeDocumentation: initializeDocumentation,
+        addClipBoardClickHandler: addClipBoardClickHandler
     });
 })();

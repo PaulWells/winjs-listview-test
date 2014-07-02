@@ -321,22 +321,52 @@
     }
 
     function updateInfoImmediate(info) {
+        pulseToggle();
         var infoSection = document.querySelector(".interactiveInfoSection");
         var title = infoSection.querySelector(".selectionTitle");
-        var code = infoSection.querySelector(".selectionSampleCode");
         var description = infoSection.querySelector(".selectionDescription");
         var link = infoSection.querySelector(".selectionDocumentation");
         infoSection.documentationId = info.id;
         updateElement(description, info.description);
         updateElement(title, info.title);
 
-        updateCode(code, info.code);
+        updateCode(info.code);
 
         if (info.link) {
             updateElement(link, " <a class=\"selectionDocumentation\" href=\"" + info.link + "\" target=\"_blank\">Learn More</a> ");
         } else {
             updateElement(link, null);
         }
+    }
+
+    function pulseToggle() {
+        if (ExpandingFlipper.flipper && !ExpandingFlipper.flipper.inListViewMode()) {
+            return;
+        }
+        var toggle = document.querySelector(".listViewDocumentationToggle");
+        WinJS.UI.executeAnimation(
+           toggle,
+           {
+               property: "background-color",
+               delay: 0,
+               duration: 100,
+               timing: "linear",
+               from: "#000000",
+               to: "#533663"
+           }
+       ).then(function () {
+           WinJS.UI.executeAnimation(
+               toggle,
+               {
+                   property: "background-color",
+                   delay: 0,
+                   duration: 400,
+                   timing: "linear",
+                   from: "#533663",
+                   to: "#000000"
+               }
+       )
+       });
     }
 
     function updateElement(element, info) {
@@ -349,13 +379,17 @@
         }
     }
 
-    function updateCode(element, code) {
+    function updateCode(code) {
+        var codeContainer = document.querySelector(".selectionSampleCodePre");
+        var codeElem = codeContainer.querySelector(".selectionSampleCode");
         if (code) {
-            element.style.display = "block";
-            element.innerHTML = hljs.highlightAuto(code).value;
+            codeContainer.style.display = "block";
+            codeElem.style.display = "block";
+            codeElem.innerHTML = hljs.highlightAuto(code).value;
         } else {
-            element.style.display = "none";
-            element.textContent = "";
+            codeContainer.style.display = "none";
+            codeElem.style.display = "none";
+            codeElem.textContent = "";
         }
     }
 

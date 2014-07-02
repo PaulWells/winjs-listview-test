@@ -10,8 +10,11 @@
     margin-left: 1.5%;
     overflow: visible;
     user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
     -ms-user-select: text;
     font-size: 1vw;
+    cursor: text;
 }
 
 

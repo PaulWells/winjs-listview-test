@@ -57,16 +57,26 @@
     }
 
     function addElementAt(index) {
-        getListViewData().done(function(data){
-            var newItem;
-            if (ListView.listView.groupDataSource) {
-                var item = data.getItem(index);
-                newItem = cloneItem(item);
-            } else {
-                newItem = generateItem(itemList);
-            }
-            data.splice(index, 0, newItem);
-        });
+        //getListViewData().done(function(data){
+        //    var newItem;
+        //    if (ListView.listView.groupDataSource) {
+        //        var item = data.getItem(index);
+        //        newItem = cloneItem(item);
+        //    } else {
+        //        newItem = generateItem(itemList);
+        //    }
+        //    data.splice(index, 0, newItem);
+        //});
+
+        var data = getListViewData();
+        var newItem;
+        if (ListView.listView.groupDataSource) {
+            var item = data.getItem(index);
+            newItem = cloneItem(item);
+        } else {
+            newItem = generateItem(itemList);
+        }
+        data.splice(index, 0, newItem);
     }
 
     function deleteElement() {
@@ -77,9 +87,8 @@
     }
 
     function deleteElementAt(index) {
-        getListViewData().done(function(data){
-            data.splice(index, 1);
-        });
+        var data = getListViewData();
+        data.splice(index, 1);
     }
 
     function changeElement() {
@@ -91,11 +100,10 @@
     }
 
     function changeElementAt(index) {
-        getListViewData().done(function(data){
-            var item = data.getAt(index);
-            item.title = item.title.split("").reverse().join("");
-            data.setAt(index, item);
-        });
+        var data = getListViewData();
+        var item = data.getAt(index);
+        item.title = item.title.split("").reverse().join("");
+        data.setAt(index, item);
     }
 
     // Gets selected item indices or 0 if none are selected
@@ -127,25 +135,7 @@
     }
 
     function getListViewData() {
-        if (ListView.listView.groupDataSource) {
-            return ListView.listView.itemDataSource.getCount().then(function (count) {
-                if (count === ListView.smallData.length) {
-                    return ListView.smallGroupedData;
-                } else {
-                    return ListView.groupedData;
-                }
-
-            });
-        } else {
-            return ListView.listView.itemDataSource.getCount().then(function (count) {
-                if (count === ListView.smallData.length) {
-                    return ListView.smallData;
-                } else {
-                    return ListView.data;
-                }
-
-            });
-        }
+        return ListView.listView.itemDataSource.list;
     }
 
     function assignSmallDataset() {

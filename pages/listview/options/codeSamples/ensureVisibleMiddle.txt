@@ -1,3 +1,3 @@
 ﻿// To ensure the middle item is visible
 var listView = document.querySelector(".listView").winControl;
-listView.ensureVisible(Math.floor(ListView.data.length / 2));
+listView.ensureVisible(Math.floor(listView.itemDataSource.length / 2));

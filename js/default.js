@@ -10,6 +10,7 @@
         Init.initializeDocumentation();
         ExpandingFlipper.initFlipper();
         Dragging.initGarbageCan();
+        Init.addClipBoardClickHandler();
     };
 
     app.onactivated = function (args) {

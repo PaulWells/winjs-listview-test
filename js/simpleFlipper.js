@@ -8,143 +8,159 @@
             this._toggle = document.querySelector(".listViewDocumentationToggle");
             this._listView = document.querySelector(".listViewSection");
             this._docs = document.querySelector(".interactiveInfoSection");
-            this._prevMode = null;
-            this._mode = SimpleFlipper.DisplayMode.UNINTIIALIZED;
-            this._listViewText = "ListView";
-            this._docsText = "Documentation";
-            var _mediaQuery = "(max-width: 1366px)";
+            var expansion = "(max-width: 1366px)";
+            var justListView = "(max-width: 850px) and (max-height: 599px)"
+
+            this._toggle.addEventListener("click", this._flip.bind(this));
+
+            this._states = {
+                BOTH: {
+                    visible: [
+                        this._docs,
+                        this._listView
+                    ],
+                    hidden: [
+                        this._toggle
+                    ],
+                    toggleText: ""
+                },
+                DOCS: {
+                    visible: [
+                        this._docs,
+                        this._toggle,
+                    ],
+                    hidden: [
+                        this._listView
+                    ],
+                    toggleText: "ListView"
+                },
+                LISTVIEW: {
+                    visible: [
+                        this._listView,
+                        this._toggle,
+                    ],
+                    hidden: [
+                        this._docs
+                    ],
+                    toggleText: "Documentation"
+                },
+                LISTVIEW_NO_FLIP: {
+                    visible: [
+                        this._listView,
+                    ],
+                    hidden: [
+                        this._toggle,
+                        this._docs
+                    ],
+                    toggleText: ""
+                },
+                UNINITIALIZED: {
+                    visible: [
+
+                    ],
+                    hidden: [
+                        this._toggle,
+                        this._listView,
+                        this._docs
+                    ],
+                    toggleText: ""
+                }
+            }
+
+            this._state = this._states.UNINITIALIZED;
             this._docs.style.display = "none";
             this._toggle.style.display = "none";
-            this._toggle.addEventListener("click", this.flip.bind(this));
+            this._listView.style.display = "none";
 
-            var expansionMediaQuery = window.matchMedia(_mediaQuery);
             var expansionMQHandler = function () {
                 // If we're thinner than threshold width use flipMode.
                 // Otherwise, show all controls
                 if (expansionMediaQuery.matches) {
-                    this.enterFlipMode();
+                    this.moveState(this._states.LISTVIEW);
                 } else {
-                    this.showAll();
+                    this.moveState(this._states.BOTH);
                 }
             }.bind(this);
 
+            var listViewMQHandler = function () {
+                if (justListViewMediaQuery.matches) {
+                    this.moveState(this._states.LISTVIEW_NO_FLIP);
+                } else {
+                    this.moveState(this._states.LISTVIEW);
+                }
+            }.bind(this);
+
+            var expansionMediaQuery = window.matchMedia(expansion);
             expansionMediaQuery.addListener(expansionMQHandler);
-            expansionMQHandler();
-        },
-        {
-            enterFlipMode: function () {
-                this._toggle.style.display = "block";
 
-                if (this._mode !== SimpleFlipper.DisplayMode.BOTH && this._mode !== SimpleFlipper.DisplayMode.UNINTIIALIZED) {
-                    return;
-                }
+            var justListViewMediaQuery = window.matchMedia(justListView);
+            justListViewMediaQuery.addListener(listViewMQHandler);
 
-                if (this._prevMode) {
-                    this._mode = this._prevMode;
-                    this._prevMode = null;
-                   
-                } else {
-                    this._mode = SimpleFlipper.DisplayMode.LISTVIEW;
-                    this._prevMode = SimpleFlipper.DisplayMode.DOCS;
-                }
-
-                switch (this._mode) {
-                    case SimpleFlipper.DisplayMode.LISTVIEW:
-                        this._docs.style.display = "none";
-                        break;
-                    case SimpleFlipper.DisplayMode.DOCS:
-                        this._listView.style.display = "none";
-                        break;
-                }
-            },
-
-            flip: function () {
-                if (this._mode === SimpleFlipper.DisplayMode.BOTH) {
-                    return;
-                }
-                switch (this._mode) {
-                    case SimpleFlipper.DisplayMode.LISTVIEW:
-                        this._flipToDocs();
-                        break;
-                    case SimpleFlipper.DisplayMode.DOCS:
-                        this._flipToListView();
-                        break;
-                }
-            },
-
-            showAll: function () {
-                if (this._mode === SimpleFlipper.DisplayMode.BOTH) {
-                    return;
-                }
-
-                switch (this._mode) {
-                    case SimpleFlipper.DisplayMode.LISTVIEW:
-                       this._showDocs();
-                        break;
-                    case SimpleFlipper.DisplayMode.DOCS:
-                        this._showListView();
-                        break;
-                    case SimpleFlipper.DisplayMode.UNINTIIALIZED:
-                        this._showDocs();
-                        this._showListView();
-                        break;
-                }
-
-                this._toggle.style.display = "none";
-                if (this._mode === SimpleFlipper.DisplayMode.UNINTIIALIZED) {
-                    this._prevMode = SimpleFlipper.DisplayMode.LISTVIEW;
-                } else {
-                    this._prevMode = this._mode;
-                }
-                this._mode = SimpleFlipper.DisplayMode.BOTH;
-            },
-
-            _flipToDocs: function () {
-                WinJS.UI.Animation.exitContent(this._toggle, null).done(function () {
-                    WinJS.UI.Animation.enterContent(this._toggle, null);
-                }.bind(this));
-                WinJS.UI.Animation.exitContent(this._listView, null).done(function () {
-                    this._listView.style.display = "none";
-                    this._docs.style.display = "block";
-                    WinJS.UI.Animation.enterContent(this._docs, null);
-                    this._toggle.textContent = this._listViewText;
-                }.bind(this));
-                this._mode = SimpleFlipper.DisplayMode.DOCS;
-            },
-
-            _flipToListView: function () {
-                WinJS.UI.Animation.exitContent(this._toggle, null).done(function () {
-                    WinJS.UI.Animation.enterContent(this._toggle, null);
-                }.bind(this));
-                WinJS.UI.Animation.exitContent(this._docs, null).done(function () {
-                    this._docs.style.display = "none";
-                    this._listView.style.display = "block";
-                    this._listView.querySelector(".listView").winControl.forceLayout();
-                    WinJS.UI.Animation.enterContent(this._listView, null);
-                    this._toggle.textContent = this._docsText;
-                }.bind(this));
-                this._mode = SimpleFlipper.DisplayMode.LISTVIEW;
-            },
-
-            _showDocs: function () {
-                this._docs.style.display = "block";
-                WinJS.UI.Animation.enterContent(this._docs, null);
-            },
-
-            _showListView: function () {
-                this._listView.style.display = "block";
-                WinJS.UI.Animation.enterContent(this._listView, null);
+            if (justListViewMediaQuery.matches) {
+                this.moveState(this._states.LISTVIEW_NO_FLIP);
+            } else if (expansionMediaQuery.matches) {
+                this.moveState(this._states.LISTVIEW);
+            } else {
+                this.moveState(this._states.BOTH);
             }
         },
         {
-            DisplayMode:{
-                BOTH: 0,
-                LISTVIEW: 1,
-                DOCS: 2,
-                UNINTIIALIZED: 3
+            moveState: function (nextState) {
+                var hide = this._intersect(this._state.visible, nextState.hidden);
+                var show = this._intersect(this._state.hidden, nextState.visible);
+                var animation;
+                for (var i = 0, len = hide.length; i < len; i++) {
+                    var elem = hide[i];
+                    animation = WinJS.UI.Animation.exitContent(elem, null).then(function () {
+                        elem.style.display = "none";
+                        elem.hidden = true;
+                    });
+                }
+                if (animation) {
+                    animation.then(function () {
+                        this._showContent(show, nextState.toggleText);
+                    }.bind(this));
+                } else {
+                    this._showContent(show, nextState.toggleText);
+                }
+                this._state = nextState;
             },
+
+            _showContent: function (show, text) {
+                for (var i = 0, len = show.length; i < len; i++) {
+                    var elem = show[i];
+                    elem.style.display = "block";
+                    elem.hidden = false;
+                    WinJS.UI.Animation.enterContent(elem, null).then(function () {
+                    });
+                }
+                this._toggle.textContent = text;
+            },
+
+            _intersect: function (array1, array2) {
+                var intersection = [];
+                for (var i = 0, len = array1.length; i < len; i++) {
+                    var elem = array1[i];
+                    if (array2.indexOf(elem) !== -1) {
+                        intersection.push(elem);
+                    }
+                }
+                return intersection;
+            },
+
+            _flip: function () {
+                if (this._state === this._states.LISTVIEW) {
+                    this.moveState(this._states.DOCS);
+                } else {
+                    this.moveState(this._states.LISTVIEW);
+                }
+            },
+
+            inListViewMode: function () {
+                return (this._state === this._states.LISTVIEW);
+            }
         }
-    )
+    );
 
     var flipper = null;
 

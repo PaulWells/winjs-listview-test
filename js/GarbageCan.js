@@ -40,12 +40,7 @@
 
             this.drop = function (indices) {
                 for (var i = indices.length - 1; i >= 0; i--) {
-                    var usesSmallData = (ListView.listView.itemDataSource === ListView.smallData.dataSource);
-                    if (usesSmallData) {
-                        var data = ListView.smallData;
-                    } else {
-                        var data = ListView.data;
-                    }
+                    var data = ListView.listView.itemDataSource.list;
                     var item = data.splice(indices[i], 1)[0];
                 }
             }
