@@ -1,13 +1,13 @@
 ﻿.interactiveInfoSection{
     height: 52%;
-    width: 32%;
+    width: 33%;
     margin-bottom: 0.5%;
     padding-bottom: 1%;
     padding-left: 1%;
     padding-right: 1%;
     float: left;
     margin-top: 5%;
-    margin-left: 1.5%;
+    margin-left: 1%;
     overflow: visible;
     user-select: text;
     -moz-user-select: text;
@@ -22,6 +22,21 @@
     max-height: 250px;
     overflow: auto;
     font-size: 0.85vw;
+}
+
+.copyToClipboardButton{
+    position: absolute;
+    left: 90%;
+    top: 45px;
+    min-width: 0px;
+    width: 30px;
+    height: 20px;
+    font-family: 'Segoe UI Symbol';
+    padding: 0px;
+}
+
+.sampleCodeContainer{
+    position: relative;
 }
 
 pre.selectionSampleCodePre{

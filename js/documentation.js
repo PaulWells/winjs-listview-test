@@ -1,17 +1,21 @@
 ﻿(function () {
     "use strict";
 
-    function readFile(rootFileName) {
+    function readFile() {
         WinJS.xhr({
-            url: '/pages/listview/options/codeSamples/' + rootFileName + ".txt",
+            url: '/codeSamples.txt',
+            responseType: "json"
         }).done(
             function (result) {
                 if (result.status === 200) {
-                    library[rootFileName].code = result.responseText;
+                    result = JSON.parse(result.response);
+                    for (var key in result) {
+                        library[key].code = result[key];
+                    }
                 }
             },
             function (result) {
-
+                // Do nothing on file load error
             }
         );
     }
@@ -393,13 +397,7 @@
         }
     }
 
-    function readFiles() {
-        for (var key in library) {
-            readFile(key);
-        }
-    }
-
-    readFiles();
+    readFile();
 
     WinJS.Namespace.define("Documentation", {
         updateInfo: updateInfo,

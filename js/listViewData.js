@@ -57,16 +57,6 @@
     }
 
     function addElementAt(index) {
-        //getListViewData().done(function(data){
-        //    var newItem;
-        //    if (ListView.listView.groupDataSource) {
-        //        var item = data.getItem(index);
-        //        newItem = cloneItem(item);
-        //    } else {
-        //        newItem = generateItem(itemList);
-        //    }
-        //    data.splice(index, 0, newItem);
-        //});
 
         var data = getListViewData();
         var newItem;

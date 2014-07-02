@@ -51,18 +51,44 @@
         Dragging.garbageCan.deactivate();
     }
 
-    function addClipBoardClickHandler() {
-        var clipBoard = document.querySelector(".copyToClipboardButton");
-        clipBoard.addEventListener("click", function () {
-            var codeElem = document.querySelector(".selectionSampleCode");
-            codeElem.textContent.select();
-            document.execCommand("Copy");
+    function addClipboardEvents() {
+        var clipboard = document.querySelector(".copyToClipboardButton");
+        clipboard.style.opacity = 0;
+        clipboard.addEventListener("click", function () {
+            copyCodeToClipboard();
+            this.style.backgroundColor = "#3A8F3A";
         }, false);
+        var codeContainer = document.querySelector(".selectionSampleCodePre");
+        codeContainer.addEventListener("mouseenter", function () {
+            WinJS.UI.Animation.fadeIn(clipboard);
+        }, false);
+        codeContainer.addEventListener("mouseleave", function () {
+            WinJS.UI.Animation.fadeOut(clipboard).done(function () {
+                clipboard.style.backgroundColor = "#000000";
+            });
+        }, false);
+    }
+
+    function copyCodeToClipboard() {
+        var codeElem = document.querySelector(".selectionSampleCode");
+        if (document.selection) {
+            var range = document.createTextRange();
+            range.moveToElementText(codeElem);
+            range.select();
+            document.execCommand("Copy");
+            document.selection.empty();
+        } else if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNode(codeElem);
+            window.getSelection().addRange(range);
+            document.execCommand("Copy");
+            window.getSelection().removeAllRanges();
+        }
     }
 
     WinJS.Namespace.define("Init", {
         initializeListView: initializeListView,
         initializeDocumentation: initializeDocumentation,
-        addClipBoardClickHandler: addClipBoardClickHandler
+        addClipboardEvents: addClipboardEvents
     });
 })();

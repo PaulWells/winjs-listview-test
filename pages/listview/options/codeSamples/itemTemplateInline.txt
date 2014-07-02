@@ -9,8 +9,9 @@
     </div>
 </div>
 
-<!-- ListView.data is the WinJS.Binding.List you want assigned -->
-<!-- to your ListView, exposed through a namespace called "ListView" -->
+<!-- ListView.data is the WinJS.Binding.List  -->
+<!-- you want assigned to your ListView, exposed -->
+<!-- through a namespace called "ListView" -->
 <div class="win-selectionstylefilled listView"
      data-win-control="WinJS.UI.ListView"
      data-win-options="{
